@@ -1,0 +1,111 @@
+<template>
+  <div style="position: relative">
+    <v-card-title>
+      Cards
+      <v-spacer/>
+      <v-btn @click="clientFormDialog = true" depressed small style="background-color: #32BCA3;color: white">
+        <span class="mdi mdi-plus mdi-18px"></span>
+      </v-btn>
+      <v-btn v-if="isDialog" @click="closeDialog" depressed small
+             style="background-color:darkred;color: white;margin-left: 10px">
+        <span class="mdi mdi-close mdi-18px"></span>
+      </v-btn>
+    </v-card-title>
+    <v-divider/>
+    <v-data-table
+      hide-default-footer
+      disable-pagination
+      :headers="headers"
+      :items="clients"
+    >
+      <template v-slot:item.actions="{item}">
+        <span @click="goToDetail(item)" class="mdi mdi-eye mdi-18px icon-button-class"></span>
+        <span @click="selectForEdit(item)" class="mdi mdi-pencil mdi-18px icon-button-class"></span>
+        <span @click="selectForDelete(item)" class="mdi mdi-delete mdi-18px icon-button-class"></span>
+      </template>
+    </v-data-table>
+    <client-form v-if="clientFormDialog" :client="selectedClient" @closeDialog="closeClientFormDialog"
+                 @resetList="resetList"/>
+    <loading-component v-if="isLoading"/>
+  </div>
+</template>
+
+<script>
+import LoadingComponent from "../../components/LoadingComponent";
+import {mapActions, mapGetters} from "vuex";
+import ClientForm from "./ClientForm";
+
+export default {
+  props: {
+    isDialog: {
+      type: Boolean,
+      default: false,
+    },
+    diller: {
+      type: Object,
+      default: null
+    }
+  },
+  components: {ClientForm, LoadingComponent},
+  data() {
+    return {
+      isLoading: false,
+      page: 1,
+      headers: [
+        {text: "Id", value: "id"},
+        {text: "Card number", value: "cardnumber"},
+        {text: "Name - Surname", value: "name"},
+        {text: "Phone number", value: "telnumber"},
+        {text: "Paket", value: "packet"},
+        {text: "Srok", value: "srok"},
+        {text: "Actions", value: "actions", width: "10%", align: 'right'},
+      ],
+      selectedClient: null,
+      clientFormDialog: false,
+      deleteConfirmDialog: false
+    }
+  },
+  methods: {
+    ...mapActions({
+      loadClients: 'clients/loadAllClients',
+      deleteClient: 'clients/deleteClient'
+    }),
+    resetList() {
+      this.page = 1
+      this.loadData()
+    },
+    closeDialog() {
+      this.$emit("closeDialog")
+    },
+    async loadData() {
+      this.isLoading = true
+      await this.loadClients({page: this.page, diller_id: this.diller?.id})
+      this.isLoading = false
+    },
+    goToDetail(item) {
+      this.$router.push('clients/' + item.id)
+    },
+    selectForEdit(item) {
+      this.selectedClient = item
+      this.clientFormDialog = true
+    },
+    selectForDelete(item) {
+      this.selectedClient = item
+      this.deleteConfirmDialog = true
+    },
+    closeClientFormDialog() {
+      this.selectedClient = null
+      this.clientFormDialog = false
+    }
+  },
+  computed: {
+    ...mapGetters({
+      clients: 'clients/get_clients_list',
+      total: 'clients/get_total_count'
+    })
+  },
+  mounted() {
+    this.loadData()
+  }
+}
+</script>
