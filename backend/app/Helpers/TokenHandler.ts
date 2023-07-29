@@ -40,6 +40,7 @@ export async function login_and_start() {
 
 export async function start_token_refresh_timer() {
   await login_and_start()
+  console.log(get_token())
   setTimeout(async function () {
     await start_token_refresh_timer()
   }, 60 * 60 * 1000)
@@ -55,6 +56,6 @@ export async function try_login(telnumber: string, password: string) {
       })
     return data.token
   } catch (e) {
-    throw new HttpException("Cannot login with this credentials.",400,'E_CANNOT_LOGIN')
+    throw new HttpException("Cannot login with this credentials.", 400, 'E_CANNOT_LOGIN')
   }
 }
