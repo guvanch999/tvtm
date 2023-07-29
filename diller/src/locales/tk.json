@@ -1,0 +1,203 @@
+{
+  "home": {
+    "home-1": {
+      "h1": "Saýlanan sanly",
+      "span-1": "telewideniýe",
+      "h2": "«LOGOTV» Abonentlerine 135-den gowurak",
+      "span-2": "halkara iň gowy telekanallar hödürleýär",
+      "p": "«LOGOTV» tomaşaçylary nämelere tomaşa edip bilerler?",
+      "span-3": "Ilkinji nobatda, kinolaryň, çagalar üçin, sport we meşhur kanallaryň dürli görnüşlerine."
+    },
+    "home-2": {
+      "h1": "Bizin hyzmatdashlarymyz"
+    },
+    "btn": "Ginişleyin"
+  },
+  "footer": {
+    "p": "Ýunus Emre köçesi, 13/2, Aşgabat, Türkmenistan",
+    "ul": {
+      "li-1": "SAHYPALAR",
+      "li-2": "Tarifler",
+      "li-3": "Profil",
+      "li-4": "Töleg taryhy"
+    },
+    "ul-2": {
+      "li-1": "CONTACT"
+    }
+  },
+  "header": {
+    "nav": {
+      "nav-1": "Tarifler",
+      "nav-2": "Profil",
+      "nav-3": "Tölegler Taryhy"
+    },
+    "btn": "Girmek"
+  },
+  "prices": {
+    "btn": "Birikdir"
+  },
+  "register": {
+    "h1": "LogoTv Registrasiýa",
+    "span-1": "Hasabyňyz barmy? Onda",
+    "span-2": "içeri giriň",
+    "username": "Doly adyňyz",
+    "user-error": "Doly adyňyzy tassyklan",
+    "email": "Elektron poçta sahypasy",
+    "email-error": "Email nadogry",
+    "password": "Açar söz",
+    "pass-error": "Acar sozi nadogry",
+    "confirm": "Açar sözi tassyklaň",
+    "conf-error": "Acar sozi gabat gelenok",
+    "phone": "Telefon belgiňiz",
+    "phone-error": "Telefon belgiňiz gabat gelenok",
+    "btn": "Hasap döret"
+  },
+  "login": {
+    "h1": "LogoTv Içeri gir",
+    "span-1": "Hasabyňyz yokmy? Onda",
+    "span-2": "registrasiýa boluň",
+    "phone": "Telefon belgiňiz",
+    "phone-error": "Telefon belgiňizi tassyklaň",
+    "password": "Açar söz",
+    "pass-error": "Acar sozi nadogry",
+    "btn": "içeri gir"
+  },
+  "dialog": {
+    "valid-header": "Standart tarifi üstünlikli birikdirildi",
+    "invalid-header": "Standart tarif birikdirmek amala aşyrylmady",
+    "valid-par": "Hasabyňyzdan bir ýyllyk standart tarif üçin aşakdaky pul möçberi tutuldy",
+    "invalid-par": "Hasabyňyzdaky pul möçberi tarif almaklyga mümkinçilik bermeýär, Tarifi almak üçin hasabyňyzy aşakdaky pul möçberine ýetirmeli!",
+    "valid-btn-1": "Esasy sahypa",
+    "valid-btn-2": "Töleg taryhy",
+    "invalid-btn-1": "Hasaby doldur",
+    "invalid-btn-2": "Goýbolsun et"
+  },
+  "dashboard": {
+    "btn": "Çykmak",
+    "nav": {
+      "nav-1": "Esasy sahypa",
+      "nav-2": "Kartlar",
+      "nav-3": " Profil",
+      "nav-4": "Balans taryhy"
+    }
+  },
+  "news": {
+    "h1": "Esasy sahypa"
+  },
+  "cards": {
+    "h1": "Kartlar",
+    "table": {
+      "th-1": "Yagdayy",
+      "th-2": "Kart ID",
+      "th-3": "Bukja mohleti",
+      "th-4": "Eyesi",
+      "th-5": "Kontaktlar",
+      "th-6": "Bellik"
+    },
+    "filter": "Görkez:"
+  },
+  "profile": {
+    "h1": "Profil",
+    "form": {
+      "label-1": "Familiýasy",
+      "label-2": "Telefon belgisi",
+      "label-3": "Elektron poçta sahypasy",
+      "label-4": "Açar sözi",
+      "label-5": "Täze açar sozini ýaz",
+      "label-6": "Açar sözüni tassykla",
+      "btn": "Ýatda sakla"
+    },
+    "btn": "Hasaby doldur"
+  },
+  "balance": {
+    "h1": "Balans taryhy",
+    "btn": "Hasaby doldur",
+    "filter": "Görkez:",
+    "table": {
+      "th-1": "Wagty",
+      "th-2": "Hereket",
+      "th-3": "Tip",
+      "th-4": "Bahasy"
+    }
+  },
+  "the-cards": {
+    "btn": "Kart goşmak",
+    "cards": {
+      "c1": "Jemi",
+      "c2": "Aktiw",
+      "c3": "Aktiw däl"
+    }
+  },
+  "card-details": {
+    "h1": "Kart maglumaty",
+    "nav": {
+      "nav-1": "Kart maglumaty",
+      "nav-2": "Abuna taryhy",
+      "nav-3": "Aktiwlyk taryhy",
+      "nav-4": "Satyn almak/uzaltmak",
+      "nav-5": "Karty uytgetmek"
+    }
+  },
+  "card-about": {
+    "form": {
+      "label-1": "Telefon nomeri",
+      "label-2": "Familiya",
+      "label-3": "Ady",
+      "label-4": "Şäher",
+      "label-5": "Tyunerin modeli"
+    },
+    "btn-1": "Gaytadan isjenlesdirmek",
+    "btn-2": "Yatda sakla"
+  },
+  "card-sub": {
+    "table": {
+      "th-1": "Wagty",
+      "th-2": "Bukja",
+      "th-3": "Mohlet",
+      "th-4": "Bahasy",
+      "th-5": "Baslayan wagty",
+      "th-6": "Tamamlanyan wagty",
+      "th-7": "Hereket"
+    }
+  },
+  "card-active": {
+    "table": {
+      "th-1": "Wagty",
+      "th-2": "Hereket",
+      "th-3": "Ady/Familyasy"
+    }
+  },
+  "card-buy": {
+    "h1": "Hazirki bukjalar",
+    "p": "Wagty:",
+    "p-2": "Siziň balansyňyz:",
+    "p-3": "Arzanladyşyk:",
+    "p-4": "Jemi töleg:",
+    "h2": "Bukjalar",
+    "label": "Mohleti girizin",
+    "btn": "Tolegi gecirmek"
+  },
+  "card-change": {
+    "form": {
+      "label-1": "Kartyň nomeri",
+      "label-2": "Täze kartyň nomeri",
+      "label-3": "Sebäbini ýazyň!"
+    },
+    "btn-1": "Yza",
+    "btn-2": "Üýtgetmek"
+  },
+  "add-card": {
+    "h1": "Kart goshmak",
+    "form": {
+      "label-1": "Kartyň nomeri",
+      "label-2": "Familiýa",
+      "label-3": "Ady",
+      "label-4": "Şäher",
+      "label-5": "Týuneriň modeli"
+    },
+    "btn": "Kart goşmak",
+    "balance": "Siziň balansyňyz:",
+    "off": "Arzanladyşyk:",
+    "total": "Jemi töleg:"
+  }
+}

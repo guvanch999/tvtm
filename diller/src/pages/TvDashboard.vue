@@ -1,0 +1,602 @@
+<template>
+  <!-- <MqResponsive target="">
+    <div>This is an md screen</div>
+  </MqResponsive> -->
+
+  <MqResponsive target="lg-">
+    <div class="large_main">
+      <div class="large_main__header">
+        <div>
+          <img
+              src="../assets/menu-svg.svg"
+              alt="Menu icon"
+              class="large_menu"
+              @click="openMenu"
+          />
+          <div class="large_sidebar" :class="{ sidebar_active: active }">
+            <div class="large_sidebar__header">
+              <div class="large_sidebar__logo">
+                <img
+                    src="../assets/tv-yzyndan.svg"
+                    alt=""
+                    style="width: 80%; height: 80%"
+                />
+                <img
+                    src="../assets/cross-svg.svg"
+                    alt="Cross icon"
+                    class="large_cross"
+                    @click="closeMenu"
+                />
+              </div>
+              <div class="user-info" v-if="!!isAuthorized">
+                <div class="user-profile__photo">
+                  {{ first_character }}
+                </div>
+                <div class="user-profile__info">
+                  <span class="span">{{ detail?.full_name }}</span>
+                  <span>{{ detail?.balans?.summ || 0 }} TMT</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="large_sidebar__menu">
+              <nav>
+                <ul>
+                  <router-link :to="`/${$i18n.locale}/dashboard/news`">
+                    <svg
+                        width="23"
+                        height="23"
+                        viewBox="0 0 26 26"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          class="svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M20.088 0.991699C23.1101 0.991699 25.56 3.4416 25.56 6.4637C25.56 9.4858 23.1101 11.9357 20.088 11.9357C17.0659 11.9357 14.616 9.4858 14.616 6.4637C14.616 3.4416 17.0659 0.991699 20.088 0.991699ZM20.0879 3.7277C18.5768 3.7277 17.3519 4.95264 17.3519 6.4637C17.3519 7.97475 18.5768 9.1997 20.0879 9.1997C21.5989 9.1997 22.8239 7.97475 22.8239 6.4637C22.8239 4.95264 21.5989 3.7277 20.0879 3.7277ZM6.40804 0.991703C9.43014 0.991703 11.88 3.4416 11.88 6.4637C11.88 9.48581 9.43014 11.9357 6.40804 11.9357C3.38594 11.9357 0.936039 9.48581 0.936039 6.4637C0.936039 3.4416 3.38594 0.991703 6.40804 0.991703ZM6.40804 3.7277C4.89698 3.7277 3.67204 4.95265 3.67204 6.4637C3.67204 7.97475 4.89698 9.1997 6.40804 9.1997C7.91909 9.1997 9.14404 7.97475 9.14404 6.4637C9.14404 4.95265 7.91909 3.7277 6.40804 3.7277ZM11.88 20.1437C11.88 17.1216 9.43014 14.6717 6.40804 14.6717C3.38593 14.6717 0.936035 17.1216 0.936035 20.1437C0.936035 23.1658 3.38593 25.6157 6.40804 25.6157C9.43014 25.6157 11.88 23.1658 11.88 20.1437ZM3.67203 20.1435C3.67203 18.6325 4.89698 17.4075 6.40803 17.4075C7.91908 17.4075 9.14403 18.6325 9.14403 20.1435C9.14403 21.6546 7.91908 22.8795 6.40803 22.8795C4.89698 22.8795 3.67203 21.6546 3.67203 20.1435ZM20.088 14.6717C23.1101 14.6717 25.56 17.1216 25.56 20.1437C25.56 23.1658 23.1101 25.6157 20.088 25.6157C17.0659 25.6157 14.616 23.1658 14.616 20.1437C14.616 17.1216 17.0659 14.6717 20.088 14.6717ZM20.0879 17.4075C18.5768 17.4075 17.3519 18.6325 17.3519 20.1435C17.3519 21.6546 18.5768 22.8795 20.0879 22.8795C21.5989 22.8795 22.8239 21.6546 22.8239 20.1435C22.8239 18.6325 21.5989 17.4075 20.0879 17.4075Z"
+                          fill="#8f92ab"
+                      />
+                    </svg>
+                    {{ $t("dashboard.nav.nav-1") }}
+                  </router-link>
+
+                  <router-link :to="`/${$i18n.locale}/dashboard/cards`">
+                    <svg
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          class="stroke"
+                          d="M22 12C22 8.22876 22 6.34315 20.8284 5.17157C19.6569 4 17.7712 4 14 4H10C6.22876 4 4.34315 4 3.17157 5.17157C2 6.34315 2 8.22876 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20H14C17.7712 20 19.6569 20 20.8284 18.8284C21.4816 18.1752 21.7706 17.3001 21.8985 16"
+                          stroke="#8f92a1"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                      />
+                      <path
+                          class="stroke"
+                          d="M10 16H6"
+                          stroke="#8f92a1"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                      />
+                      <path
+                          class="stroke"
+                          d="M14 16H12.5"
+                          stroke="#8f92a1"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                      />
+                      <path
+                          class="stroke"
+                          d="M2 10L7 10M22 10L11 10"
+                          stroke="#8f92a1"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                      />
+                    </svg>
+                    {{ $t("dashboard.nav.nav-2") }}
+                  </router-link>
+
+                  <router-link :to="`/${$i18n.locale}/dashboard/profile`">
+                    <svg
+                        width="27px"
+                        height="27px"
+                        viewBox="0 0 29 28"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          class="svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M19.0276 8.28042C19.0276 10.8073 16.9791 12.8558 14.4523 12.8558C11.9254 12.8558 9.87695 10.8073 9.87695 8.28042C9.87695 5.75353 11.9254 3.70508 14.4523 3.70508C16.9791 3.70508 19.0276 5.75353 19.0276 8.28042ZM16.74 8.28042C16.74 9.54387 15.7158 10.5681 14.4523 10.5681C13.1888 10.5681 12.1646 9.54387 12.1646 8.28042C12.1646 7.01697 13.1888 5.99275 14.4523 5.99275C15.7158 5.99275 16.74 7.01697 16.74 8.28042Z"
+                          fill="#8F92A1"
+                      />
+                      <path
+                          class="svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M19.0272 17.4315C19.0272 16.7998 18.5151 16.2877 17.8834 16.2877H11.0204C10.3887 16.2877 9.87654 16.7998 9.87654 17.4315V24.2945H7.58887V17.4315C7.58887 15.5363 9.12521 14 11.0204 14H17.8834C19.7786 14 21.3149 15.5363 21.3149 17.4315V24.2945H19.0272V17.4315Z"
+                          fill="#8F92A1"
+                      />
+                    </svg>
+                    {{ $t("dashboard.nav.nav-3") }}
+                  </router-link>
+
+                  <router-link :to="`/${$i18n.locale}/dashboard/balance`">
+                    <svg
+                        width="23"
+                        height="23"
+                        viewBox="0 0 28 28"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                          class="svg"
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M14.2479 27.6803C21.8031 27.6803 27.9279 21.5555 27.9279 14.0003C27.9279 6.44505 21.8031 0.320312 14.2479 0.320312C6.69261 0.320312 0.567871 6.44505 0.567871 14.0003C0.567871 21.5555 6.69261 27.6803 14.2479 27.6803ZM14.248 24.9441C20.2922 24.9441 25.192 20.0443 25.192 14.0001C25.192 7.95587 20.2922 3.05607 14.248 3.05607C8.20379 3.05607 3.304 7.95587 3.304 14.0001C3.304 20.0443 8.20379 24.9441 14.248 24.9441ZM15.616 12.6321V7.16007H12.88V15.3681H19.72V12.6321H15.616Z"
+                          fill="#8F92A1"
+                      />
+                    </svg>
+                    {{ $t("dashboard.nav.nav-4") }}
+                  </router-link>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <form>
+          <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M17.3952 15.9761C19.852 12.8209 19.63 8.25612 16.7295 5.3556C13.5887 2.2148 8.49642 2.2148 5.35561 5.3556C2.2148 8.49642 2.2148 13.5887 5.35561 16.7295C8.25614 19.63 12.821 19.8519 15.9762 17.3952C15.9897 17.4106 16.0039 17.4257 16.0186 17.4403L20.2838 21.7055C20.6764 22.0982 21.313 22.0982 21.7056 21.7055C22.0981 21.3129 22.0981 20.6764 21.7056 20.2838L17.4404 16.0186C17.4256 16.0039 17.4105 15.9898 17.3952 15.9761ZM15.2426 6.75737C17.5858 9.10051 17.5858 12.8995 15.2426 15.2427C12.8995 17.5858 9.1005 17.5858 6.75736 15.2427C4.41421 12.8995 4.41421 9.10051 6.75736 6.75737C9.1005 4.41421 12.8995 4.41421 15.2426 6.75737Z"
+                fill="#8f92a1"
+            />
+          </svg>
+          <input type="search" placeholder="Search"/>
+        </form>
+        <base-button @click="deleteToken" v-if="!!isAuthorized">{{
+            $t("dashboard.btn")
+          }}
+        </base-button>
+      </div>
+      <router-view></router-view>
+    </div>
+  </MqResponsive>
+
+  <MqResponsive target="xl+">
+    <div class="dashboard">
+      <div class="sidebar">
+        <div class="sidebar__header">
+          <img
+              src="../assets/tv-yzyndan.svg"
+              alt=""
+              style="width: 80%; height: 80%"
+          />
+
+          <div class="user-info" v-if="!!isAuthorized">
+            <div class="user-profile__photo">{{ first_character }}</div>
+            <div class="user-profile__info">
+              <span class="span">{{ detail?.full_name }}</span>
+              <span>{{ detail?.balans?.summ || 0 }} TMT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar__menu">
+          <nav>
+            <ul>
+              <router-link :to="`/${$i18n.locale}/dashboard/news`">
+                <svg
+                    width="23"
+                    height="23"
+                    viewBox="0 0 26 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      class="svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M20.088 0.991699C23.1101 0.991699 25.56 3.4416 25.56 6.4637C25.56 9.4858 23.1101 11.9357 20.088 11.9357C17.0659 11.9357 14.616 9.4858 14.616 6.4637C14.616 3.4416 17.0659 0.991699 20.088 0.991699ZM20.0879 3.7277C18.5768 3.7277 17.3519 4.95264 17.3519 6.4637C17.3519 7.97475 18.5768 9.1997 20.0879 9.1997C21.5989 9.1997 22.8239 7.97475 22.8239 6.4637C22.8239 4.95264 21.5989 3.7277 20.0879 3.7277ZM6.40804 0.991703C9.43014 0.991703 11.88 3.4416 11.88 6.4637C11.88 9.48581 9.43014 11.9357 6.40804 11.9357C3.38594 11.9357 0.936039 9.48581 0.936039 6.4637C0.936039 3.4416 3.38594 0.991703 6.40804 0.991703ZM6.40804 3.7277C4.89698 3.7277 3.67204 4.95265 3.67204 6.4637C3.67204 7.97475 4.89698 9.1997 6.40804 9.1997C7.91909 9.1997 9.14404 7.97475 9.14404 6.4637C9.14404 4.95265 7.91909 3.7277 6.40804 3.7277ZM11.88 20.1437C11.88 17.1216 9.43014 14.6717 6.40804 14.6717C3.38593 14.6717 0.936035 17.1216 0.936035 20.1437C0.936035 23.1658 3.38593 25.6157 6.40804 25.6157C9.43014 25.6157 11.88 23.1658 11.88 20.1437ZM3.67203 20.1435C3.67203 18.6325 4.89698 17.4075 6.40803 17.4075C7.91908 17.4075 9.14403 18.6325 9.14403 20.1435C9.14403 21.6546 7.91908 22.8795 6.40803 22.8795C4.89698 22.8795 3.67203 21.6546 3.67203 20.1435ZM20.088 14.6717C23.1101 14.6717 25.56 17.1216 25.56 20.1437C25.56 23.1658 23.1101 25.6157 20.088 25.6157C17.0659 25.6157 14.616 23.1658 14.616 20.1437C14.616 17.1216 17.0659 14.6717 20.088 14.6717ZM20.0879 17.4075C18.5768 17.4075 17.3519 18.6325 17.3519 20.1435C17.3519 21.6546 18.5768 22.8795 20.0879 22.8795C21.5989 22.8795 22.8239 21.6546 22.8239 20.1435C22.8239 18.6325 21.5989 17.4075 20.0879 17.4075Z"
+                      fill="#8f92ab"
+                  />
+                </svg>
+                {{ $t("dashboard.nav.nav-1") }}
+              </router-link>
+
+              <router-link :to="`/${$i18n.locale}/dashboard/cards`">
+                <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      class="stroke"
+                      d="M22 12C22 8.22876 22 6.34315 20.8284 5.17157C19.6569 4 17.7712 4 14 4H10C6.22876 4 4.34315 4 3.17157 5.17157C2 6.34315 2 8.22876 2 12C2 15.7712 2 17.6569 3.17157 18.8284C4.34315 20 6.22876 20 10 20H14C17.7712 20 19.6569 20 20.8284 18.8284C21.4816 18.1752 21.7706 17.3001 21.8985 16"
+                      stroke="#8f92a1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                  />
+                  <path
+                      class="stroke"
+                      d="M10 16H6"
+                      stroke="#8f92a1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                  />
+                  <path
+                      class="stroke"
+                      d="M14 16H12.5"
+                      stroke="#8f92a1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                  />
+                  <path
+                      class="stroke"
+                      d="M2 10L7 10M22 10L11 10"
+                      stroke="#8f92a1"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                  />
+                </svg>
+                {{ $t("dashboard.nav.nav-2") }}
+              </router-link>
+
+              <router-link :to="`/${$i18n.locale}/dashboard/profile`">
+                <svg
+                    width="27px"
+                    height="27px"
+                    viewBox="0 0 29 28"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      class="svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M19.0276 8.28042C19.0276 10.8073 16.9791 12.8558 14.4523 12.8558C11.9254 12.8558 9.87695 10.8073 9.87695 8.28042C9.87695 5.75353 11.9254 3.70508 14.4523 3.70508C16.9791 3.70508 19.0276 5.75353 19.0276 8.28042ZM16.74 8.28042C16.74 9.54387 15.7158 10.5681 14.4523 10.5681C13.1888 10.5681 12.1646 9.54387 12.1646 8.28042C12.1646 7.01697 13.1888 5.99275 14.4523 5.99275C15.7158 5.99275 16.74 7.01697 16.74 8.28042Z"
+                      fill="#8F92A1"
+                  />
+                  <path
+                      class="svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M19.0272 17.4315C19.0272 16.7998 18.5151 16.2877 17.8834 16.2877H11.0204C10.3887 16.2877 9.87654 16.7998 9.87654 17.4315V24.2945H7.58887V17.4315C7.58887 15.5363 9.12521 14 11.0204 14H17.8834C19.7786 14 21.3149 15.5363 21.3149 17.4315V24.2945H19.0272V17.4315Z"
+                      fill="#8F92A1"
+                  />
+                </svg>
+                {{ $t("dashboard.nav.nav-3") }}
+              </router-link>
+
+              <router-link :to="`/${$i18n.locale}/dashboard/balance`">
+                <svg
+                    width="23"
+                    height="23"
+                    viewBox="0 0 28 28"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                      class="svg"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M14.2479 27.6803C21.8031 27.6803 27.9279 21.5555 27.9279 14.0003C27.9279 6.44505 21.8031 0.320312 14.2479 0.320312C6.69261 0.320312 0.567871 6.44505 0.567871 14.0003C0.567871 21.5555 6.69261 27.6803 14.2479 27.6803ZM14.248 24.9441C20.2922 24.9441 25.192 20.0443 25.192 14.0001C25.192 7.95587 20.2922 3.05607 14.248 3.05607C8.20379 3.05607 3.304 7.95587 3.304 14.0001C3.304 20.0443 8.20379 24.9441 14.248 24.9441ZM15.616 12.6321V7.16007H12.88V15.3681H19.72V12.6321H15.616Z"
+                      fill="#8F92A1"
+                  />
+                </svg>
+                {{ $t("dashboard.nav.nav-4") }}
+              </router-link>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="main">
+        <div class="main__header">
+          <form>
+            <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M17.3952 15.9761C19.852 12.8209 19.63 8.25612 16.7295 5.3556C13.5887 2.2148 8.49642 2.2148 5.35561 5.3556C2.2148 8.49642 2.2148 13.5887 5.35561 16.7295C8.25614 19.63 12.821 19.8519 15.9762 17.3952C15.9897 17.4106 16.0039 17.4257 16.0186 17.4403L20.2838 21.7055C20.6764 22.0982 21.313 22.0982 21.7056 21.7055C22.0981 21.3129 22.0981 20.6764 21.7056 20.2838L17.4404 16.0186C17.4256 16.0039 17.4105 15.9898 17.3952 15.9761ZM15.2426 6.75737C17.5858 9.10051 17.5858 12.8995 15.2426 15.2427C12.8995 17.5858 9.1005 17.5858 6.75736 15.2427C4.41421 12.8995 4.41421 9.10051 6.75736 6.75737C9.1005 4.41421 12.8995 4.41421 15.2426 6.75737Z"
+                  fill="#8f92a1"
+              />
+            </svg>
+            <input type="search" placeholder="Search"/>
+          </form>
+          <base-button @click="logoutHandeler" v-if="!!isAuthorized">{{
+              $t("dashboard.btn")
+            }}
+          </base-button>
+        </div>
+        <router-view></router-view>
+      </div>
+    </div>
+  </MqResponsive>
+</template>
+
+<script>
+import {MqResponsive} from "vue3-mq";
+import {mapGetters, mapActions} from "vuex";
+
+export default {
+  components: {
+    MqResponsive,
+  },
+  data() {
+    return {
+      active: false,
+    };
+  },
+  computed: {
+    ...mapGetters({
+      detail: "auth/get_my_detail",
+      isAuthorized: "auth/isAuthorized",
+    }),
+    first_character() {
+      return this.detail?.full_name[0] ?? 'U'
+    }
+  },
+  methods: {
+    ...mapActions({
+      loadMyDetail: "auth/loadMyDetail",
+      deleteToken: "auth/deleteToken",
+    }),
+    openMenu() {
+      this.active = true;
+    },
+    logoutHandeler() {
+      this.deleteToken()
+      this.$router.push('/')
+    },
+    closeMenu() {
+      this.active = false;
+    },
+  },
+  async mounted() {
+    this.loadMyDetail();
+  },
+};
+</script>
+
+<style scoped>
+.dashboard {
+  font-family: "DM Sans";
+  display: flex;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  height: 100vh;
+  width: 250px;
+  background-color: white;
+}
+
+.sidebar__header {
+  padding: 20px;
+}
+
+.sidebar__menu {
+  height: 100vh;
+}
+
+ul {
+  list-style: none;
+  padding: 10px;
+}
+
+a {
+  font-family: "DM Sans";
+  margin-top: 20px;
+  padding: 0 15px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: black;
+}
+
+a:hover,
+a.router-link-active {
+  color: #3d5cb7;
+  border-left: 2px solid #3d5cb7;
+}
+
+a:hover .stroke,
+a.router-link-active .stroke {
+  stroke: #3d5cb7;
+}
+
+a:hover .svg,
+a.router-link-active .svg {
+  fill: #3d5cb7;
+}
+
+.main {
+  height: 100vh;
+  width: 100%;
+  margin-left: 250px;
+}
+
+.main__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  padding: 10px 20px;
+}
+
+.main__header form {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgba(143, 146, 161, 0.1);
+  border-radius: 10px;
+  flex: 1;
+}
+
+.main__header input {
+  width: 100%;
+  background-color: transparent;
+  padding: 10px 5px;
+  border: none;
+  outline: none;
+}
+
+.main__header input::placeholder {
+  color: #8f92a1;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.main__main {
+  height: 100vh;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  gap: 10px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.user-profile__photo {
+  padding: 15px 20px;
+  background-color: red;
+  border-radius: 100%;
+  color: white;
+}
+
+.user-profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.span {
+  color: #777;
+}
+
+/* NOTE LARGRE */
+.large_main {
+  font-family: "DM Sans";
+  height: 100%;
+  width: 100%;
+}
+
+.large_main__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  padding: 10px 20px;
+}
+
+.large_main__header form {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgba(143, 146, 161, 0.1);
+  border-radius: 10px;
+  flex: 1;
+}
+
+.large_main__header input {
+  width: 100%;
+  background-color: transparent;
+  padding: 10px 5px;
+  border: none;
+  outline: none;
+}
+
+.large_main__header input::placeholder {
+  color: #8f92a1;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.large_sidebar {
+  display: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  height: 100vh;
+  width: 250px;
+  top: 0%;
+  left: 0%;
+  background-color: white;
+}
+
+.large_sidebar__header {
+  padding: 20px;
+}
+
+.large_sidebar__menu {
+  height: 100vh;
+}
+
+.large_sidebar__logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.large_main,
+.large_cross {
+  cursor: pointer;
+}
+
+.sidebar_active {
+  display: block;
+}
+
+@media (width<=770px
+
+) {
+  .large_main__header {
+    gap: 50px;
+  }
+
+  @media (width<=570px
+
+  ) {
+    .large_main__header {
+      gap: 25px;
+    }
+
+    @media (width<=470px
+
+    ) {
+      .large_main__header {
+        gap: 15px;
+      }
+
+      button {
+        padding: 10px !important;
+      }
+    }
+  }
+}
+</style>
