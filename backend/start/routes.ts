@@ -21,7 +21,9 @@
 import Route from '@ioc:Adonis/Core/Route'
 import 'App/Routers/AdminRounters'
 import 'App/Routers/UserRounters'
+import {get_token} from "App/Helpers/TokenHandler";
 
 Route.get('/', async () => {
+  console.log(get_token())
   return {hello: 'world'}
 })
