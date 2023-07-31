@@ -8,45 +8,45 @@
         <span>
           {{ $t("login.span-1") }}
           <router-link to="/tk/register"
-          >{{ $t("login.span-2") }}
+            >{{ $t("login.span-2") }}
           </router-link></span
         >
       </p>
       <div class="form-control" :class="{ invalid: !phoneNumber.isValid }">
         <label for="phoneNumber">
           <span class="first-span"
-          ><img
+            ><img
               src="../../assets/user-red.svg"
               alt="Invalid user icon"
               v-if="!phoneNumber.isValid"
-          />
-            <img src="../../assets/user.png" alt="User icon" v-else/>
+            />
+            <img src="../../assets/user.png" alt="User icon" v-else />
             {{ $t("login.phone") }}
           </span>
           <span v-if="!phoneNumber.isValid">{{ $t("login.phone-error") }}</span>
         </label>
-        <input type="tel" id="phoneNumber" v-model="phoneNumber.val"/>
+        <input type="tel" id="phoneNumber" v-model="phoneNumber.val" />
       </div>
 
       <div class="form-control" :class="{ invalid: !password.isValid }">
         <label for="password"
-        ><span class="first-span"
-        ><img
-            src="../../assets/lock-red.svg"
-            alt="Invalid lock icon"
-            v-if="!password.isValid"
-        />
-            <img src="../../assets/lock.png" alt="Lock icon" v-else/>{{
-            $t("login.password")
-          }}</span
-        >
+          ><span class="first-span"
+            ><img
+              src="../../assets/lock-red.svg"
+              alt="Invalid lock icon"
+              v-if="!password.isValid"
+            />
+            <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
+              $t("login.password")
+            }}</span
+          >
           <span v-if="!password.isValid">{{ $t("pass-error") }}</span>
         </label>
-        <input type="password" id="password" v-model="password.val"/>
+        <input type="password" id="password" v-model="password.val" />
       </div>
 
       <base-button class="btn__login">
-        <img src="../../assets/login.png" alt="Login icon"/>
+        <img src="../../assets/login.png" alt="Login icon" />
         {{ $t("login.btn") }}
       </base-button>
     </form>
@@ -81,10 +81,10 @@ export default {
     async submitForm() {
       this.isLoading = true;
       if (
-          this.phoneNumber.val.length < 11 ||
-          this.phoneNumber.val === "" ||
-          this.password.length < 8 ||
-          this.password.val === ""
+        this.phoneNumber.val.length < 11 ||
+        this.phoneNumber.val === "" ||
+        this.password.length < 8 ||
+        this.password.val === ""
       ) {
         this.formIsValid = false;
         return;
@@ -96,12 +96,12 @@ export default {
 
       try {
         await this.$store.dispatch("auth/userLogin", loginData);
-        this.$router.replace({path: `/${this.$i18n.locale}/dashboard/news`});
+        this.$router.replace({ path: `/${this.$i18n.locale}/dashboard/news` });
       } catch (err) {
-        console.error(err)
-        alert('Invalid credentials')
+        console.error(err);
+        this.$store.commit("set_error", "Invalid credentials");
+        this.router.push({ path: "/" });
       }
-
 
       this.isLoading = false;
     },
@@ -206,23 +206,17 @@ button {
   color: red;
 }
 
-@media (width<=650px
-
-) {
+@media (width<=650px) {
   form {
     width: 500px;
   }
 
-  @media (width<=550px
-
-  ) {
+  @media (width<=550px) {
     form {
       width: 400px;
     }
 
-    @media (width<=450px
-
-    ) {
+    @media (width<=450px) {
       form {
         width: 300px;
       }

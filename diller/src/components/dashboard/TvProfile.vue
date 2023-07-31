@@ -486,7 +486,14 @@ export default {
     }),
   },
   async mounted() {
-    await this.loadMyDetail();
+    try {
+      await this.loadMyDetail();
+      
+    } catch (e) {
+      console.log(e);
+      this.$store.commit('auth/set_error', 'Cannot update my detail')
+      this.$router.push({path:'/'})
+    }
     this.isLoading = false;
   },
 };

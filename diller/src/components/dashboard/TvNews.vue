@@ -62,6 +62,7 @@ export default {
         });
       } catch (e) {
         this.$store.commit("set_error", "Cannot load news");
+        this.$router.push({ path: "/" });
       }
     },
   },

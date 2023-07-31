@@ -12,48 +12,48 @@
                   <label>{{ $t("add-card.form.label-1") }}</label>
                   <p class="validation" v-if="!card">Nädogry kart nomer</p>
                   <input
-                      v-model="cardModel.cardnumber"
-                      class="user__info"
-                      type="text"
-                      id="number"
-                      :class="{ invalid: !card }"
-                      @blur="clearValidity('card')"
+                    v-model="cardModel.cardnumber"
+                    class="user__info"
+                    type="text"
+                    id="number"
+                    :class="{ invalid: !card }"
+                    @blur="clearValidity('card')"
                   />
                 </div>
                 <div class="card__div">
                   <label>Telefon nomeri</label>
                   <p class="validation" v-if="!tel">Nädogry telefon nomer</p>
                   <input
-                      v-model="cardModel.telnumber"
-                      class="user__info"
-                      type="text"
-                      id="number"
-                      :class="{ invalid: !tel }"
-                      @blur="clearValidity('tel')"
+                    v-model="cardModel.telnumber"
+                    class="user__info"
+                    type="text"
+                    id="number"
+                    :class="{ invalid: !tel }"
+                    @blur="clearValidity('tel')"
                   />
                 </div>
                 <div class="card__div">
                   <label>{{ $t("add-card.form.label-2") }}</label>
                   <p class="validation" v-if="!sur">Doly familiýanyňyz ýazyň</p>
                   <input
-                      v-model="cardModel.surname"
-                      class="user__info"
-                      type="text"
-                      id="firstName"
-                      :class="{ invalid: !sur }"
-                      @blur="clearValidity('sur')"
+                    v-model="cardModel.surname"
+                    class="user__info"
+                    type="text"
+                    id="firstName"
+                    :class="{ invalid: !sur }"
+                    @blur="clearValidity('sur')"
                   />
                 </div>
                 <div class="card__div">
                   <label>{{ $t("add-card.form.label-3") }}</label>
                   <p class="validation" v-if="!ady">Doly adyňyzy ýazyň</p>
                   <input
-                      v-model="cardModel.name"
-                      class="user__info"
-                      type="text"
-                      id="lastName"
-                      :class="{ invalid: !ady }"
-                      @blur="clearValidity('ady')"
+                    v-model="cardModel.name"
+                    class="user__info"
+                    type="text"
+                    id="lastName"
+                    :class="{ invalid: !ady }"
+                    @blur="clearValidity('ady')"
                   />
                 </div>
                 <div class="card__div">
@@ -62,12 +62,12 @@
                     Doly addresiňizi görkezin
                   </p>
                   <input
-                      v-model="cardModel.adress"
-                      class="user__info"
-                      type="text"
-                      id="city"
-                      :class="{ invalid: !city }"
-                      @blur="clearValidity('city')"
+                    v-model="cardModel.adress"
+                    class="user__info"
+                    type="text"
+                    id="city"
+                    :class="{ invalid: !city }"
+                    @blur="clearValidity('city')"
                   />
                 </div>
                 <div class="card__div">
@@ -76,24 +76,24 @@
                     Doly týuneriň modelini görkeziň
                   </p>
                   <input
-                      v-model="cardModel.resiver"
-                      class="user__info"
-                      type="text"
-                      id="model"
-                      :class="{ invalid: !res }"
-                      @blur="clearValidity('res')"
+                    v-model="cardModel.resiver"
+                    class="user__info"
+                    type="text"
+                    id="model"
+                    :class="{ invalid: !res }"
+                    @blur="clearValidity('res')"
                   />
                 </div>
                 <div class="card__div">
                   <label>Srok:</label>
                   <p class="validation" v-if="!end">Doly möhletini belläň</p>
                   <input
-                      v-model="cardModel.srok"
-                      class="user__info"
-                      type="number"
-                      id="model"
-                      :class="{ invalid: !end }"
-                      @blur="clearValidity('end')"
+                    v-model="cardModel.srok"
+                    class="user__info"
+                    type="number"
+                    id="model"
+                    :class="{ invalid: !end }"
+                    @blur="clearValidity('end')"
                   />
                 </div>
 
@@ -101,12 +101,12 @@
                   <label>Bellik:</label>
                   <p class="validation" v-if="!not">Bellik ýazyň</p>
                   <input
-                      v-model="cardModel.note"
-                      class="user__info"
-                      type="text"
-                      id="model"
-                      :class="{ invalid: !not }"
-                      @blur="clearValidity('not')"
+                    v-model="cardModel.note"
+                    class="user__info"
+                    type="text"
+                    id="model"
+                    :class="{ invalid: !not }"
+                    @blur="clearValidity('not')"
                   />
                 </div>
               </form>
@@ -116,29 +116,30 @@
                 <base-small class="box__one-card">
                   <h2 class="box__one--header-2">
                     <span class="box__one--span">{{
-                        $t("add-card.balance")
-                      }}</span>
+                      $t("add-card.balance")
+                    }}</span>
                     {{ my_detail?.balans?.summ || 0 }} manat
                   </h2>
                   <div>
                     <p>{{ $t("add-card.off") }}{{ my_detail?.skidka || 0 }}%</p>
                     <p>
-                      {{
-                        $t("add-card.total")
-                      }}<span class="box__one--span-2">{{ totalBalance }} TMT</span>
+                      {{ $t("add-card.total")
+                      }}<span class="box__one--span-2"
+                        >{{ totalBalance }} TMT</span
+                      >
                     </p>
                   </div>
                 </base-small>
 
                 <!-- Prices -->
                 <base-small
-                    class="box__two-card"
-                    v-for="packet in packets"
-                    :key="packet.id"
-                    :class="
+                  class="box__two-card"
+                  v-for="packet in packets"
+                  :key="packet.id"
+                  :class="
                     selectedPacket?.packet === packet.packet ? 'active' : ''
                   "
-                    @click="selectedPacket = packet"
+                  @click="selectedPacket = packet"
                 >
                   <div class="price__about">
                     <h2 class="price__header">{{ packet.packet }}</h2>
@@ -162,60 +163,60 @@
             <!-- Button -->
             <div style="display: flex; width: 100%">
               <base-button
-                  @click="addCardHandler"
-                  class="add_btn"
-                  style="flex: 1"
+                @click="addCardHandler"
+                class="add_btn"
+                style="flex: 1"
               >
                 <div class="btn__info">
                   <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                        d="M2 8.5H13.5"
-                        stroke="white"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                      d="M2 8.5H13.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                     <path
-                        d="M6 16.5H8"
-                        stroke="white"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                      d="M6 16.5H8"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                     <path
-                        d="M10.5 16.5H14.5"
-                        stroke="white"
-                        stroke-width="1.5"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                      d="M10.5 16.5H14.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                     <path
-                        d="M22 12.03V16.11C22 19.62 21.11 20.5 17.56 20.5H6.44C2.89 20.5 2 19.62 2 16.11V7.89C2 4.38 2.89 3.5 6.44 3.5H13.5"
-                        stroke="white"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                      d="M22 12.03V16.11C22 19.62 21.11 20.5 17.56 20.5H6.44C2.89 20.5 2 19.62 2 16.11V7.89C2 4.38 2.89 3.5 6.44 3.5H13.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                     <path
-                        d="M16.5 6.25H22"
-                        stroke="white"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
+                      d="M16.5 6.25H22"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
                     />
                     <path
-                        d="M19.25 9V3.5"
-                        stroke="white"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
+                      d="M19.25 9V3.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
                     />
                   </svg>
                 </div>
@@ -225,10 +226,10 @@
           </div>
 
           <img
-              src="../../../assets/cross-svg.svg"
-              alt="Cross icon"
-              style="cursor: pointer"
-              @click="closeDialog"
+            src="../../../assets/cross-svg.svg"
+            alt="Cross icon"
+            style="cursor: pointer"
+            @click="closeDialog"
           />
         </base-card>
       </div>
@@ -237,7 +238,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -265,16 +266,16 @@ export default {
       not: true,
       end: true,
       totalBalance: 0,
-      formIsValid: true
+      formIsValid: true,
     };
   },
   watch: {
     selectedPacket() {
-      this.resetPrice()
+      this.resetPrice();
     },
-    'cardModel.srok'() {
-      this.resetPrice()
-    }
+    "cardModel.srok"() {
+      this.resetPrice();
+    },
   },
   methods: {
     ...mapActions({
@@ -287,21 +288,20 @@ export default {
     resetPrice() {
       if (this.selectedPacket) {
         this.totalBalance =
-            (this.selectedPacket.price - (this.selectedPacket.price * (this.my_detail.skidka / 100)))
-            * (this.cardModel.srok ?? 0)
+          (this.selectedPacket.price -
+            this.selectedPacket.price * (this.my_detail.skidka / 100)) *
+          (this.cardModel.srok ?? 0);
       }
     },
     validation() {
-      this.formIsValid = true
-      if (
-          this.cardModel.cardnumber === ""
-      ) {
+      this.formIsValid = true;
+      if (this.cardModel.cardnumber === "") {
         this.card = false;
         this.formIsValid = false;
       }
       if (
-          this.cardModel.telnumber === "" ||
-          !this.phone_regex.test(this.cardModel.telnumber)
+        this.cardModel.telnumber === "" ||
+        !this.phone_regex.test(this.cardModel.telnumber)
       ) {
         this.tel = false;
         this.formIsValid = false;
@@ -361,8 +361,8 @@ export default {
         this.resetData();
       } catch (err) {
         this.$store.commit(
-            "set_error",
-            err?.response?.data?.message??
+          "set_error",
+          err?.response?.data?.message ??
             "Kard maglumatlaryny doredip bolmady. Maglumatlary barlan we tazeden synanshyn"
         );
       }
@@ -375,13 +375,13 @@ export default {
   computed: {
     ...mapGetters({
       packets: "packets/get_packets",
-      phone_regex: 'get_phone_regex',
-      my_detail: 'auth/get_my_detail'
+      phone_regex: "get_phone_regex",
+      my_detail: "auth/get_my_detail",
     }),
   },
   async mounted() {
     await this.loadPackets();
-    console.log(this.my_detail)
+    console.log(this.my_detail);
   },
 };
 </script>
@@ -568,7 +568,6 @@ a {
   color: red;
   border-color: 1px solid red;
 }
-
 
 .card:hover {
   cursor: pointer;

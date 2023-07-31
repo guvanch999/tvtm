@@ -1,11 +1,10 @@
 <template>
   <header :class="{ register: lang }">
     <nav>
-      <img
-        src="../../assets/tv-yzyndan.svg"
-        alt=""
-        style="width: 20%; height: 20%"
-      />
+      <router-link to="/" style="width: 20%; height: 20%">
+        <img src="../../assets/tv-yzyndan.svg" alt="" />
+      </router-link>
+
       <div class="registered" v-if="registered">
         <ul>
           <li>
@@ -34,26 +33,28 @@
         </div>
       </div>
 
-      <the-switcher v-else-if="lang"></the-switcher>
-
       <!-- <select name="languages" id="languages" v-else-if="lang">
         <option value="tkm">Türkmen(TKM)</option>
         <option value="rus">Rus(RU)</option>
       </select> -->
-      <div v-else>
-        <base-button
-          @click="deleteToken"
-          class="login_btn"
-          v-if="!!isAuthorized"
-          >{{ $t("dashboard.btn") }}</base-button
-        >
-        <base-button
-          class="login__btn"
-          link
-          :to="`/${$i18n.locale}/login`"
-          v-else
-          >{{ $t("header.btn") }}</base-button
-        >
+      <div v-else style="display: flex; align-items: center; gap: 30px">
+        <the-switcher></the-switcher>
+
+        <div>
+          <base-button
+            @click="deleteToken"
+            class="login_btn"
+            v-if="!!isAuthorized"
+            >{{ $t("dashboard.btn") }}</base-button
+          >
+          <base-button
+            class="login__btn"
+            link
+            :to="`/${$i18n.locale}/login`"
+            v-else
+            >{{ $t("header.btn") }}</base-button
+          >
+        </div>
       </div>
     </nav>
   </header>

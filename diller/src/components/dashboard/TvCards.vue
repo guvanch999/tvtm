@@ -128,6 +128,7 @@ export default {
       } catch (e) {
         console.log(e);
         this.$store.commit("set_error", "Cannot load card list");
+        this.$router.push({path:'/'})
       }
     },
   },

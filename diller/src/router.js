@@ -60,27 +60,27 @@ const router = createRouter({
             { path: "news", component: TvNews },
             { path: "cards", component: TvCards },
             {
-              path: `/${i18n.global.locale}/cards/:c1`,
+              path: `/:lang/cards/:c1`, //${i18n.global.locale}
               component: CardDetails,
               children: [
                 {
-                  path: `/${i18n.global.locale}/cards/:c1/about`,
+                  path: `/:lang/cards/:c1/about`,
                   component: CardAbout,
                 },
                 {
-                  path: `/${i18n.global.locale}/cards/:c1/subscription`,
+                  path: `/:lang/cards/:c1/subscription`,
                   component: CardSubscription,
                 },
                 {
-                  path: `/${i18n.global.locale}/cards/:c1/active`,
+                  path: `/:lang/cards/:c1/active`,
                   component: CardActive,
                 },
                 {
-                  path: `/${i18n.global.locale}/cards/:c1/buy`,
+                  path: `/:lang/cards/:c1/buy`,
                   component: CardBuy,
                 },
                 {
-                  path: `/${i18n.global.locale}/cards/:c1/change`,
+                  path: `/:lang/cards/:c1/change`,
                   component: CardChange,
                 },
               ],

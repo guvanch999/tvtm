@@ -6,7 +6,7 @@
       <h1>{{ $t("register.h1") }}</h1>
       <p>
         <span
-        >{{ $t("register.span-1") }}
+          >{{ $t("register.span-1") }}
           <router-link to="/tk/login">
             {{ $t("register.span-2") }}</router-link
           ></span
@@ -15,112 +15,112 @@
       <div class="form-control" :class="{ invalid: !fullName.isValid }">
         <label for="firstname">
           <span class="first-span"
-          ><img
+            ><img
               src="../../assets/user-red.svg"
               alt="Invalid user icon"
               v-if="!fullName.isValid"
-          />
-            <img src="../../assets/user.png" alt="User icon" v-else/>{{
+            />
+            <img src="../../assets/user.png" alt="User icon" v-else />{{
               $t("register.username")
             }}
           </span>
           <span v-if="!fullName.isValid">{{ $t("register.user-error") }}</span>
         </label>
         <input
-            type="text"
-            id="firstname"
-            v-model.trim="fullName.val"
-            @blur="clearValidity('fullName')"
+          type="text"
+          id="firstname"
+          v-model.trim="fullName.val"
+          @blur="clearValidity('fullName')"
         />
       </div>
       <div class="form-control" :class="{ invalid: !email.isValid }">
         <label for="email">
           <span class="first-span"
-          ><img
+            ><img
               src="../../assets/mail-red.svg"
               alt="Invalid mail icon"
               v-if="!email.isValid"
-          />
-            <img src="../../assets/mail.png" alt="" v-else/>
+            />
+            <img src="../../assets/mail.png" alt="" v-else />
             {{ $t("register.email") }}
           </span>
           <span v-if="!email.isValid">{{
-              $t("register.email-error")
-            }}</span></label
+            $t("register.email-error")
+          }}</span></label
         >
         <input
-            type="email"
-            id="email"
-            v-model.trim="email.val"
-            @blur="clearValidity('email')"
+          type="email"
+          id="email"
+          v-model.trim="email.val"
+          @blur="clearValidity('email')"
         />
       </div>
 
       <div class="form-control" :class="{ invalid: !password.isValid }">
         <label for="password"
-        ><span class="first-span"
-        ><img
-            src="../../assets/lock-red.svg"
-            alt="Invalid lock icon"
-            v-if="!password.isValid"
-        />
-            <img src="../../assets/lock.png" alt="Lock icon" v-else/>{{
-            $t("register.password")
-          }}</span
-        >
+          ><span class="first-span"
+            ><img
+              src="../../assets/lock-red.svg"
+              alt="Invalid lock icon"
+              v-if="!password.isValid"
+            />
+            <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
+              $t("register.password")
+            }}</span
+          >
           <span v-if="!password.isValid">{{ $t("register.pass-error") }}</span>
         </label>
         <input
-            type="password"
-            id="password"
-            v-model.trim="password.val"
-            @blur="clearValidity('password')"
+          type="password"
+          id="password"
+          v-model.trim="password.val"
+          @blur="clearValidity('password')"
         />
       </div>
 
       <div class="form-control" :class="{ invalid: !confirm.isValid }">
         <label for="confirm password"
-        ><span class="first-span"
-        ><img
-            src="../../assets/lock-red.svg"
-            alt="Invalid lock icon"
-            v-if="!confirm.isValid"
-        />
-            <img src="../../assets/lock.png" alt="Lock icon" v-else/>{{
-            $t("register.confirm")
-          }}</span
-        >
+          ><span class="first-span"
+            ><img
+              src="../../assets/lock-red.svg"
+              alt="Invalid lock icon"
+              v-if="!confirm.isValid"
+            />
+            <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
+              $t("register.confirm")
+            }}</span
+          >
           <span v-if="!confirm.isValid">{{ $t("register.conf-error") }}</span>
         </label>
         <input
-            type="password"
-            id="confirm"
-            v-model.trim="confirm.val"
-            @blur="clearValidity('confirm')"
+          type="password"
+          id="confirm"
+          v-model.trim="confirm.val"
+          @blur="clearValidity('confirm')"
         />
       </div>
 
       <div class="form-control" :class="{ invalid: !phoneNumber.isValid }">
         <label for="phone number"
-        ><span class="first-span"
-        ><img
-            src="../../assets/phone-red.svg"
-            alt="Invalid phone icon"
-            v-if="!phoneNumber.isValid"
-        />
-            <img src="../../assets/phone.png" alt="Phone icon" v-else/>{{
-            $t("register.phone")
-          }}</span
-        >
+          ><span class="first-span"
+            ><img
+              src="../../assets/phone-red.svg"
+              alt="Invalid phone icon"
+              v-if="!phoneNumber.isValid"
+            />
+            <img src="../../assets/phone.png" alt="Phone icon" v-else />{{
+              $t("register.phone")
+            }}</span
+          >
           <span v-if="!phoneNumber.isValid">{{
-              $t("register.phone-error")
-            }}</span>
+            $t("register.phone-error")
+          }}</span>
         </label>
         <input
-            type="tel"
-            id="number"
-            v-model.trim="phoneNumber.val"
-            @blur="clearValidity('phoneNumber')"
+          type="tel"
+          id="number"
+          v-model.trim="phoneNumber.val"
+          @blur="clearValidity('phoneNumber')"
         />
       </div>
 
@@ -144,7 +144,7 @@
       </div> -->
 
       <base-button class="btn__register"
-      ><img src="../../assets/login.png" alt="Login icon"/>
+        ><img src="../../assets/login.png" alt="Login icon" />
         {{ $t("register.btn") }}
       </base-button>
     </form>
@@ -233,7 +233,7 @@ export default {
     },
 
     async submitForm() {
-      if (this.isLoading) return
+      if (this.isLoading) return;
       this.validateForm();
       if (!this.formIsValid) return;
       this.isLoading = true;
@@ -246,10 +246,11 @@ export default {
 
       try {
         await this.$store.dispatch("auth/userRegister", registerData);
-        this.$router.replace({path: `/${this.$i18n.locale}/login`});
+        this.$router.replace({ path: `/${this.$i18n.locale}/login` });
       } catch (e) {
-        console.error(e)
-        alert("Cannot create credentials")
+        console.error(e);
+        this.$store.commit("set_error", "Cannot create credentials");
+        this.$router.push({ path: `/` });
       }
       this.isLoading = false;
     },
@@ -376,23 +377,17 @@ a {
   color: red;
 }
 
-@media (width<=650px
-
-) {
+@media (width<=650px) {
   form {
     width: 500px;
   }
 
-  @media (width<=550px
-
-  ) {
+  @media (width<=550px) {
     form {
       width: 400px;
     }
 
-    @media (width<=450px
-
-    ) {
+    @media (width<=450px) {
       form {
         width: 300px;
       }

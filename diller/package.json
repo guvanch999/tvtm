@@ -8,6 +8,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve",
+    "start": "vue-cli-service start",
     "i18n:report": "vue-cli-service i18n:report --src \"./src//*.?(js|vue)\" --locales \"./src/locales//*.json\""
   },
   "main": ".eslintrc.js",
