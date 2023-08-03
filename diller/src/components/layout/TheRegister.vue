@@ -256,7 +256,6 @@ export default {
       } catch (e) {
         console.error(e);
         this.$store.commit("set_error", "Cannot create credentials");
-        this.$router.push({ path: `/` });
       }
       this.isLoading = false;
     },

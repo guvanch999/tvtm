@@ -104,9 +104,7 @@ export default {
       } catch (err) {
         console.error(err);
         this.$store.commit("set_error", "Invalid credentials");
-        this.router.push({ path: "/" });
       }
-
       this.isLoading = false;
     },
   },
