@@ -32,7 +32,7 @@
         </v-card-actions>
         <loading-component v-if="isLoading"/>
         <error-component v-if="!!errorMessage" :message="errorMessage" @closeError="errorMessage = null"/>
-        <choose-diller v-if="chooseDillerDialog" @closeDilaog="chooseDillerDialog = false"
+        <choose-diller v-if="chooseDillerDialog" @closeDialog="chooseDillerDialog = false"
                        @selectItems="dillersSelected" :default-choosed="choosedDiller"/>
       </v-card>
     </div>
@@ -87,6 +87,7 @@ export default {
       this.chooseDillerDialog = false
     },
     closeDialog() {
+      console.log('news form')
       this.$emit("closeDialog")
     },
     async saveHandler() {

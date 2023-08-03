@@ -92,6 +92,7 @@ export default {
       }
     },
     closeDialog() {
+      console.log('Choose diller')
       this.$emit("closeDialog")
     },
     selectHandler() {
