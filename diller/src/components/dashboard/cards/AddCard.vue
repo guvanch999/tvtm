@@ -359,6 +359,7 @@ export default {
       try {
         await this.createCard(this.cardModel);
         this.resetData();
+        this.$emit("closeDialog");
       } catch (err) {
         this.$store.commit(
           "set_error",

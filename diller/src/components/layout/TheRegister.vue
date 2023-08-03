@@ -71,9 +71,12 @@
                 $t("register.password")
               }}</span
             >
-            <span v-if="!password.isValid">{{
-              $t("register.pass-error")
-            }}</span>
+            <div v-if="!password.isValid">
+              <span v-if="!password.bytes">
+                {{ $t("register.pass-byte") }}
+              </span>
+              <span v-else>{{ $t("register.pass-error") }}</span>
+            </div>
           </label>
           <input
             type="password"
@@ -179,6 +182,7 @@ export default {
       },
       password: {
         val: "",
+        byte: true,
         isValid: true,
       },
       confirm: {
@@ -211,8 +215,13 @@ export default {
         this.email.isValid = false;
         this.formIsValid = false;
       }
-      if (this.password.val === "" || this.password.val.length < 8) {
+      if (this.password.val === "") {
         this.password.isValid = false;
+        this.formIsValid = false;
+      }
+      if (this.password.val.length < 8) {
+        this.password.isValid = false;
+        this.password.byte = false;
         this.formIsValid = false;
       }
       if (this.confirm.val !== this.password.val || this.confirm.val === "") {
@@ -256,6 +265,7 @@ export default {
       } catch (e) {
         console.error(e);
         this.$store.commit("set_error", "Cannot create credentials");
+        this.$router.push({ path: `/` });
       }
       this.isLoading = false;
     },
