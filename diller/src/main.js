@@ -21,4 +21,5 @@ app.component("base-button", BaseButton);
 app.component("base-card", BaseCard);
 app.component("base-dialog", BaseDialog);
 app.component("base-small", BaseSmall);
+
 app.mount("#app");

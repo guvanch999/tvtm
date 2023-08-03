@@ -450,7 +450,11 @@
         </ul>
       </mq-responsive>
 
-      <router-view></router-view>
+      <router-view v-slot="slotProps">
+        <transition name="fade" mode="out-in">
+          <component :is="slotProps.Component"></component>
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
@@ -489,7 +493,7 @@ export default {
   },
   async mounted() {
     try {
-      if (!this.card || this.card.cardnumber!==this.$route.params.c1) {
+      if (!this.card || this.card.cardnumber !== this.$route.params.c1) {
         await this.loadCard({ card_number: this.$route.params.c1 });
       }
     } catch (e) {
@@ -606,5 +610,14 @@ a.router-link-active {
 }
 .open_menu {
   margin-bottom: 10px;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 </style>

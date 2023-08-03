@@ -1,260 +1,258 @@
 <template>
-  <MqResponsive target="md-">
-    <div>
-      <div v-if="isLoading"></div>
-      <div v-else class="md_card-info">
-        <div class="price_container">
-          <div class="md_price">
-            <h1 class="price__header-1">Aktiw bukja</h1>
-            <div class="price__about">
-              <div class="md_price__header">
-                <h2>Standart VIP</h2>
-                <img
+  <div>
+    <MqResponsive target="md-">
+      <div>
+        <div v-if="isLoading"></div>
+        <div v-else class="md_card-info">
+          <div class="price_container">
+            <div class="md_price">
+              <h1 class="price__header-1">Aktiw bukja</h1>
+              <div class="price__about">
+                <div class="md_price__header">
+                  <h2>Standart VIP</h2>
+                  <img
                     src="../../../assets/tv-yzyndan.svg"
-                    alt="Logo icon"
-                    style="width: 10%; height: 10%"
-                />
-              </div>
-              <div class="md_chanels__price">
-                <p>
-                  145 kanal we olaryň 120 sanysy HD hilli. Çagalar üçin -5
-                  kanal, Kinofilm üçin-12, sport-7 sany, gündelik kanallar-12,
-                  we başgada düli daşary ýurt kanallary
-                </p>
-                <div class="card-plan">
-                  BIR AÝ
-                  <span class="card-price">
-                    <span class="span-1">40</span>
-                    <span class="span-2">TMT</span>
-                  </span>
+                    alt="Pursat TV Icon"
+                    style="width: 100px; height: 10%; max-width: 200px"
+                  />
+                </div>
+                <div class="md_chanels__price">
+                  <p>
+                    145 kanal we olaryň 120 sanysy HD hilli. Çagalar üçin -5
+                    kanal, Kinofilm üçin-12, sport-7 sany, gündelik kanallar-12,
+                    we başgada düli daşary ýurt kanallary
+                  </p>
+                  <div class="card-plan">
+                    BIR AÝ
+                    <span class="card-price">
+                      <span class="span-1">40</span>
+                      <span class="span-2">TMT</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="md_date">
-            Mohleti
-            <div class="user__info">
-              {{ card.date_start }} - {{ card.date_end }}
+            <div class="md_date">
+              Mohleti
+              <div class="user__info">
+                {{ card.date_start }} - {{ card.date_end }}
+              </div>
             </div>
           </div>
-        </div>
 
-        <form class="card__user-info">
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-1") }}</label>
-            <p class="validation" v-if="!tel">Nädogry telefon belgi</p>
+          <form class="card__user-info">
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-1") }}</label>
+              <p class="validation" v-if="!tel">Nädogry telefon belgi</p>
 
-            <input
+              <input
                 class="user__info"
                 type="number"
                 :placeholder="`${cardModel.telnumber}`"
                 v-model="cardModel.telnumber"
                 :class="{ invalid: !tel }"
                 @blur="clearValidity('tel')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-2") }}</label>
-            <p class="validation" v-if="!sur">Doly familiýaňyzy tassyklaň</p>
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-2") }}</label>
+              <p class="validation" v-if="!sur">Doly familiýaňyzy tassyklaň</p>
 
-            <input
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="`${cardModel.surname}`"
                 v-model="cardModel.surname"
                 :class="{ invalid: !sur }"
                 @blur="clearValidity('sur')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-3") }}</label>
-            <p class="validation" v-if="!nam">Doly ayňyzy ýazyň</p>
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-3") }}</label>
+              <p class="validation" v-if="!nam">Doly ayňyzy ýazyň</p>
 
-            <input
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="`${cardModel.name}`"
                 v-model="cardModel.name"
                 :class="{ invalid: !nam }"
                 @blur="clearValidity('nam')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>
-              {{ $t("card-about.form.label-4") }}
-            </label>
-            <p class="validation" v-if="!city">Doly addresiňizi ýazyň</p>
+            <div class="card__div">
+              <label>
+                {{ $t("card-about.form.label-4") }}
+              </label>
+              <p class="validation" v-if="!city">Doly addresiňizi ýazyň</p>
 
-            <input
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="`${cardModel.adress}`"
                 v-model="adress"
                 :class="{ invalid: !city }"
                 @blur="clearValidity('city')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-5") }} </label>
-            <p class="validation" v-if="!res">Doly týunerň belgisini ýazyň</p>
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-5") }} </label>
+              <p class="validation" v-if="!res">Doly týunerň belgisini ýazyň</p>
 
-            <input
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="cardModel.resiver"
                 v-model="resiver"
                 :class="{ invalid: !res }"
                 @blur="clearValidity('res')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="md_buttons">
-            <base-button @click="reactivateCardHandler" class="btn-1">{{
-                $t("card-about.btn-1")
-              }}
-            </base-button>
-            <base-button @click="saveChangesHandler">{{
-                $t("card-about.btn-2")
-              }}
-            </base-button>
-          </div>
-        </form>
+            <div class="md_buttons">
+              <base-button @click="reactivateCardHandler" class="btn-1"
+                >{{ $t("card-about.btn-1") }}
+              </base-button>
+              <base-button @click="saveChangesHandler"
+                >{{ $t("card-about.btn-2") }}
+              </base-button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  </MqResponsive>
+    </MqResponsive>
 
-  <MqResponsive target="lg-xl">
-    <div>
-      <div v-if="isLoading"></div>
-      <div v-else class="card-info">
-        <form class="card__user-info">
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-1") }}</label>
-            <p class="validation" v-if="!tel">Nädogry telefon belgi</p>
-            <input
+    <MqResponsive target="lg-xl">
+      <div>
+        <div v-if="isLoading"></div>
+        <div v-else class="card-info">
+          <form class="card__user-info">
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-1") }}</label>
+              <p class="validation" v-if="!tel">Nädogry telefon belgi</p>
+              <input
                 class="user__info"
                 type="number"
                 :placeholder="`${cardModel.telnumber}`"
                 v-model="cardModel.telnumber"
                 :class="{ invalid: !tel }"
                 @blur="clearValidity('tel')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-2") }}</label>
-            <p class="validation" v-if="!sur">Doly familiýaňyzy ýazyň</p>
-            <input
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-2") }}</label>
+              <p class="validation" v-if="!sur">Doly familiýaňyzy ýazyň</p>
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="`${cardModel.surname}`"
                 v-model="cardModel.surname"
                 :class="{ invalid: !sur }"
                 @blur="clearValidity('sur')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-3") }}</label>
-            <p class="validation" v-if="!nam">Doly ayňyzy ýazyň</p>
-            <input
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-3") }}</label>
+              <p class="validation" v-if="!nam">Doly ayňyzy ýazyň</p>
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="`${cardModel.name}`"
                 v-model="cardModel.name"
                 :class="{ invalid: !nam }"
                 @blur="clearValidity('nam')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>
-              {{ $t("card-about.form.label-4") }}
-            </label>
+            <div class="card__div">
+              <label>
+                {{ $t("card-about.form.label-4") }}
+              </label>
 
-            <p class="validation" v-if="!city">Doly addresiňizi ýazyň</p>
-            <input
+              <p class="validation" v-if="!city">Doly addresiňizi ýazyň</p>
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="`${cardModel.adress}`"
                 v-model="cardModel.adress"
                 :class="{ invalid: !city }"
                 @blur="clearValidity('city')"
-            />
-          </div>
+              />
+            </div>
 
-          <div class="card__div">
-            <label>{{ $t("card-about.form.label-5") }} </label>
-            <p class="validation" v-if="!res">Doly týunerň belgisini ýazyň</p>
-            <input
+            <div class="card__div">
+              <label>{{ $t("card-about.form.label-5") }} </label>
+              <p class="validation" v-if="!res">Doly týunerň belgisini ýazyň</p>
+              <input
                 class="user__info"
                 type="text"
                 :placeholder="cardModel.resiver"
                 v-model="cardModel.resiver"
                 :class="{ invalid: !res }"
                 @blur="clearValidity('res')"
-            />
-          </div>
-        </form>
+              />
+            </div>
+          </form>
 
-        <div class="price_container">
-          <div class="price">
-            <h1 class="price__header-1">Aktiw bukja</h1>
-            <div class="price__about">
-              <div class="price__header">
-                <h2>{{ current_packet?.packet }}</h2>
-                <img
+          <div class="price_container">
+            <div class="price">
+              <h1 class="price__header-1">Aktiw bukja</h1>
+              <div class="price__about">
+                <div class="price__header">
+                  <h2>{{ current_packet?.packet }}</h2>
+                  <img
                     src="../../../assets/tv-yzyndan.svg"
-                    alt="Logo icon"
-                    style="width: 25%; height: 25%"
-                />
-              </div>
-              <div class="chanels-price">
-                <p>
-                  {{ current_packet?.description }}
-                </p>
-                <div class="card-plan">
-                  BIR AÝ
-                  <span class="card-price">
-                    <span class="span-1">{{ current_packet?.price }}</span>
-                    <span class="span-2">TMT</span>
-                  </span>
+                    alt="Pursat TV Icon"
+                    style="width: 100px; height: 10%; max-width: 200px"
+                  />
+                </div>
+                <div class="chanels-price">
+                  <p>
+                    {{ current_packet?.description }}
+                  </p>
+                  <div class="card-plan">
+                    BIR AÝ
+                    <span class="card-price">
+                      <span class="span-1">{{ current_packet?.price }}</span>
+                      <span class="span-2">TMT</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div>
-            Mohleti
-            <div class="user__info">
-              {{ card.date_start }} - {{ card.date_end }}
+            <div>
+              Mohleti
+              <div class="user__info">
+                {{ card.date_start }} - {{ card.date_end }}
+              </div>
             </div>
-          </div>
 
-          <div class="buttons">
-            <base-button @click.prevent="reactivateCardHandler" class="btn-1">{{
-                $t("card-about.btn-1")
-              }}
-            </base-button>
-            <base-button @click.prevent="saveChangesHandler">{{
-                $t("card-about.btn-2")
-              }}
-            </base-button>
+            <div class="buttons">
+              <base-button @click.prevent="reactivateCardHandler" class="btn-1"
+                >{{ $t("card-about.btn-1") }}
+              </base-button>
+              <base-button @click.prevent="saveChangesHandler"
+                >{{ $t("card-about.btn-2") }}
+              </base-button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </MqResponsive>
+    </MqResponsive>
+  </div>
 </template>
 
 <script>
-import {MqResponsive} from "vue3-mq";
-import {mapActions, mapGetters} from "vuex";
+import { MqResponsive } from "vue3-mq";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -285,15 +283,15 @@ export default {
       loadCard: "cards/loadCardInformation",
       updateCardDetail: "cards/updateCardDetail",
       reactivateCard: "cards/reactivateCard",
-      loadPackets: 'packets/loadPackets'
+      loadPackets: "packets/loadPackets",
     }),
     clearValidity(input) {
       this[input] = true;
     },
     validation() {
       if (
-          this.cardModel.telnumber === "" ||
-          this.cardModel.telnumber != Number
+        this.cardModel.telnumber === "" ||
+        this.cardModel.telnumber != Number
       ) {
         this.tel = false;
         this.formIsValid = false;
@@ -352,7 +350,7 @@ export default {
     async reactivateCardHandler() {
       this.isLoading = true;
       try {
-        await this.reactivateCard({card_id: this.card.id});
+        await this.reactivateCard({ card_id: this.card.id });
       } catch (e) {
         this.$store.commit("set_error", "Cannot reactivate card");
       }
@@ -362,16 +360,16 @@ export default {
   computed: {
     ...mapGetters({
       card: "cards/get_card_information",
-      packets: 'packets/get_packets'
+      packets: "packets/get_packets",
     }),
     current_packet() {
-      return this.packets.find(pac => pac.packet === this.card.packet)
-    }
+      return this.packets.find((pac) => pac.packet === this.card.packet);
+    },
   },
   async mounted() {
     this.resetData();
     if (!this.packets || !this.packets.length) {
-      this.loadPackets()
+      this.loadPackets();
     }
   },
 };
@@ -501,9 +499,7 @@ form input {
   outline: none;
 }
 
-@media (width<=1250px
-
-) {
+@media (width<=1250px) {
   .card-info {
     gap: 20px;
   }
@@ -516,9 +512,7 @@ form input {
     width: 450px;
   }
 
-  @media (width<=1050px
-
-  ) {
+  @media (width<=1050px) {
     .user__info {
       width: 400px;
     }
@@ -531,9 +525,7 @@ form input {
       font-size: 14px;
     }
 
-    @media (width<=560px
-
-    ) {
+    @media (width<=560px) {
       .price_container {
         width: 400px;
       }
@@ -542,9 +534,7 @@ form input {
         padding: 15px !important;
       }
 
-      @media (width<=500px
-
-      ) {
+      @media (width<=500px) {
         .price_container {
           width: 350px;
         }
@@ -557,9 +547,7 @@ form input {
           padding: 10px !important;
         }
 
-        @media (width<=450px
-
-        ) {
+        @media (width<=450px) {
           .price_container {
             width: 300px;
           }

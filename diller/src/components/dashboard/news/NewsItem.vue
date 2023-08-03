@@ -2,17 +2,15 @@
   <mq-responsive target="sm-">
     <li>
       <div class="responsive_header">
-        <img
-          src="../../../assets/tv-yzyndan.svg"
-          alt=""
-          style="width: 13%; height: 13%"
-        />
+        <img src="../../../assets/tv-yzyndan-small.png" alt="Pursat Tv Icon" />
         <div>
           <h1>{{ title }}</h1>
           <p class="responsive_date">{{ date }}</p>
         </div>
       </div>
-      <p v-html="text"></p>
+      <div style="width: 50px">
+        <p v-html="text"></p>
+      </div>
     </li>
   </mq-responsive>
   <mq-responsive target="md-xl">
@@ -24,8 +22,8 @@
         </div>
         <img
           src="../../../assets/tv-yzyndan.svg"
-          alt=""
-          style="width: 13%; height: 13%"
+          alt="Pursat TV Icon"
+          style="width: 200px; height: 10%; max-width: 200px"
         />
       </div>
       <p v-html="text"></p>

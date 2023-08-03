@@ -16,8 +16,11 @@
           <div class="large_sidebar" :class="{ sidebar_active: active }">
             <div class="large_sidebar__header">
               <div class="large_sidebar__logo">
-                <router-link to="/" style="width: 80%; height: 80%">
-                  <img src="../assets/tv-yzyndan.svg" alt="Logo icon" />
+                <router-link
+                  to="/"
+                  style="width: 200px; height: 10%; max-width: 200px"
+                >
+                  <img src="../assets/tv-yzyndan.svg" alt="Pursat TV Icon" />
                 </router-link>
                 <img
                   src="../assets/cross-svg.svg"
@@ -176,7 +179,9 @@
           </base-button>
         </div>
       </div>
-      <router-view></router-view>
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
     </div>
   </MqResponsive>
 
@@ -184,8 +189,11 @@
     <div class="dashboard">
       <div class="sidebar">
         <div class="sidebar__header">
-          <router-link to="/" style="width: 80%; height: 80%">
-            <img src="../assets/tv-yzyndan.svg" alt="Logo icon" />
+          <router-link
+            to="/"
+            style="width: 200px; height: 10%; max-width: 200px"
+          >
+            <img src="../assets/tv-yzyndan.svg" alt="Pursat TV Icon" />
           </router-link>
 
           <router-link
@@ -338,7 +346,11 @@
             </base-button>
           </div>
         </div>
-        <router-view></router-view>
+        <router-view v-slot="slotProps">
+          <transition name="fade" mode="out-in">
+            <component :is="slotProps.Component"></component>
+          </transition>
+        </router-view>
       </div>
     </div>
   </MqResponsive>
@@ -559,7 +571,7 @@ a.router-link-active .svg {
   padding: 0;
   position: fixed;
   height: 100vh;
-  width: 250px;
+  width: 300px;
   top: 0%;
   left: 0%;
   background-color: white;
@@ -586,6 +598,14 @@ a.router-link-active .svg {
 
 .sidebar_active {
   display: block;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-out;
 }
 
 @media (width<=770px) {

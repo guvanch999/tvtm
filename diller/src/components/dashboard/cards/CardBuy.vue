@@ -1,4 +1,6 @@
 <template>
+  <div>
+    
   <MqResponsive target="lg-">
     <div class="large_buy">
       <div class="box__one">
@@ -137,6 +139,8 @@
       </div>
     </div>
   </MqResponsive>
+</div>
+
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";

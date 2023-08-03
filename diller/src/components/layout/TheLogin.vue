@@ -1,4 +1,6 @@
 <template>
+  <div>
+
   <base-load v-if="isLoading"></base-load>
   <the-header lang></the-header>
   <section>
@@ -51,6 +53,8 @@
       </base-button>
     </form>
   </section>
+</div>
+
 </template>
 
 <script>

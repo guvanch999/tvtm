@@ -1,130 +1,135 @@
 <template>
-  <base-load v-if="isLoading"></base-load>
-  <the-header lang></the-header>
-  <section>
-    <form @submit.prevent="submitForm">
-      <h1>{{ $t("register.h1") }}</h1>
-      <p>
-        <span
-          >{{ $t("register.span-1") }}
-          <router-link to="/tk/login">
-            {{ $t("register.span-2") }}</router-link
-          ></span
-        >
-      </p>
-      <div class="form-control" :class="{ invalid: !fullName.isValid }">
-        <label for="firstname">
-          <span class="first-span"
-            ><img
-              src="../../assets/user-red.svg"
-              alt="Invalid user icon"
-              v-if="!fullName.isValid"
-            />
-            <img src="../../assets/user.png" alt="User icon" v-else />{{
-              $t("register.username")
-            }}
-          </span>
-          <span v-if="!fullName.isValid">{{ $t("register.user-error") }}</span>
-        </label>
-        <input
-          type="text"
-          id="firstname"
-          v-model.trim="fullName.val"
-          @blur="clearValidity('fullName')"
-        />
-      </div>
-      <div class="form-control" :class="{ invalid: !email.isValid }">
-        <label for="email">
-          <span class="first-span"
-            ><img
-              src="../../assets/mail-red.svg"
-              alt="Invalid mail icon"
-              v-if="!email.isValid"
-            />
-            <img src="../../assets/mail.png" alt="" v-else />
-            {{ $t("register.email") }}
-          </span>
-          <span v-if="!email.isValid">{{
-            $t("register.email-error")
-          }}</span></label
-        >
-        <input
-          type="email"
-          id="email"
-          v-model.trim="email.val"
-          @blur="clearValidity('email')"
-        />
-      </div>
-
-      <div class="form-control" :class="{ invalid: !password.isValid }">
-        <label for="password"
-          ><span class="first-span"
-            ><img
-              src="../../assets/lock-red.svg"
-              alt="Invalid lock icon"
-              v-if="!password.isValid"
-            />
-            <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
-              $t("register.password")
-            }}</span
+  <div>
+    <base-load v-if="isLoading"></base-load>
+    <the-header lang></the-header>
+    <section>
+      <form @submit.prevent="submitForm">
+        <h1>{{ $t("register.h1") }}</h1>
+        <p>
+          <span
+            >{{ $t("register.span-1") }}
+            <router-link to="/tk/login">
+              {{ $t("register.span-2") }}</router-link
+            ></span
           >
-          <span v-if="!password.isValid">{{ $t("register.pass-error") }}</span>
-        </label>
-        <input
-          type="password"
-          id="password"
-          v-model.trim="password.val"
-          @blur="clearValidity('password')"
-        />
-      </div>
-
-      <div class="form-control" :class="{ invalid: !confirm.isValid }">
-        <label for="confirm password"
-          ><span class="first-span"
-            ><img
-              src="../../assets/lock-red.svg"
-              alt="Invalid lock icon"
-              v-if="!confirm.isValid"
-            />
-            <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
-              $t("register.confirm")
-            }}</span
+        </p>
+        <div class="form-control" :class="{ invalid: !fullName.isValid }">
+          <label for="firstname">
+            <span class="first-span"
+              ><img
+                src="../../assets/user-red.svg"
+                alt="Invalid user icon"
+                v-if="!fullName.isValid"
+              />
+              <img src="../../assets/user.png" alt="User icon" v-else />{{
+                $t("register.username")
+              }}
+            </span>
+            <span v-if="!fullName.isValid">{{
+              $t("register.user-error")
+            }}</span>
+          </label>
+          <input
+            type="text"
+            id="firstname"
+            v-model.trim="fullName.val"
+            @blur="clearValidity('fullName')"
+          />
+        </div>
+        <div class="form-control" :class="{ invalid: !email.isValid }">
+          <label for="email">
+            <span class="first-span"
+              ><img
+                src="../../assets/mail-red.svg"
+                alt="Invalid mail icon"
+                v-if="!email.isValid"
+              />
+              <img src="../../assets/mail.png" alt="" v-else />
+              {{ $t("register.email") }}
+            </span>
+            <span v-if="!email.isValid">{{
+              $t("register.email-error")
+            }}</span></label
           >
-          <span v-if="!confirm.isValid">{{ $t("register.conf-error") }}</span>
-        </label>
-        <input
-          type="password"
-          id="confirm"
-          v-model.trim="confirm.val"
-          @blur="clearValidity('confirm')"
-        />
-      </div>
+          <input
+            type="email"
+            id="email"
+            v-model.trim="email.val"
+            @blur="clearValidity('email')"
+          />
+        </div>
 
-      <div class="form-control" :class="{ invalid: !phoneNumber.isValid }">
-        <label for="phone number"
-          ><span class="first-span"
-            ><img
-              src="../../assets/phone-red.svg"
-              alt="Invalid phone icon"
-              v-if="!phoneNumber.isValid"
-            />
-            <img src="../../assets/phone.png" alt="Phone icon" v-else />{{
-              $t("register.phone")
-            }}</span
-          >
-          <span v-if="!phoneNumber.isValid">{{
-            $t("register.phone-error")
-          }}</span>
-        </label>
-        <input
-          type="tel"
-          id="number"
-          v-model.trim="phoneNumber.val"
-          @blur="clearValidity('phoneNumber')"
-        />
-      </div>
+        <div class="form-control" :class="{ invalid: !password.isValid }">
+          <label for="password"
+            ><span class="first-span"
+              ><img
+                src="../../assets/lock-red.svg"
+                alt="Invalid lock icon"
+                v-if="!password.isValid"
+              />
+              <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
+                $t("register.password")
+              }}</span
+            >
+            <span v-if="!password.isValid">{{
+              $t("register.pass-error")
+            }}</span>
+          </label>
+          <input
+            type="password"
+            id="password"
+            v-model.trim="password.val"
+            @blur="clearValidity('password')"
+          />
+        </div>
 
-      <!-- <div class="form-control checkbox">
+        <div class="form-control" :class="{ invalid: !confirm.isValid }">
+          <label for="confirm password"
+            ><span class="first-span"
+              ><img
+                src="../../assets/lock-red.svg"
+                alt="Invalid lock icon"
+                v-if="!confirm.isValid"
+              />
+              <img src="../../assets/lock.png" alt="Lock icon" v-else />{{
+                $t("register.confirm")
+              }}</span
+            >
+            <span v-if="!confirm.isValid">{{ $t("register.conf-error") }}</span>
+          </label>
+          <input
+            type="password"
+            id="confirm"
+            v-model.trim="confirm.val"
+            @blur="clearValidity('confirm')"
+          />
+        </div>
+
+        <div class="form-control" :class="{ invalid: !phoneNumber.isValid }">
+          <label for="phone number"
+            ><span class="first-span"
+              ><img
+                src="../../assets/phone-red.svg"
+                alt="Invalid phone icon"
+                v-if="!phoneNumber.isValid"
+              />
+              <img src="../../assets/phone.png" alt="Phone icon" v-else />{{
+                $t("register.phone")
+              }}</span
+            >
+            <span v-if="!phoneNumber.isValid">{{
+              $t("register.phone-error")
+            }}</span>
+          </label>
+          <input
+            type="tel"
+            id="number"
+            v-model.trim="phoneNumber.val"
+            @blur="clearValidity('phoneNumber')"
+          />
+        </div>
+
+        <!-- <div class="form-control checkbox">
         <input
           type="checkbox"
           id="security"
@@ -143,12 +148,13 @@
         >
       </div> -->
 
-      <base-button class="btn__register"
-        ><img src="../../assets/login.png" alt="Login icon" />
-        {{ $t("register.btn") }}
-      </base-button>
-    </form>
-  </section>
+        <base-button class="btn__register"
+          ><img src="../../assets/login.png" alt="Login icon" />
+          {{ $t("register.btn") }}
+        </base-button>
+      </form>
+    </section>
+  </div>
 </template>
 
 <script>

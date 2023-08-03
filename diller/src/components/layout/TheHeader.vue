@@ -1,8 +1,8 @@
 <template>
   <header :class="{ register: lang }">
     <nav>
-      <router-link to="/" style="width: 20%; height: 20%">
-        <img src="../../assets/tv-yzyndan.svg" alt="" />
+      <router-link to="/" style="width: 200px; height: 10%; max-width: 200px">
+        <img src="../../assets/tv-yzyndan.svg" alt="Pursat TV Icon" />
       </router-link>
 
       <div class="registered" v-if="registered">
@@ -37,7 +37,7 @@
         <option value="tkm">Türkmen(TKM)</option>
         <option value="rus">Rus(RU)</option>
       </select> -->
-      <div v-else style="display: flex; align-items: center; gap: 30px">
+      <div class="controls" v-else>
         <the-switcher></the-switcher>
 
         <div>
@@ -172,6 +172,11 @@ a {
 .span {
   color: #777;
 }
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
 
 /* .login__btn:hover,
 .login__btn:active {
@@ -180,6 +185,19 @@ a {
 @media (width<=800px) {
   header nav {
     width: 75%;
+  }
+  @media (width<=590px) {
+    .controls {
+      display: block;
+    }
+    .controls button {
+      margin-top: 10px;
+    }
+    @media (width<=490px) {
+      header nav {
+        width: 100%;
+      }
+    }
   }
 }
 </style>
