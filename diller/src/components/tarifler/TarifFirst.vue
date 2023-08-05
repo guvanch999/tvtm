@@ -35,7 +35,7 @@
 }
 
 .container h1 {
-  font-family: "Jakarta PLus Sans";
+  font-family: "Jakarta PLus Sans", sans-serif;
   font-size: 38px;
   line-height: 46px;
   color: #3d5cb7;

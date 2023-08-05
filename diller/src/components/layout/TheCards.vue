@@ -1,61 +1,125 @@
 <template>
-  <div class="header">
-    <h1>{{ title }}</h1>
-    <base-button class="btn" @click="createDialog = true">
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+  <MqResponsive target="sm-">
+    <div class="header">
+      <h1>{{ title }}</h1>
+      <base-button
+        @click="createDialog = true"
+        style="background-color: #3d5cb7; padding: 10px"
       >
-        <path
-          d="M2 8.5H13.5"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M6 16.5H8"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M10.5 16.5H14.5"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M22 12.03V16.11C22 19.62 21.11 20.5 17.56 20.5H6.44C2.89 20.5 2 19.62 2 16.11V7.89C2 4.38 2.89 3.5 6.44 3.5H13.5"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M16.5 6.25H22"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-        />
-        <path
-          d="M19.25 9V3.5"
-          stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-        />
-      </svg>
-      {{ $t("the-cards.btn") }}
-    </base-button>
-  </div>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 8.5H13.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6 16.5H8"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M10.5 16.5H14.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 12.03V16.11C22 19.62 21.11 20.5 17.56 20.5H6.44C2.89 20.5 2 19.62 2 16.11V7.89C2 4.38 2.89 3.5 6.44 3.5H13.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16.5 6.25H22"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M19.25 9V3.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+      </base-button>
+    </div>
+  </MqResponsive>
+  <MqResponsive target="md-xl">
+    <div class="header">
+      <h1>{{ title }}</h1>
+      <base-button class="btn" @click="createDialog = true">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 8.5H13.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6 16.5H8"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M10.5 16.5H14.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 12.03V16.11C22 19.62 21.11 20.5 17.56 20.5H6.44C2.89 20.5 2 19.62 2 16.11V7.89C2 4.38 2.89 3.5 6.44 3.5H13.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16.5 6.25H22"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M19.25 9V3.5"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </svg>
+        {{ $t("the-cards.btn") }}
+      </base-button>
+    </div>
+  </MqResponsive>
+
   <div class="cards">
     <base-card class="card__item">
       <svg
@@ -142,11 +206,15 @@
 </template>
 
 <script>
+import { MqResponsive } from "vue3-mq";
 import { mapGetters } from "vuex";
 import AddCard from "@/components/dashboard/cards/AddCard";
 
 export default {
-  components: { AddCard },
+  components: {
+    AddCard,
+    MqResponsive,
+  },
   props: {
     title: {
       type: String,
@@ -279,8 +347,8 @@ span {
                 padding: 10px !important;
               }
               @media (width<=570px) {
-                .header {
-                  display: block;
+                span {
+                  font-size: 14px;
                 }
                 .header button {
                   margin-bottom: 10px;
@@ -290,7 +358,7 @@ span {
           }
           @media (width<=510px) {
             span {
-              font-size: 16px;
+              font-size: 11px;
             }
             button {
               padding: 10px !important;

@@ -33,6 +33,7 @@
 
 <style scoped>
 .change {
+  font-family: "Mulish";
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -107,6 +108,9 @@
         width: 300px;
       }
       @media (width<=420px) {
+        .change {
+          padding: 20px;
+        }
         .change-1-field,
         .change-2-field,
         .change-3-field {

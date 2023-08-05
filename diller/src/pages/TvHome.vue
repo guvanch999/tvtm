@@ -14,14 +14,10 @@ import TheHeader from "@/components/layout/TheHeader.vue";
 import TheFooter from "@/components/layout/TheFooter.vue";
 import TarifFirst from "../components/tarifler/TarifFirst";
 import TarifSecond from "../components/tarifler/TarifSecond";
-import TarifThird from "../components/tarifler/TarifThird";
-// import TarifFourth from "../components/tarifler/TarifFourth";
 export default {
   components: {
     TarifFirst,
     TarifSecond,
-    TarifThird,
-    // TarifFourth,
     TheHeader,
     TheFooter,
   },

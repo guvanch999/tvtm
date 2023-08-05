@@ -35,6 +35,7 @@
                 </div>
                 <div class="user-profile__info">
                   <span class="span">{{ detail?.full_name }}</span>
+                  <span>Arzanladyşyk: {{ detail?.skidka }}%</span>
                   <span>{{ detail?.balans?.summ || 0 }} TMT</span>
                 </div>
               </div>
@@ -43,7 +44,10 @@
             <div class="large_sidebar__menu">
               <nav>
                 <ul>
-                  <router-link :to="`/${$i18n.locale}/dashboard/news`">
+                  <router-link
+                    :to="`/${$i18n.locale}/dashboard/news`"
+                    @click="closeMenu"
+                  >
                     <svg
                       width="23"
                       height="23"
@@ -62,7 +66,10 @@
                     {{ $t("dashboard.nav.nav-1") }}
                   </router-link>
 
-                  <router-link :to="`/${$i18n.locale}/dashboard/cards`">
+                  <router-link
+                    :to="`/${$i18n.locale}/dashboard/cards`"
+                    @click="closeMenu"
+                  >
                     <svg
                       width="24px"
                       height="24px"
@@ -102,7 +109,10 @@
                     {{ $t("dashboard.nav.nav-2") }}
                   </router-link>
 
-                  <router-link :to="`/${$i18n.locale}/dashboard/profile`">
+                  <router-link
+                    :to="`/${$i18n.locale}/dashboard/profile`"
+                    @click="closeMenu"
+                  >
                     <svg
                       width="27px"
                       height="27px"
@@ -128,7 +138,10 @@
                     {{ $t("dashboard.nav.nav-3") }}
                   </router-link>
 
-                  <router-link :to="`/${$i18n.locale}/dashboard/balance`">
+                  <router-link
+                    :to="`/${$i18n.locale}/dashboard/balance`"
+                    @click="closeMenu"
+                  >
                     <svg
                       width="23"
                       height="23"
@@ -169,19 +182,33 @@
           </svg>
           <input type="search" placeholder="Search" />
         </form>
-        <div style="display: block">
+        <div style="display: flex; align-items: center; gap: 5px">
           <the-switcher></the-switcher>
-          <base-button
-            style="margin-top: 10px"
+
+          <svg
             @click="logoutHandeler"
             v-if="!!isAuthorized"
-            >{{ $t("dashboard.btn") }}
-          </base-button>
+            width="25px"
+            height="25px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 17L21 12M21 12L16 7M21 12H9M12 17C12 17.93 12 18.395 11.8978 18.7765C11.6204 19.8117 10.8117 20.6204 9.77646 20.8978C9.39496 21 8.92997 21 8 21H7.5C6.10218 21 5.40326 21 4.85195 20.7716C4.11687 20.4672 3.53284 19.8831 3.22836 19.1481C3 18.5967 3 17.8978 3 16.5V7.5C3 6.10217 3 5.40326 3.22836 4.85195C3.53284 4.11687 4.11687 3.53284 4.85195 3.22836C5.40326 3 6.10218 3 7.5 3H8C8.92997 3 9.39496 3 9.77646 3.10222C10.8117 3.37962 11.6204 4.18827 11.8978 5.22354C12 5.60504 12 6.07003 12 7"
+              stroke="#3d5cb7"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
       </div>
-      <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <router-view v-slot="slotProps">
+        <transition name="fade" mode="out-in">
+          <component :is="slotProps.Component"></component>
+        </transition>
+      </router-view>
     </div>
   </MqResponsive>
 
@@ -204,6 +231,8 @@
               <div class="user-profile__photo">{{ first_character }}</div>
               <div class="user-profile__info">
                 <span class="span">{{ detail?.full_name }}</span>
+                <span>Arzanladyşyk: {{ detail?.skidka }}%</span>
+
                 <span>{{ detail?.balans?.summ || 0 }} TMT</span>
               </div>
             </div>
@@ -341,6 +370,7 @@
           </form>
           <div style="display: flex; align-items: center; gap: 30px">
             <the-switcher></the-switcher>
+
             <base-button @click="logoutHandeler" v-if="!!isAuthorized"
               >{{ $t("dashboard.btn") }}
             </base-button>
@@ -410,7 +440,7 @@ export default {
 
 <style scoped>
 .dashboard {
-  font-family: "DM Sans";
+  font-family: "DM Sans", "Mulish";
   display: flex;
 }
 
@@ -437,7 +467,7 @@ ul {
 }
 
 ul a {
-  font-family: "DM Sans";
+  font-family: "DM Sans", "Mulish";
   margin-top: 20px;
   padding: 0 15px;
   text-decoration: none;
@@ -445,6 +475,7 @@ ul a {
   align-items: center;
   gap: 10px;
   color: black;
+  font-weight: 500;
 }
 
 ul a:hover,
@@ -530,7 +561,7 @@ a.router-link-active .svg {
 
 /* NOTE LARGRE */
 .large_main {
-  font-family: "DM Sans";
+  font-family: "DM Sans", "Mulish";
   height: 100%;
   width: 100%;
 }

@@ -14,16 +14,8 @@
     "btn": "Ginişleyin"
   },
   "footer": {
-    "p": "Ýunus Emre köçesi, 13/2, Aşgabat, Türkmenistan",
-    "ul": {
-      "li-1": "SAHYPALAR",
-      "li-2": "Tarifler",
-      "li-3": "Profil",
-      "li-4": "Töleg taryhy"
-    },
-    "ul-2": {
-      "li-1": "CONTACT"
-    }
+    "phone": "Telefon belgi:",
+    "email": "Elektron poçta sahypa:"
   },
   "header": {
     "nav": {
@@ -46,7 +38,7 @@
     "email-error": "Email nadogry",
     "password": "Açar söz",
     "pass-error": "Acar sozi nadogry",
-    "pass-byte":"Açar sözi 8 simwoldan az bolmaly däl",
+    "pass-byte": "Açar sözi 8 simwoldan az bolmaly däl",
     "confirm": "Açar sözi tassyklaň",
     "conf-error": "Acar sozi gabat gelenok",
     "phone": "Telefon belgiňiz",
@@ -190,8 +182,8 @@
   "add-card": {
     "h1": "Kart goshmak",
     "form": {
-      "label-1": "Kartyň nomeri",
-      "label-2": "Familiýa",
+      "label-1": "Kartyň belgisi",
+      "label-2": "Telefon belgisi",
       "label-3": "Ady",
       "label-4": "Şäher",
       "label-5": "Týuneriň modeli"

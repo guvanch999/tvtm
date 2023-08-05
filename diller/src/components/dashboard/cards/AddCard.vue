@@ -21,7 +21,7 @@
                   />
                 </div>
                 <div class="card__div">
-                  <label>Telefon nomeri</label>
+                  <label>{{ $t("add-card.form.label-2") }}</label>
                   <p class="validation" v-if="!tel">Nädogry telefon nomer</p>
                   <input
                     v-model="cardModel.telnumber"
@@ -392,7 +392,6 @@ export default {
   margin: 0;
   padding: 35px;
   max-height: 80vh;
-  overflow-y: auto;
 }
 
 .add__container {
@@ -444,9 +443,12 @@ export default {
 
 /* Kart form */
 .card__user-info {
+  padding: 10px;
+  height: 400px;
   width: 500px;
   font-weight: 500;
   font-size: 14px;
+  overflow-y: auto;
 }
 
 .card__div {
@@ -472,6 +474,11 @@ input {
 }
 
 /* Prices */
+.information__container {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+}
 a {
   text-decoration: none;
   color: black;
@@ -531,7 +538,7 @@ a {
 }
 
 .add_btn {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -572,5 +579,45 @@ a {
 
 .card:hover {
   cursor: pointer;
+}
+
+@media (width<=1200px) {
+  .add {
+    gap: 10px;
+  }
+  @media (width<=1000px) {
+    .card__user-info {
+      width: 400px;
+    }
+    .information__container {
+      width: 300px;
+    }
+    @media (width<=850px) {
+      .card__user-info {
+        width: 300px;
+      }
+      @media (width<=750px) {
+        .card__user-info {
+          padding: 20px;
+        }
+        .information__container {
+          padding: 20px;
+        }
+        .container {
+          overflow-y: auto;
+        }
+        .add {
+          display: block;
+          overflow-y: auto;
+        }
+        @media (width<=500px) {
+          .add__container {
+            padding: 15px !important;
+            gap: 0px;
+          }
+        }
+      }
+    }
+  }
 }
 </style>

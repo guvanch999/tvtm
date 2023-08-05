@@ -377,6 +377,7 @@ export default {
 
 <style scoped>
 .card-info {
+  font-family: "Mulish";
   display: flex;
   justify-content: space-around;
   border-radius: 12px;

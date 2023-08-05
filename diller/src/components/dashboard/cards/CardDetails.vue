@@ -509,9 +509,9 @@ export default {
   margin: 10px 0 0 15px;
   border-top-left-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
-  font-weight: "Plus Jakarta Sans";
+  font-weight: "500";
   padding: 10px 30px;
-  font-family: "Plus Jakarta Sans";
+  font-family: "Mulish";
 }
 
 .card-number {
@@ -577,6 +577,11 @@ a.router-link-active .fill {
   ul {
     gap: 10px;
     font-size: 14px;
+  }
+  @media (width<=450px) {
+    .container {
+      padding: 10px 15px;
+    }
   }
 }
 /* Medium */

@@ -8,7 +8,7 @@
           <p class="responsive_date">{{ date }}</p>
         </div>
       </div>
-      <div style="width: 50px">
+      <div>
         <p v-html="text"></p>
       </div>
     </li>

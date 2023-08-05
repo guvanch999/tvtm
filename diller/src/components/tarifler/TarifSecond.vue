@@ -56,7 +56,6 @@
             <h1>We başgada dürli daşary ýurt kanallary</h1>
           </li>
         </ul>
-        <base-button>{{ $t("home.btn") }}</base-button>
       </base-card>
 
       <base-card class="card" mode="card-gold">
@@ -112,7 +111,6 @@
             <h1>We başgada dürli daşary ýurt kanallary</h1>
           </li>
         </ul>
-        <base-button mode="gold">{{ $t("home.btn") }}</base-button>
       </base-card>
     </div>
   </div>

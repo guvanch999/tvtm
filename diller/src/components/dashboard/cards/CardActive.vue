@@ -85,6 +85,7 @@ export default {
 </script>
 <style scoped>
 .active {
+  font-family: "Mulish";
   display: flex;
   flex-direction: column;
   border-radius: 12px;

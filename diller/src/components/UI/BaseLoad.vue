@@ -28,7 +28,7 @@
   height: 80px;
 }
 .lds-roller div {
-  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 1, 1) infinite;
   transform-origin: 40px 40px;
 }
 .lds-roller div:after {
@@ -39,7 +39,7 @@
   height: 7px;
   border-radius: 50%;
   background: #3d5cb7;
-  margin: -4px 0 0 -4px;
+  margin: -50px 50 50 -50px;
 }
 .lds-roller div:nth-child(1) {
   animation-delay: -0.036s;

@@ -1,146 +1,143 @@
 <template>
   <div>
-    
-  <MqResponsive target="lg-">
-    <div class="large_buy">
-      <div class="box__one">
-        <h1 class="large_box__header">{{ $t("card-buy.h1") }}</h1>
-        <base-small
-          class="large_box__one-card"
-          v-for="packet in packets"
-          :key="packet.id"
-        >
-          <h2 class="box__one--header-1">{{ packet.packet }}</h2>
-          <p class="box__one--paragraph">
-            <!--            {{ $t("card-buy.p") }} 09.07.2023 - 09.10.2023-->
-          </p>
-        </base-small>
-        <base-small class="large_box__one-card">
-          <h2 class="box__one--header-2">
-            <span class="box__one--span">{{ $t("card-buy.p-2") }}</span> 560
-            manat
-          </h2>
-          <div>
-            <p>{{ $t("card-buy.p-3") }} 15%</p>
-            <p>
-              {{ $t("card-buy.p-4")
-              }}<span class="box__one--span-2">36 TMT</span>
-            </p>
-          </div>
-        </base-small>
-      </div>
-
-      <div class="box__two">
-        <h1 class="large_box__header">{{ $t("card-buy.h2") }}</h1>
-        <div class="box__cards">
+    <MqResponsive target="lg-">
+      <div class="large_buy">
+        <!-- <div class="box__one">
+          <h1 class="large_box__header">{{ $t("card-buy.h1") }}</h1>
           <base-small
-            class="card"
+            class="large_box__one-card"
             v-for="packet in packets"
             :key="packet.id"
-            :class="selectedPacket === packet.packet ? 'active' : ''"
-            @click="selectedPacket = packet.packet"
           >
-            <div class="price__about">
-              <h2 class="price__header">{{ packet.packet }}</h2>
-              <div class="chanels-price">
-                <p class="price__paragraph">
-                  {{ packet.description }}
-                </p>
-                <div class="card-plan">
-                  BIR AÝ
-                  <span class="card-price">
-                    <span class="span-1">{{ packet.price }}</span>
-                    <span class="span-2">TMT</span>
-                  </span>
-                </div>
-              </div>
+            <h2 class="box__one--header-1">{{ packet.packet }}</h2>
+            <p class="box__one--paragraph">
+            </p>
+          </base-small>
+          <base-small class="large_box__one-card">
+            <h2 class="box__one--header-2">
+              <span class="box__one--span">{{ $t("card-buy.p-2") }}</span> 560
+              manat
+            </h2>
+            <div>
+              <p>{{ $t("card-buy.p-3") }} 15%</p>
+              <p>
+                {{ $t("card-buy.p-4")
+                }}<span class="box__one--span-2">36 TMT</span>
+              </p>
             </div>
           </base-small>
-        </div>
+        </div> -->
 
-        <div class="controls">
-          <form>
-            <p v-if="false" class="box__two--error">
-              Üns beriň! Bukjany üýtgetmek, diňe öňki bukjaňyzyň möhleti dolan
-              bolsa rugsat berilýär!
-            </p>
-            <label>{{ $t("card-buy.label") }}</label>
-            <input type="number" />
-          </form>
-          <div>
-            <base-button @click="buyOrExtendHandler" class="box__two--btn-2"
-              >{{ $t("card-buy.btn") }}
-            </base-button>
+        <div class="box__two">
+          <h1 class="large_box__header">{{ $t("card-buy.h2") }}</h1>
+          <div class="box__cards">
+            <base-small
+              class="large_card"
+              v-for="packet in packets"
+              :key="packet.id"
+              :class="selectedPacket === packet.packet ? 'active' : ''"
+              @click="selectedPacket = packet.packet"
+            >
+              <div class="price__about">
+                <h2 class="price__header">{{ packet.packet }}</h2>
+                <div class="chanels-price">
+                  <p class="price__paragraph">
+                    {{ packet.description }}
+                  </p>
+                  <div class="card-plan">
+                    BIR AÝ
+                    <span class="card-price">
+                      <span class="span-1">{{ packet.price }}</span>
+                      <span class="span-2">TMT</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </base-small>
+          </div>
+
+          <div class="controls">
+            <form>
+              <p v-if="false" class="box__two--error">
+                Üns beriň! Bukjany üýtgetmek, diňe öňki bukjaňyzyň möhleti dolan
+                bolsa rugsat berilýär!
+              </p>
+              <label>{{ $t("card-buy.label") }}</label>
+              <input type="number" />
+            </form>
+            <div>
+              <base-button @click="buyOrExtendHandler" class="box__two--btn-2"
+                >{{ $t("card-buy.btn") }}
+              </base-button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </MqResponsive>
+    </MqResponsive>
 
-  <MqResponsive target="xl">
-    <div class="buy">
-      <div class="box__one">
-        <h1 class="box__header">{{ $t("card-buy.h1") }}</h1>
-        <base-small
+    <MqResponsive target="xl">
+      <div class="buy">
+        <!-- <div class="box__one"> -->
+        <!-- <h1 class="box__header">{{ $t("card-buy.h1") }}</h1> -->
+        <!-- <base-small
           class="box__one-card"
           v-for="packet in packets"
           :key="packet.id"
         >
           <h2 class="box__one--header-1">{{ packet.packet }}</h2>
           <p class="box__one--paragraph">
-            <!--            {{ $t("card-buy.p") }} 09.07.2023 - 09.10.2023-->
+         
           </p>
-        </base-small>
-      </div>
+        </base-small> -->
+        <!-- </div> -->
 
-      <div class="box__two">
-        <h1 class="box__header">{{ $t("card-buy.h2") }}</h1>
-        <div class="box__cards">
-          <base-small
-            class="card"
-            v-for="packet in packets"
-            :key="packet.id"
-            :class="selectedPacket === packet.packet ? 'active' : ''"
-            @click="selectedPacket = packet.packet"
-          >
-            <div class="price__about">
-              <h2 class="price__header">{{ packet.packet }}</h2>
-              <div class="chanels-price">
-                <p class="price__paragraph">
-                  {{ packet.description }}
-                </p>
-                <div class="card-plan">
-                  BIR AÝ
-                  <span class="card-price">
-                    <span class="span-1">{{ packet.price }}</span>
-                    <span class="span-2">TMT</span>
-                  </span>
+        <div class="box__two">
+          <h1 class="box__header">{{ $t("card-buy.h2") }}</h1>
+          <div class="box__cards">
+            <base-small
+              class="card"
+              v-for="packet in packets"
+              :key="packet.id"
+              :class="selectedPacket === packet.packet ? 'active' : ''"
+              @click="selectedPacket = packet.packet"
+            >
+              <div class="price__about">
+                <h2 class="price__header">{{ packet.packet }}</h2>
+                <div class="chanels-price">
+                  <p class="price__paragraph">
+                    {{ packet.description }}
+                  </p>
+                  <div class="card-plan">
+                    BIR AÝ
+                    <span class="card-price">
+                      <span class="span-1">{{ packet.price }}</span>
+                      <span class="span-2">TMT</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </base-small>
-        </div>
+            </base-small>
+          </div>
 
-        <div class="controls">
-          <form>
-            <p v-if="false" class="box__two--error">
-              Üns beriň! Bukjany üýtgetmek, diňe öňki bukjaňyzyň möhleti dolan
-              bolsa rugsat berilýär!
-            </p>
-            <label>{{ $t("card-buy.label") }}</label>
-            <input type="number" v-model="srok" />
-          </form>
-          <div>
-            <base-button @click="buyOrExtendHandler" class="box__two--btn-2"
-              >{{ $t("card-buy.btn") }}
-            </base-button>
+          <div class="controls">
+            <form>
+              <p v-if="false" class="box__two--error">
+                Üns beriň! Bukjany üýtgetmek, diňe öňki bukjaňyzyň möhleti dolan
+                bolsa rugsat berilýär!
+              </p>
+              <label>{{ $t("card-buy.label") }}</label>
+              <input type="number" v-model="srok" />
+            </form>
+            <div>
+              <base-button @click="buyOrExtendHandler" class="box__two--btn-2"
+                >{{ $t("card-buy.btn") }}
+              </base-button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </MqResponsive>
-</div>
-
+    </MqResponsive>
+  </div>
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
@@ -194,7 +191,8 @@ export default {
 </script>
 <style scoped>
 .buy {
-  display: flex;
+  /* display: flex; */
+  font-family: "Mulish";
   justify-content: space-between;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -206,7 +204,7 @@ export default {
 .box__cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  /* grid-template-rows: repeat(2, 1fr); */
   column-gap: 20px;
   row-gap: 10px;
   margin-bottom: 20px;
@@ -254,7 +252,7 @@ export default {
 }
 
 .price__paragraph {
-  width: 200px;
+  width: 350px;
   font-weight: 400;
   font-size: 14px;
   color: #555;
@@ -352,6 +350,9 @@ input {
   }
 
   @media (width<=750px) {
+    .large_card {
+      width: 400px;
+    }
     .large_box__one-card {
       width: 400px !important;
     }
@@ -363,6 +364,9 @@ input {
       gap: 20px;
     }
     @media (width<=590px) {
+      .large_card {
+        width: 300px;
+      }
       .controls {
         flex-direction: column;
         align-items: center;

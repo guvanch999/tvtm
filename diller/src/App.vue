@@ -16,7 +16,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;700&display=swap");
 
 * {
   box-sizing: border-box;

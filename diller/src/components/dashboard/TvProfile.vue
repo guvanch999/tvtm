@@ -625,6 +625,7 @@ form input {
 .large_profile__cards-card-1--header,
 .large_profile__cards-card-1--para,
 .large_profile__cards-card-1--price {
+  text-align: center;
   margin: 10px;
 }
 .large_profile__cards-card-1--header {
@@ -688,7 +689,10 @@ form input {
     font-size: 18px;
   }
   .large_profile__cards-card-1--header {
-    font-size: 40px;
+    font-size: 20px;
+  }
+  .large_profile__cards-card-1--price {
+    font-size: 28px;
   }
   @media (width<=500px) {
     .large_profile__cards-card-1,

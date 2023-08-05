@@ -51,7 +51,26 @@
             <th>{{ $t("cards.table.th-6") }}</th>
           </tr>
           <tr v-for="card in cards" :key="card.id">
-            <td>true</td>
+            <td>
+              <div
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: green;
+                  border-radius: 2px;
+                "
+                v-if="card"
+              ></div>
+              <div
+                style="
+                  width: 20px;
+                  height: 20px;
+                  background-color: orange;
+                  border-radius: 2px;
+                "
+                v-if="!card"
+              ></div>
+            </td>
             <td>
               <router-link
                 :to="`/${$i18n.locale}/cards/${card.cardnumber}/about`"
@@ -128,7 +147,7 @@ export default {
       } catch (e) {
         console.log(e);
         this.$store.commit("set_error", "Cannot load card list");
-        this.$router.push({path:'/'})
+        this.$router.push({ path: "/" });
       }
     },
   },
@@ -143,10 +162,13 @@ export default {
     page_count() {
       return Math.ceil(this.total / this.limit);
     },
+    date_start() {
+      const date = this.cards.date_start.toLocalDateString();
+      return date;
+    },
   },
   mounted() {
     this.loadCardList();
-    console.log(this.$i18n.locale);
   },
 };
 </script>
@@ -274,10 +296,10 @@ tr:first-child {
     }
     .filter_number {
       margin-top: 10px;
-      width: 130px;
+      width: 100%;
     }
     .filter__search form {
-      width: 300px;
+      width: 100%;
     }
     table th,
     table td {
@@ -292,6 +314,9 @@ tr:first-child {
         padding: 15px !important;
       }
       @media (width<=470px) {
+        .container {
+          padding: 10px 15px;
+        }
         .filter__search form {
           width: 260px;
         }
