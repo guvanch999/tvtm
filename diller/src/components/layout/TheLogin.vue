@@ -7,7 +7,7 @@
         <p>
           <span>
             {{ $t("login.span-1") }}
-            <router-link to="/tk/register"
+            <router-link :to="`/${$i18n.locale}/register`"
               >{{ $t("login.span-2") }}
             </router-link></span
           >
@@ -165,7 +165,7 @@ section {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  font-family: "Dm Sans";
+  font-family: "Dm Sans", sans-serif;
 }
 
 form {

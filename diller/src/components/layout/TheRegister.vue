@@ -7,7 +7,7 @@
         <p>
           <span
             >{{ $t("register.span-1") }}
-            <router-link to="/tk/login">
+            <router-link :to="`/${$i18n.locale}/login`">
               {{ $t("register.span-2") }}</router-link
             ></span
           >
@@ -225,6 +225,7 @@
 <script>
 import TheHeader from "./TheHeader.vue";
 import BaseLoad from "../UI/BaseLoad.vue";
+import i18n from "@/i18n";
 
 export default {
   components: {
@@ -343,7 +344,7 @@ section {
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  font-family: "Dm Sans";
+  font-family: "Dm Sans", sans-serif;
 }
 
 form {
