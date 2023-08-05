@@ -39,7 +39,7 @@
         <option value="rus">Rus(RU)</option>
       </select> -->
         <div class="small_controls" v-else>
-          <div style="margin-top: 10px">
+          <div>
             <svg
               @click="deleteToken"
               v-if="!!isAuthorized"
