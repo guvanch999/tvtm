@@ -211,10 +211,12 @@
         >
       </div> -->
 
-        <base-button class="btn__register">
-          <base-load v-if="isLoading"></base-load>
-
-          <img src="../../assets/login.png" alt="Login icon" />
+        <base-button class="btn__register" :class="{ active: isLoading }">
+          <img
+            src="../../assets/login.png"
+            alt="Login icon"
+            v-if="!isLoading"
+          />
           {{ $t("register.btn") }}
         </base-button>
       </form>
@@ -224,12 +226,10 @@
 
 <script>
 import TheHeader from "./TheHeader.vue";
-import BaseLoad from "../UI/BaseLoad.vue";
 
 export default {
   components: {
     TheHeader,
-    BaseLoad,
   },
   data() {
     return {
@@ -301,12 +301,11 @@ export default {
       // }
     },
     clearInputs() {
-      this.fullName.val = "";
-      this.email.val = "";
-      this.password.val = "";
-      this.confirm.val = "";
-      this.phoneNumber.val = "";
-      this.checkbox.val = "";
+      this.fullName.val === "";
+      this.email.val === "";
+      this.password.val === "";
+      this.confirm.val === "";
+      this.phoneNumber.val === "";
     },
 
     async submitForm() {
@@ -318,7 +317,7 @@ export default {
         full_name: this.fullName.val,
         email: this.email.val,
         password: this.password.val,
-        phone_number: this.phoneNumber.val.replace(/-/g, ""),
+        phone_number: this.phoneNumber.val,
       };
 
       try {
@@ -328,7 +327,6 @@ export default {
       } catch (e) {
         console.error(e);
         this.$store.commit("set_error", "Cannot create credentials");
-        this.$router.push({ path: `/` });
       }
       this.isLoading = false;
     },
@@ -430,11 +428,40 @@ a {
 }
 
 .btn__register {
+  position: relative;
   margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.btn__register:after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.active:after {
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .first-span {

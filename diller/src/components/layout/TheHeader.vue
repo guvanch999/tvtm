@@ -219,7 +219,7 @@ header ul {
   gap: 60px;
 }
 
-a {
+ul a {
   text-decoration: none;
   color: #777;
   font-weight: 800;

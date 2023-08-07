@@ -3,7 +3,7 @@
     <div class="header">
       <h1>{{ title }}</h1>
       <base-button
-        @click="createDialog = true"
+        @click="openDialog"
         style="background-color: #3d5cb7; padding: 10px"
       >
         <svg
@@ -63,7 +63,7 @@
   <MqResponsive target="md-xl">
     <div class="header">
       <h1>{{ title }}</h1>
-      <base-button class="btn" @click="createDialog = true">
+      <base-button class="btn" @click="openDialog">
         <svg
           width="24"
           height="24"
@@ -229,6 +229,9 @@ export default {
   methods: {
     getCards() {
       console.log(this.cards);
+    },
+    openDialog() {
+      this.createDialog = true;
     },
     closeDialog() {
       this.createDialog = false;

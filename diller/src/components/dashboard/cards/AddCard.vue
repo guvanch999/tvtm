@@ -165,9 +165,10 @@
               <base-button
                 @click="addCardHandler"
                 class="add_btn"
+                :class="{ active: isLoading }"
                 style="flex: 1"
               >
-                <div class="btn__info">
+                <div class="btn__info" v-if="!isLoading">
                   <svg
                     width="24"
                     height="24"
@@ -295,12 +296,12 @@ export default {
     },
     validation() {
       this.formIsValid = true;
-      if (this.cardModel.cardnumber === "") {
+      if (this.cardModel.cardnumber === null) {
         this.card = false;
         this.formIsValid = false;
       }
       if (
-        this.cardModel.telnumber === "" ||
+        this.cardModel.telnumber === null ||
         !this.phone_regex.test(this.cardModel.telnumber)
       ) {
         this.tel = false;
@@ -538,11 +539,39 @@ a {
 }
 
 .add_btn {
+  position: relative;
   margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 10px;
   width: 100%;
+}
+.add_btn:after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 42%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.active:after {
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 .btn__info {
@@ -574,7 +603,7 @@ a {
 
 .invalid {
   color: red;
-  border-color: 1px solid red;
+  border-color: red;
 }
 
 .card:hover {

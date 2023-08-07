@@ -227,7 +227,7 @@ a {
 
 button {
   position: relative;
-  color: #3d5cb7;
+  color: white;
   margin-top: 30px;
 }
 .btn__login:after {
