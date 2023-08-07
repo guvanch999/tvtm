@@ -47,7 +47,6 @@
             <th>{{ $t("cards.table.th-2") }}</th>
             <th>{{ $t("cards.table.th-3") }}</th>
             <th>{{ $t("cards.table.th-4") }}</th>
-            <th>{{ $t("cards.table.th-5") }}</th>
             <th>{{ $t("cards.table.th-6") }}</th>
           </tr>
           <tr v-for="card in cards" :key="card.id">
@@ -77,9 +76,11 @@
                 >{{ card.cardnumber }}</router-link
               >
             </td>
-            <td>{{ card.date_start }} - {{ card.date_end }}</td>
+            <td>
+              {{ `${new Date(card.date_start * 1000).toLocaleDateString()}` }} -
+              {{ `${new Date(card.date_end * 1000).toLocaleDateString()}` }}
+            </td>
             <td>{{ `${card.name} ${card.surname}` }}</td>
-            <td>{{ card.telnumber }}</td>
             <td>{{ card.note }}</td>
           </tr>
         </table>
@@ -161,10 +162,6 @@ export default {
     },
     page_count() {
       return Math.ceil(this.total / this.limit);
-    },
-    date_start() {
-      const date = this.cards.date_start.toLocalDateString();
-      return date;
     },
   },
   mounted() {

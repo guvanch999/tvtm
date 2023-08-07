@@ -231,7 +231,10 @@
             <div>
               Mohleti
               <div class="user__info">
-                {{ card.date_start }} - {{ card.date_end }}
+                {{
+                  `${new Date(card.date_start * 1000).toLocaleDateString()}`
+                }}
+                - {{ `${new Date(card.date_end * 1000).toLocaleDateString()}` }}
               </div>
             </div>
 
