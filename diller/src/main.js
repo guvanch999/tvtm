@@ -3,13 +3,18 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { Vue3Mq } from "vue3-mq";
+import { defineAsyncComponent } from "vue";
 
 import BaseButton from "./components/UI/BaseButton";
 import BaseCard from "./components/UI/BaseCard";
-import BaseDialog from "./components/UI/BaseDialog";
-import BaseSmall from "./components/UI/BaseSmall";
 import i18n from "./i18n";
 
+const BaseDialog = defineAsyncComponent(() => {
+  import("./components/UI/BaseDialog");
+});
+const BaseSmall = defineAsyncComponent(() => {
+  import("./components/UI/BaseSmall");
+});
 const app = createApp(App);
 app.use(i18n);
 app.use(router);

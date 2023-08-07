@@ -1,15 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { h, resolveComponent } from "vue";
+import { defineAsyncComponent } from "vue";
 
 // LAYOUT
-import TheRegister from "../src/components/layout/TheRegister";
-import TheLogin from "../src/components/layout/TheLogin";
+const TheRegister = defineAsyncComponent(() =>
+  import("../src/components/layout/TheRegister")
+);
+
+const TheLogin = defineAsyncComponent(() =>
+  import("../src/components/layout/TheLogin")
+);
 
 //PAGES
-import TvHome from "./pages/TvHome";
+const TvHome = defineAsyncComponent(() => import("./pages/TvHome"));
+
 // import TvTarifler from "./pages/TvTarifler";
 import TvDashboard from "./pages/TvDashboard";
-import NotFound from "./pages/NotFound";
+
+const NotFound = defineAsyncComponent(() => import("./pages/NotFound"));
 
 //COMPONENTS
 import TvNews from "./components/dashboard/TvNews";
