@@ -17,6 +17,7 @@
           <ul class="md_nav">
             <router-link
               :to="`/${$i18n.locale}/cards/${card.cardnumber}/about`"
+              @click="closeNav"
             >
               <svg
                 width="24"
@@ -73,6 +74,7 @@
             </router-link>
             <router-link
               :to="`/${$i18n.locale}/cards/${card.cardnumber}/subscription`"
+              @click="closeNav"
             >
               <svg
                 width="23"
@@ -94,6 +96,7 @@
             </router-link>
             <router-link
               :to="`/${$i18n.locale}/cards/${card.cardnumber}/active`"
+              @click="closeNav"
             >
               <svg
                 width="23"
@@ -112,7 +115,10 @@
               </svg>
               {{ $t("card-details.nav.nav-3") }}
             </router-link>
-            <router-link :to="`/${$i18n.locale}/cards/${card.cardnumber}/buy`">
+            <router-link
+              :to="`/${$i18n.locale}/cards/${card.cardnumber}/buy`"
+              @click="closeNav"
+            >
               <svg
                 width="27"
                 height="26"
@@ -166,6 +172,7 @@
 
             <router-link
               :to="`/${$i18n.locale}/cards/${card.cardnumber}/change`"
+              @click="closeNav"
             >
               <svg
                 width="24"

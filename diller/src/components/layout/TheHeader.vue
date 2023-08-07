@@ -39,6 +39,8 @@
         <option value="rus">Rus(RU)</option>
       </select> -->
         <div class="small_controls" v-else>
+          <the-switcher></the-switcher>
+
           <div>
             <svg
               @click="deleteToken"
@@ -84,7 +86,6 @@
               </svg>
             </base-button>
           </div>
-          <the-switcher></the-switcher>
         </div>
       </nav>
     </header>
@@ -130,6 +131,7 @@
         <option value="rus">Rus(RU)</option>
       </select> -->
         <div class="controls" v-else>
+          <the-switcher></the-switcher>
           <div>
             <base-button
               @click="deleteToken"
@@ -145,7 +147,6 @@
               >{{ $t("header.btn") }}</base-button
             >
           </div>
-          <the-switcher></the-switcher>
         </div>
       </nav>
     </header>

@@ -225,7 +225,6 @@
 <script>
 import TheHeader from "./TheHeader.vue";
 import BaseLoad from "../UI/BaseLoad.vue";
-import i18n from "@/i18n";
 
 export default {
   components: {
