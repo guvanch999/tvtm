@@ -64,13 +64,17 @@
     />
     <error-component v-if="errorMessage" :message="errorMessage" @closeError="errorMessage = null"/>
     <loading-component v-if="isLoading"/>
-    <div v-if="clientsListDialog" class="popUpBg ">
-      <div class="popUpCardClass" style="width: 90%;background-color: white">
-        <clients-list
-          @closeDialog="closeClientsListDialog"
-          :is-dialog="true"
-          :diller="selectedDiller"
-        />
+    <div v-if="clientsListDialog" class="popUpBg " style="background-color: rgba(0,0,0,0.7)">
+      <div class="popUpCardClass" style="width: 90%;background-color: white;top:20px;padding: 20px;bottom: 20px;transform: translateX(-50%);border-radius: 3px">
+        <div style="border: 1px solid #a9a8a8;height: 100%;border-radius: 3px">
+          <clients-list
+            @closeDialog="closeClientsListDialog"
+            :is-dialog="true"
+            :diller="selectedDiller"
+            style=""
+          />
+        </div>
+
       </div>
     </div>
     <change-balans-form v-if="balanceDialog" :diller="selectedDiller" @closeDialog="closeBalanceDialog"/>
@@ -227,7 +231,7 @@ export default {
   },
   mounted() {
     this.resetData()
-    
+
   }
 }
 </script>

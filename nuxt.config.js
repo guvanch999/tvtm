@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  ssr:false,
+  ssr: false,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: 'AlemTVTM admin',
@@ -48,7 +48,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://216.250.9.74:9186/api/',
+    // baseURL: 'http://216.250.9.74:9186/api/',
+    baseURL: 'http://localhost:9186/api/',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

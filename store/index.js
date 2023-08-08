@@ -1,7 +1,24 @@
 export const state = () => ({
   auth_token: null,
   phone_regex: /^[\+]?[(]?993[)]?6[1-5]{1}[0-9]{6}$/,
-  error: null
+  error: null,
+  statusSettings:{
+    PENDING:{
+      label:'Garashylyar',
+      color:'#054bcb',
+      bg_color:'#c2d6fc'
+    },
+    ACCEPTED:{
+      label:'Yerine yetirildi',
+      color:'#00921b',
+      bg_color:'#d2f8bc'
+    },
+    DECLINED:{
+      label:'Yatyryldy',
+      color:'#cb0505',
+      bg_color:'#ffcfcf'
+    },
+  }
 })
 
 export const getters = {
@@ -13,6 +30,9 @@ export const getters = {
   },
   get_error(state) {
     return state.error
+  },
+  get_status_colors(state){
+    return state.statusSettings
   }
 }
 
