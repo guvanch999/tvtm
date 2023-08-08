@@ -13,6 +13,7 @@ import {inject} from "@adonisjs/fold";
 import LogsService from "App/Services/LogsService";
 import ClientForAdminValidator from "App/Validators/ClientForAdminValidator";
 import Diller from "App/Models/Diller";
+import FilterValidator from "App/Validators/FilterValidator";
 
 @inject()
 export default class ClientsController {
@@ -20,25 +21,26 @@ export default class ClientsController {
   }
 
   public async getAllClient({request, response}: HttpContextContract) {
-    let {page, diller_id, search} = request.qs()
-    page = page || 1
+    let filter = await request.validate(FilterValidator)
+    filter.page = filter.page || 1
+    filter.limit = filter.limit || 20
     let data: ModelPaginatorContract<Client>
     const query = Client.query()
-    if (parseInt(diller_id)) query.where('diller_id', diller_id)
-    if (search) {
+    if (filter.diller_id) query.where('diller_id', filter.diller_id)
+    if (filter.search) {
       query.where(function (qu) {
-        qu.orWhere("cardnumber", 'like', `%${search}%`)
-        qu.orWhere("name", 'like', `%${search}%`)
-        qu.orWhere("surname", 'like', `%${search}%`)
-        qu.orWhere("telnumber", 'like', `%${search}%`)
-        qu.orWhere("adress", 'like', `%${search}%`)
-        qu.orWhere("packet", 'like', `%${search}%`)
-        qu.orWhere("resiver", 'like', `%${search}%`)
-        qu.orWhere("note", 'like', `%${search}%`)
+        qu.orWhere("cardnumber", 'like', `%${filter.search}%`)
+        qu.orWhere("name", 'like', `%${filter.search}%`)
+        qu.orWhere("surname", 'like', `%${filter.search}%`)
+        qu.orWhere("telnumber", 'like', `%${filter.search}%`)
+        qu.orWhere("adress", 'like', `%${filter.search}%`)
+        qu.orWhere("packet", 'like', `%${filter.search}%`)
+        qu.orWhere("resiver", 'like', `%${filter.search}%`)
+        qu.orWhere("note", 'like', `%${filter.search}%`)
       })
     }
 
-    data = await query.paginate(page, 10)
+    data = await query.paginate(filter.page, 10)
     return response.ok({
       success: true,
       data: data.all(),
