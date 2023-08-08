@@ -34,6 +34,7 @@ Route.group(() => {
 
     }).middleware('find_client')
 
+    Route.post('/change-card', "User/CardsController.changeCard")
 
   }).prefix('/cards')
     .middleware('auth_diller')

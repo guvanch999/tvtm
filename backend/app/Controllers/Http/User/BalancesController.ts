@@ -4,8 +4,14 @@ import {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
 import Balan from "App/Models/Balan";
 import BalansHistory from "App/Models/BalansHistory";
 import {AuthenticationException} from "@adonisjs/auth/build/standalone";
+import {inject} from "@adonisjs/fold";
+import LogsService from "App/Services/LogsService";
 
+@inject()
 export default class BalancesController {
+  constructor(public logsService: LogsService) {
+  }
+
   public async fill_up_balance({request, response, auth}: HttpContextContract) {
     let diller = auth.use("api_diller").user
     let summ: number = request.body().summ || 0
@@ -30,7 +36,11 @@ export default class BalancesController {
       action: 'Пополнение баланса',
       balans_id: balance.id
     })
-
+    this.logsService.create({
+      diller: JSON.stringify(diller),
+      action: `Пополнение баланса на: ${summ} TMT`,
+      diller_id: diller.id
+    })
     return response.ok({
       success: true,
       data: diller

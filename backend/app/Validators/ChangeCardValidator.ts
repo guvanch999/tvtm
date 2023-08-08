@@ -1,7 +1,7 @@
-import {schema, CustomMessages, rules} from '@ioc:Adonis/Core/Validator'
+import {schema, CustomMessages} from '@ioc:Adonis/Core/Validator'
 import type {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
 
-export default class ClientValidator {
+export default class ChangeCardValidator {
   constructor(protected ctx: HttpContextContract) {
   }
 
@@ -26,19 +26,8 @@ export default class ClientValidator {
    */
   public schema = schema.create({
     cardnumber: schema.string(),
-    name: schema.string(),
-    surname: schema.string(),
-    telnumber: schema.string({}, [
-      rules.regex(/^[\+]?[(]?993[)]?6[1-5]{1}[0-9]{6}$/)
-    ]),
-    adress: schema.string(),
-    packet: schema.string(),
-    srok: schema.number(),
-    resiver: schema.string(),
-    date_start: schema.string.optional(),
-    date_end: schema.string.optional(),
-    diller_id: schema.number.optional(),
-    note: schema.string.optional()
+    new_cardnumber: schema.string(),
+    reason:schema.string.optional(),
   })
 
   /**

@@ -9,16 +9,36 @@ import CardActivityHistory from "App/Models/CardActivityHistory";
 import {ModelPaginatorContract} from "@ioc:Adonis/Lucid/Orm";
 import {create_card} from "App/Helpers/RemoteHelper";
 import Packet from "App/Models/Packet";
+import {inject} from "@adonisjs/fold";
+import LogsService from "App/Services/LogsService";
+import ClientForAdminValidator from "App/Validators/ClientForAdminValidator";
+import Diller from "App/Models/Diller";
 
+@inject()
 export default class ClientsController {
+  constructor(public logsService: LogsService) {
+  }
 
   public async getAllClient({request, response}: HttpContextContract) {
-    let {page, diller_id} = request.qs()
+    let {page, diller_id, search} = request.qs()
     page = page || 1
     let data: ModelPaginatorContract<Client>
-    let filter = {}
-    if (parseInt(diller_id)) filter['diller_id'] = diller_id
-    data = await Client.query().where(filter).paginate(page, 10)
+    const query = Client.query()
+    if (parseInt(diller_id)) query.where('diller_id', diller_id)
+    if (search) {
+      query.where(function (qu) {
+        qu.orWhere("cardnumber", 'like', `%${search}%`)
+        qu.orWhere("name", 'like', `%${search}%`)
+        qu.orWhere("surname", 'like', `%${search}%`)
+        qu.orWhere("telnumber", 'like', `%${search}%`)
+        qu.orWhere("adress", 'like', `%${search}%`)
+        qu.orWhere("packet", 'like', `%${search}%`)
+        qu.orWhere("resiver", 'like', `%${search}%`)
+        qu.orWhere("note", 'like', `%${search}%`)
+      })
+    }
+
+    data = await query.paginate(page, 10)
     return response.ok({
       success: true,
       data: data.all(),
@@ -27,13 +47,21 @@ export default class ClientsController {
   }
 
   public async create({request, response}: HttpContextContract) {
-    let data = await request.validate(ClientValidator)
+    let data = await request.validate(ClientForAdminValidator)
 
+    let diller = await Diller.findByOrFail('id', data.diller_id)
     let client = new Client()
     client.merge(data)
 
     let res = await create_card(client)
 
+    this.logsService.create({
+      action: `Админ зарегистрировал карту на ${diller.full_name} `,
+      diller: JSON.stringify(diller),
+      client: JSON.stringify(res),
+      diller_id: diller.id,
+      cardnumber: res.cardnumber,
+    })
     return response.ok({
       success: true,
       data: res
@@ -59,7 +87,16 @@ export default class ClientsController {
   }
 
   public async removeClient({response, client}: HttpContextContract & ClientInterface) {
+    let diller = await Diller.findByOrFail('id', client.diller_id)
     await client.delete()
+
+    this.logsService.create({
+      action: `Админ удалил карту  ${client.cardnumber} `,
+      diller: JSON.stringify(diller),
+      client: JSON.stringify(client),
+      diller_id: diller.id,
+      cardnumber: client.cardnumber,
+    })
     return response.ok({
       success: true
     })

@@ -14,15 +14,24 @@ import SubscribtionHistory from "App/Models/SubscribtionHistory";
 import Balan from "App/Models/Balan";
 import BalansHistory from "App/Models/BalansHistory";
 import {HttpException} from "@adonisjs/http-server/build/src/Exceptions/HttpException";
+import {inject} from "@adonisjs/fold";
+import LogsService from "App/Services/LogsService";
+import ChangeCardValidator from "App/Validators/ChangeCardValidator";
+import ChangeNotification from "App/Models/ChangeNotification";
 
+@inject()
 export default class CardsController {
+  constructor(public logService: LogsService) {
+
+
+  }
+
   public async get_all({request, response, auth}: HttpContextContract) {
     const diller = auth.use('api_diller').user
     let page: number = request.qs().page || 1
     let limit: number = request.qs().limit || 20
     let query: string = request.qs().query || ''
 
-    console.log(diller?.id)
     let cards = await Client.query()
       .whereRaw(`diller_id = ${diller?.id || 0} and (cardnumber like '%${query}%' or name like '%${query}%' or surname like '%${query}%' or telnumber like '%${query}%' or note like '%${query}%')`)
       .paginate(page, limit)
@@ -71,10 +80,20 @@ export default class CardsController {
     })
     diller.client_count += 1
     await diller.save()
+
+    this.logService.create({
+      action: `Покупка подписки: ${created_client.packet} на сумму: ${card_summ}`,
+      diller: JSON.stringify(diller),
+      client: JSON.stringify(created_client),
+      diller_id: diller.id,
+      cardnumber: created_client.cardnumber,
+    })
+
     return response.ok({
       success: true,
       data: created_client,
-      balans: balans.summ
+      balans: balans.summ,
+
     })
   }
 
@@ -102,6 +121,14 @@ export default class CardsController {
       diller_id: diller.id
     })
 
+
+    this.logService.create({
+      action: `Переактивация карты:${client.cardnumber}`,
+      diller: JSON.stringify(diller),
+      client: JSON.stringify(client),
+      diller_id: diller.id,
+      cardnumber: client.cardnumber,
+    })
     return response.ok({
       success: true,
       data: client
@@ -147,9 +174,17 @@ export default class CardsController {
     await balans.save()
     await BalansHistory.create({
       type: 'outcome',
-      sum: +pac.price,
+      sum: card_summ,
       action: 'Покупка подписки',
       balans_id: balans.id
+    })
+
+    this.logService.create({
+      action: `Покупка подписки: ${updated_data.packet} на сумму: ${card_summ}`,
+      diller: JSON.stringify(diller),
+      client: JSON.stringify(updated_data),
+      diller_id: diller.id,
+      cardnumber: updated_data.cardnumber,
     })
 
     return response.ok({
@@ -161,19 +196,11 @@ export default class CardsController {
 
   public async get_card_information({response, params, auth}: HttpContextContract) {
     let {card_number} = params
-    console.log(card_number)
     let card = await Client.query()
       .where("cardnumber", card_number)
       .where('diller_id', auth.use("api_diller")?.user?.id ?? 0)
       .firstOrFail()
 
-
-    if (!card) {
-      return response.badRequest({
-        success: false,
-        message: 'No card found'
-      })
-    }
     return response.ok({
       success: true,
       data: card
@@ -185,6 +212,26 @@ export default class CardsController {
     return response.ok({
       success: true,
       data: list
+    })
+  }
+
+  public async changeCard({request, response, auth}: HttpContextContract) {
+    const data = await request.validate(ChangeCardValidator)
+
+    const diller = auth.use('api_diller').user
+    if (!diller) {
+      throw new HttpException('Auth exception', 401, "E_UNAUTHORIZED_ACCESS")
+    }
+
+    await ChangeNotification.create({
+      cardnumber: data.cardnumber,
+      new_cardnumber: data.new_cardnumber,
+      reason: data.reason,
+      diller_id: diller.id
+    })
+
+    return response.ok({
+      success: true,
     })
   }
 }

@@ -84,4 +84,21 @@ Route.group(() => {
   }).prefix('/settings')
     .middleware('auth_admin')
 
+  //Logs
+  Route.group(() => {
+    Route.get('/all', 'LogsController.getAll')
+  }).prefix('logs')
+    .middleware('auth_admin')
+    .namespace('App/Controllers/Http/Admin')
+
+  Route.group(() => {
+
+    Route.get('all', 'ChangeNotificationsController.getAll')
+    Route.get('make-is-shown/:id', 'ChangeNotificationsController.show')
+    Route.post('change-status/:id', 'ChangeNotificationsController.changeStatus')
+
+  }).prefix('change-card-not')
+    .middleware('auth_admin')
+    .namespace('App/Controllers/Http/Admin')
+
 }).prefix('api/v1/admin')

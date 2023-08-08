@@ -8,15 +8,21 @@ import UpdateDillerValidator from "App/Validators/UpdateDillerValidator";
 import Balan from "App/Models/Balan";
 import BalansHistory from "App/Models/BalansHistory";
 import {sync_packets} from "App/Helpers/RemoteHelper";
+import {inject} from "@adonisjs/fold";
+import LogsService from "App/Services/LogsService";
 
-
+@inject()
 export default class DillersController {
+  constructor(public logsService: LogsService) {
+  }
+
   public async get_dillers_list({response, request}: HttpContextContract) {
     let {page} = request.qs()
     page = page || 1
     let data = await Diller.query().preload('balans', (query) => {
       query.select('summ').as('balans')
     }).orderBy('id', 'desc').paginate(page)
+
 
     return response.ok({
       success: true,
@@ -71,6 +77,11 @@ export default class DillersController {
     await diller.load('balans', (query => {
       query.select('summ').as('balans')
     }))
+    this.logsService.create({
+      diller: JSON.stringify(diller),
+      action: `Пополнение баланса на: ${summ} TMT(через админ)`,
+      diller_id: diller.id
+    })
     return response.ok({
       success: true,
       data: diller
