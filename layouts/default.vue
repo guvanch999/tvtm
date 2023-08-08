@@ -47,6 +47,7 @@
 
 <script>
 import GlobalErrorComponent from "../components/GlobalErrorComponent";
+
 export default {
   name: 'DefaultLayout',
   components: {GlobalErrorComponent},
@@ -82,6 +83,16 @@ export default {
           icon: 'mdi-cog-outline',
           title: 'Settings',
           to: '/settings'
+        },
+        {
+          icon: 'mdi-bell-badge-outline',
+          title: 'Notifications',
+          to: '/notifications'
+        },
+        {
+          icon: 'mdi-math-log',
+          title: 'Logs',
+          to: '/logs'
         },
       ],
       miniVariant: false,

@@ -61,7 +61,6 @@ export default {
         {text: 'action', value: 'action'},
         {text: 'diller', value: 'diller'},
         {text: 'client', value: 'client'},
-
       ],
       pageLimits: [10, 20, 30, 50, 100, 150],
       search: null,

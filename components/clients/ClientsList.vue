@@ -12,6 +12,26 @@
       </v-btn>
     </v-card-title>
     <v-divider/>
+    <div style="display: flex;">
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+        style="flex: 3"
+      ></v-text-field>
+      <div style="flex: 3">
+
+      </div>
+      <div style="flex:1">
+        <v-select
+          v-model="limit"
+          :items="pageLimits"
+        >
+        </v-select>
+      </div>
+    </div>
     <v-data-table
       hide-default-footer
       disable-pagination
@@ -27,6 +47,7 @@
     <client-form v-if="clientFormDialog" :client="selectedClient" @closeDialog="closeClientFormDialog"
                  @resetList="resetList"/>
     <loading-component v-if="isLoading"/>
+    <v-pagination v-model="page" v-if="page_count>1" :length="page_count" circle/>
   </div>
 </template>
 
@@ -62,7 +83,23 @@ export default {
       ],
       selectedClient: null,
       clientFormDialog: false,
-      deleteConfirmDialog: false
+      deleteConfirmDialog: false,
+      search: null,
+      limit: 20,
+      pageLimits: [
+        10, 20, 30, 50, 100
+      ],
+    }
+  },
+  watch: {
+    page() {
+      this.loadData()
+    },
+    limit() {
+      this.resetList()
+    },
+    search() {
+      this.resetList()
     }
   },
   methods: {
@@ -79,7 +116,12 @@ export default {
     },
     async loadData() {
       this.isLoading = true
-      await this.loadClients({page: this.page, diller_id: this.diller?.id})
+      await this.loadClients({
+        page: this.page,
+        diller_id: this.diller?.id,
+        search: this.search,
+        limit: this.limit
+      })
       this.isLoading = false
     },
     goToDetail(item) {
@@ -102,7 +144,10 @@ export default {
     ...mapGetters({
       clients: 'clients/get_clients_list',
       total: 'clients/get_total_count'
-    })
+    }),
+    page_count() {
+      return Math.ceil(this.total / this.limit)
+    }
   },
   mounted() {
     this.loadData()

@@ -32,17 +32,14 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadAllClients({commit, rootGetters}, {page, diller_id = 0}) {
+  async loadAllClients({commit, rootGetters}, payload) {
     let token = rootGetters.get_auth_token
 
     await this.$axios.$get('v1/admin/clients/all', {
       headers: {
         Authorization: `Bearer ${token}`
       },
-      params: {
-        page,
-        diller_id
-      }
+      params: payload
     }).then(res => {
       commit("SET_CLIENTS_LIST", res.data)
       commit("SET_TOTAL_COUNT", res.total)
