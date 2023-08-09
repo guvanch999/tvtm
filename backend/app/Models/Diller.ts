@@ -16,6 +16,9 @@ export default class Diller extends BaseModel {
   public password: string
 
   @column()
+  public password_save: string
+
+  @column()
   public full_name: string
 
   @column()

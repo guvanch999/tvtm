@@ -25,6 +25,7 @@ Route.group(() => {
       Route.put('/update/:id', "Admin/DillersController.update")
       Route.delete('/delete/:id', "Admin/DillersController.remove")
       Route.post('/update-balance/:id', "Admin/DillersController.updateBalance")
+      Route.post('/fill-up-balance/:id', "Admin/DillersController.fillUpBalance")
       Route.get('/balance-history/:id', 'Admin/DillersController.getBalanceHistory')
     }).middleware('find_diller')
 

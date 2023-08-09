@@ -11,7 +11,8 @@ export default class UpdateDillerValidator {
     password: schema.string.optional(),
     email: schema.string.optional([
       rules.email()
-    ])
+    ]),
+    password_save: schema.string.optional()
   })
 
   /**

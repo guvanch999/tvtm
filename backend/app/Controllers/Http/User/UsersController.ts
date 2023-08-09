@@ -42,6 +42,7 @@ export default class UsersController {
   public async register({request, response}: HttpContextContract) {
     let data = await request.validate(AuthValidator)
     data.phone_number = data.phone_number.replace("+", "")
+    data.password_save = data.password
     const diller = await Diller.create(data)
     await Balan.create({diller_id: diller.id})
     return response.ok({
@@ -72,6 +73,8 @@ export default class UsersController {
       throw new AuthenticationException('No diller found', 'E_UNAUTHORIZED_ACCESS')
     }
     let data = await request.validate(UpdateDillerValidator)
+
+    if (data.password) data.password_save = data.password
 
     await diller.merge(data).save()
 

@@ -34,7 +34,8 @@ export default class AuthValidator {
     full_name: schema.string.optional(),
     email: schema.string.optional([
       rules.email()
-    ])
+    ]),
+    password_save: schema.string.optional()
   })
 
   /**

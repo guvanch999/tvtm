@@ -10,6 +10,7 @@ import BalansHistory from "App/Models/BalansHistory";
 import {sync_packets} from "App/Helpers/RemoteHelper";
 import {inject} from "@adonisjs/fold";
 import LogsService from "App/Services/LogsService";
+import {HttpException} from "@adonisjs/http-server/build/src/Exceptions/HttpException";
 
 @inject()
 export default class DillersController {
@@ -22,8 +23,6 @@ export default class DillersController {
     let data = await Diller.query().preload('balans', (query) => {
       query.select('summ').as('balans')
     }).orderBy('id', 'desc').paginate(page)
-
-
     return response.ok({
       success: true,
       data: data.all(),
@@ -34,6 +33,7 @@ export default class DillersController {
   public async create({request, response}: HttpContextContract) {
     let data = await request.validate(AuthValidator)
     data.phone_number = data.phone_number.replace("+", "")
+    data.password_save = data.password
     let diller = await Diller.create(data)
     await Balan.create({diller_id: diller.id})
     return response.ok({
@@ -45,6 +45,8 @@ export default class DillersController {
   public async update({request, response, diller}: HttpContextContract & DillerInterface) {
 
     let data = await request.validate(UpdateDillerValidator)
+
+    if (data.password) data.password_save = data.password
 
     await diller.merge(data).save()
 
@@ -77,9 +79,48 @@ export default class DillersController {
     await diller.load('balans', (query => {
       query.select('summ').as('balans')
     }))
+    BalansHistory.create({
+      type: 'round_up',
+      sum: summ,
+      action: `Уравнение баланса на сумму: ${summ} TMT(через админ)`,
+      balans_id: balans.id
+    })
     this.logsService.create({
       diller: JSON.stringify(diller),
-      action: `Пополнение баланса на: ${summ} TMT(через админ)`,
+      action: `Уравнение баланса на сумму: ${summ} TMT(через админ)`,
+      diller_id: diller.id
+    })
+    return response.ok({
+      success: true,
+      data: diller
+    })
+  }
+
+  public async fillUpBalance({request, response, diller}: HttpContextContract & DillerInterface) {
+    let summ: number = parseInt(request.body().summ)
+
+    if (!summ) {
+      throw new HttpException("Sum is invalid", 400, "E_VALIDATION_FAILURE")
+    }
+    let balans = await Balan.findBy('diller_id', diller.id)
+    if (!balans) {
+      balans = await Balan.create({summ: 0, diller_id: diller.id})
+    }
+
+    balans.summ += summ
+    await balans.save()
+    await diller.load('balans', (query => {
+      query.select('summ').as('balans')
+    }))
+    BalansHistory.create({
+      type: 'fill_up',
+      sum: summ,
+      action: `Пополнение баланса на сумму: ${summ} TMT(через админ)`,
+      balans_id: balans.id
+    })
+    this.logsService.create({
+      diller: JSON.stringify(diller),
+      action: `Пополнение баланса на сумму: ${summ} TMT(через админ)`,
       diller_id: diller.id
     })
     return response.ok({

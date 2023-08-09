@@ -33,8 +33,8 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       }
       case 'E_VALIDATION_FAILURE': {
         return ctx.response.badRequest({
-          success: true,
-          data: error.messages
+          success: false,
+          data: error.messages??error.message
         })
       }
       case 'E_LOW_BALANCE_EXCEPTION': {
