@@ -83,16 +83,20 @@ export const actions = {
   },
   async updateBalance({commit, rootGetters}, {diller_id, summ}) {
     let token = rootGetters.get_auth_token
-    return await this.$axios.$post('v1/admin/dillers/update-balance/' + diller_id, {summ}, {
+    let res = await this.$axios.$post('v1/admin/dillers/update-balance/' + diller_id, {summ}, {
       headers: {
         Authorization: `Bearer ${token}`
       }
-    }).then(res => {
-      commit('UPDATE_DILLER_DATA', res.data)
-      return true
-    }).catch(err => {
-      console.log(err)
-      return false
     })
+    commit('UPDATE_DILLER_DATA', res.data)
+  },
+  async fillUpBalance({commit, rootGetters}, {diller_id, summ}) {
+    let token = rootGetters.get_auth_token
+    let res = await this.$axios.$post('v1/admin/dillers/fill-up-balance/' + diller_id, {summ}, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    commit('UPDATE_DILLER_DATA', res.data)
   }
 }

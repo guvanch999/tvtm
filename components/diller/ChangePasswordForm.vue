@@ -9,6 +9,9 @@
         </v-card-title>
         <v-divider/>
         <v-card-text>
+          <label>Current password:</label>
+          <v-text-field dense outlined disabled :value="diller.password_save"></v-text-field>
+
           <label>New password:</label>
           <v-text-field v-model="password" dense outlined
                         :rules="[v=>v && v.length>2||'Password is weak']"></v-text-field>

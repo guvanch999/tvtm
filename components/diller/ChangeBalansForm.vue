@@ -33,6 +33,10 @@ export default {
     diller: {
       type: Object,
       default: null
+    },
+    fill_type: {
+      type: String,
+      default: 'round'
     }
   },
   components: {ErrorComponent, LoadingComponent},
@@ -53,11 +57,13 @@ export default {
     async saveBalanceHandler() {
       if (this.isLoading) return
       this.isLoading = true
-      let success = await this.updateBalance({diller_id: this.diller.id, summ: this.balance})
-      this.isLoading = false
-      if (success) {
+      try {
+        await this.updateBalance({diller_id: this.diller.id, summ: this.balance})
+        this.isLoading = false
         this.closeDialog()
-      } else {
+      } catch (err) {
+        this.isLoading = false
+        console.error(err)
         this.errorMessage = 'Cannot update balance. Please try again!!!'
       }
     }

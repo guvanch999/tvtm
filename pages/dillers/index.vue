@@ -21,6 +21,8 @@
           style="font-size: 18px;justify-content: space-between;display: flex;align-items: center;border-right: 1px solid black;">
           <strong>{{ item.balans?.summ || 0 }} TMT</strong>
           <div>
+
+            <span @click="openFillUpBalance(item)" class="mdi mdi-plus mdi-18px icon-button-class"></span>
             <span @click="openBalanceDialog(item)" class="mdi mdi-pencil mdi-18px icon-button-class"></span>
             <span @click="openBalanceHistoryDialog(item)" class="mdi mdi-history mdi-18px icon-button-class"></span>
           </div>
@@ -65,7 +67,8 @@
     <error-component v-if="errorMessage" :message="errorMessage" @closeError="errorMessage = null"/>
     <loading-component v-if="isLoading"/>
     <div v-if="clientsListDialog" class="popUpBg " style="background-color: rgba(0,0,0,0.7)">
-      <div class="popUpCardClass" style="width: 90%;background-color: white;top:20px;padding: 20px;bottom: 20px;transform: translateX(-50%);border-radius: 3px">
+      <div class="popUpCardClass"
+           style="width: 90%;background-color: white;top:20px;padding: 20px;bottom: 20px;transform: translateX(-50%);border-radius: 3px">
         <div style="border: 1px solid #a9a8a8;height: 100%;border-radius: 3px">
           <clients-list
             @closeDialog="closeClientsListDialog"
@@ -79,6 +82,7 @@
     </div>
     <change-balans-form v-if="balanceDialog" :diller="selectedDiller" @closeDialog="closeBalanceDialog"/>
     <balance-history v-if="balanceHistoryDialog" :diller="selectedDiller" @closeDialog="closeBalanceHistoryDialog"/>
+    <fill-u-p-balans-form v-if="fillUpBalance" :diller="selectedDiller" @closeDialog="closeFillUpDialog"/>
   </div>
 </template>
 
@@ -92,9 +96,11 @@ import LoadingComponent from "../../components/LoadingComponent";
 import ClientsList from "../../components/clients/ClientsList";
 import ChangeBalansForm from "../../components/diller/ChangeBalansForm";
 import BalanceHistory from "../../components/diller/BalanceHistory";
+import FillUPBalansForm from "../../components/diller/FillUPBalansForm";
 
 export default {
   components: {
+    FillUPBalansForm,
     BalanceHistory,
     ChangeBalansForm,
     ClientsList, LoadingComponent, ErrorComponent, DeleteConfirmDialog, ChangePasswordForm, DillerForm
@@ -107,7 +113,7 @@ export default {
         {text: 'Telefon belgisi', value: 'phone_number'},
         {text: 'Skidka:', value: "skidka", width: '200px'},
         {text: 'Kardlar:', value: "client_count"},
-        {text: "Balans", value: "balans", width: '15%'},
+        {text: "Balans", value: "balans", width: '20%'},
         {text: "Hereketler", value: "actions", align: "right", width: '10%'}
       ],
       isLoading: false,
@@ -122,7 +128,8 @@ export default {
       skidka: null,
       clientsListDialog: false,
       balanceDialog: false,
-      balanceHistoryDialog: false
+      balanceHistoryDialog: false,
+      fillUpBalance: false
     }
   },
   methods: {
@@ -134,6 +141,14 @@ export default {
     initData() {
       this.page = 1
       this.resetData()
+    },
+    openFillUpBalance(item) {
+      this.selectedDiller = item
+      this.fillUpBalance = true
+    },
+    closeFillUpDialog() {
+      this.selectedDiller = null
+      this.fillUpBalance = false
     },
     openBalanceHistoryDialog(item) {
       this.selectedDiller = item
