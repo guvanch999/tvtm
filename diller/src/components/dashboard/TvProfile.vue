@@ -5,7 +5,6 @@
         <div v-if="!isLoading" class="container">
           <h1>{{ $t("profile.h1") }}</h1>
 
-          <base-load v-if="isLoading"></base-load>
           <!-- Profile Info -->
           <base-card class="large_profile__cards-card-1">
             <div class="profile__cards--avatar">
@@ -408,11 +407,9 @@
 <script>
 import { MqResponsive } from "vue3-mq";
 import { mapActions, mapGetters } from "vuex";
-import BaseLoad from "../UI/BaseLoad.vue";
 
 export default {
   components: {
-    BaseLoad,
     MqResponsive,
   },
   data() {
@@ -503,8 +500,9 @@ export default {
 </script>
 <style scoped>
 .container {
+  height: 100vh;
   margin: 10px 0 0 15px;
-  border-top-left-radius: 10px;
+  border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
   font-weight: "Plus Jakarta Sans";
   padding: 10px 30px;
@@ -674,6 +672,13 @@ form input {
   }
   .profile__cards--field {
     width: 400px;
+  }
+
+  @media (width<990px) {
+    .container {
+      height: auto;
+      margin: 0;
+    }
   }
 }
 @media (width<=600px) {

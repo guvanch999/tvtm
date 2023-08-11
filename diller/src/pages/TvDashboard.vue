@@ -18,7 +18,7 @@
               <div class="large_sidebar__logo">
                 <router-link
                   to="/"
-                  style="width: 200px; height: 10%; max-width: 200px"
+                  style="width: 150px; height: 10%; min-width: 100px"
                 >
                   <img src="../assets/tv-yzyndan.svg" alt="Pursat TV Icon" />
                 </router-link>
@@ -165,23 +165,6 @@
           </div>
         </div>
 
-        <form style="height: 30%">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M17.3952 15.9761C19.852 12.8209 19.63 8.25612 16.7295 5.3556C13.5887 2.2148 8.49642 2.2148 5.35561 5.3556C2.2148 8.49642 2.2148 13.5887 5.35561 16.7295C8.25614 19.63 12.821 19.8519 15.9762 17.3952C15.9897 17.4106 16.0039 17.4257 16.0186 17.4403L20.2838 21.7055C20.6764 22.0982 21.313 22.0982 21.7056 21.7055C22.0981 21.3129 22.0981 20.6764 21.7056 20.2838L17.4404 16.0186C17.4256 16.0039 17.4105 15.9898 17.3952 15.9761ZM15.2426 6.75737C17.5858 9.10051 17.5858 12.8995 15.2426 15.2427C12.8995 17.5858 9.1005 17.5858 6.75736 15.2427C4.41421 12.8995 4.41421 9.10051 6.75736 6.75737C9.1005 4.41421 12.8995 4.41421 15.2426 6.75737Z"
-              fill="#8f92a1"
-            />
-          </svg>
-          <input type="search" placeholder="Search" />
-        </form>
         <div style="display: flex; align-items: center; gap: 5px">
           <the-switcher></the-switcher>
 
@@ -351,23 +334,6 @@
       </div>
       <div class="main">
         <div class="main__header">
-          <form>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M17.3952 15.9761C19.852 12.8209 19.63 8.25612 16.7295 5.3556C13.5887 2.2148 8.49642 2.2148 5.35561 5.3556C2.2148 8.49642 2.2148 13.5887 5.35561 16.7295C8.25614 19.63 12.821 19.8519 15.9762 17.3952C15.9897 17.4106 16.0039 17.4257 16.0186 17.4403L20.2838 21.7055C20.6764 22.0982 21.313 22.0982 21.7056 21.7055C22.0981 21.3129 22.0981 20.6764 21.7056 20.2838L17.4404 16.0186C17.4256 16.0039 17.4105 15.9898 17.3952 15.9761ZM15.2426 6.75737C17.5858 9.10051 17.5858 12.8995 15.2426 15.2427C12.8995 17.5858 9.1005 17.5858 6.75736 15.2427C4.41421 12.8995 4.41421 9.10051 6.75736 6.75737C9.1005 4.41421 12.8995 4.41421 15.2426 6.75737Z"
-                fill="#8f92a1"
-              />
-            </svg>
-            <input type="search" placeholder="Search" />
-          </form>
           <div style="display: flex; align-items: center; gap: 30px">
             <the-switcher></the-switcher>
 
@@ -495,16 +461,17 @@ a.router-link-active .svg {
 }
 
 .main {
-  height: 100vh;
   width: 100%;
+  height: 100vh;
   margin-left: 250px;
+  padding: 20px;
+  /* height: 100vh; */
 }
 
 .main__header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 100px;
-  padding: 10px 20px;
 }
 
 .main__header form {
@@ -529,11 +496,9 @@ a.router-link-active .svg {
   font-weight: 500;
   font-size: 16px;
 }
-
 .main__main {
   height: 100vh;
 }
-
 .user-info {
   display: flex;
   align-items: center;
@@ -564,6 +529,7 @@ a.router-link-active .svg {
   font-family: "DM Sans", "Mulish";
   height: 100%;
   width: 100%;
+  padding: 20px;
 }
 
 .large_main__header {

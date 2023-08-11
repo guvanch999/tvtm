@@ -366,6 +366,9 @@ span {
             button {
               padding: 10px !important;
             }
+            .cards {
+              gap: 5px;
+            }
           }
         }
       }

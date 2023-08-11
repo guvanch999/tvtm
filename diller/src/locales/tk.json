@@ -167,14 +167,15 @@
     "p-3": "Arzanladyşyk:",
     "p-4": "Jemi töleg:",
     "h2": "Bukjalar",
-    "label": "Mohleti girizin",
+    "label": "Möhleti giriziň(aý):",
     "btn": "Tolegi gecirmek"
   },
   "card-change": {
     "form": {
       "label-1": "Kartyň nomeri",
       "label-2": "Täze kartyň nomeri",
-      "label-3": "Sebäbini ýazyň!"
+      "label-3": "Sebäbini ýazyň!",
+      "reason": "Sebäbi,"
     },
     "btn-1": "Yza",
     "btn-2": "Üýtgetmek"
@@ -186,11 +187,26 @@
       "label-2": "Telefon belgisi",
       "label-3": "Ady",
       "label-4": "Şäher",
-      "label-5": "Týuneriň modeli"
+      "label-5": "Týuneriň modeli",
+      "label-6": "Möhleti giriziň(aý):",
+      "label-7": "Bellik:"
     },
     "btn": "Kart goşmak",
     "balance": "Siziň balansyňyz:",
     "off": "Arzanladyşyk:",
     "total": "Jemi töleg:"
+  },
+  "the-confirm": {
+    "h1": "Töleg tassyklama",
+    "h2": "Siz dogrydanam töleg geçirmek isleýärsiňizmi?",
+    "btn-1": "Yza",
+    "btn-2": "Hawa"
+  },
+  "the-succes": {
+    "h1-valid": "Töleg amala aşyryldy!",
+    "h1-invalid": "Töleg amala aşyrylmady!",
+    "h2-valid": "Siziň tölegiňiz kabul edilid",
+    "h2-invalid": "Siziň tölegiňiz kabul edilmedi. Täzeden synanşmagyňyzy haýyşt edýaris...",
+    "btn": "Dowam ed"
   }
 }

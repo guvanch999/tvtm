@@ -85,20 +85,29 @@
                   />
                 </div>
                 <div class="card__div">
-                  <label>Srok:</label>
                   <p class="validation" v-if="!end">Doly möhletini belläň</p>
-                  <input
+                  <div class="term">
+                    {{ $t("add-card.form.label-6") }}
+                    <select name="term" id="term" v-model="cardModel.srok">
+                      <optgroup>
+                        <option v-for="term in terms" :key="term" :value="term">
+                          {{ term }}
+                        </option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <!-- <input
                     v-model="cardModel.srok"
                     class="user__info"
                     type="number"
                     id="model"
                     :class="{ invalid: !end }"
                     @blur="clearValidity('end')"
-                  />
+                  /> -->
                 </div>
 
                 <div class="card__div">
-                  <label>Bellik:</label>
+                  <label>{{ $t("add-card.form.label-7") }}</label>
                   <p class="validation" v-if="!not">Bellik ýazyň</p>
                   <input
                     v-model="cardModel.note"
@@ -246,6 +255,7 @@ export default {
     return {
       isLoading: false,
       selectedPacket: null,
+      terms: [...Array(12).keys()].map((i) => i + 1),
       cardModel: {
         cardnumber: null,
         telnumber: null,
@@ -466,7 +476,8 @@ label {
   padding: 5px;
 }
 
-input {
+input,
+.term {
   outline: none;
   width: 100%;
   padding: 10px;
@@ -474,6 +485,18 @@ input {
   border-radius: 10px;
 }
 
+.term select {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.term option {
+  font-size: 16px;
+  background-color: rgba(61, 92, 183, 0.2);
+  padding: 8px 16px;
+  cursor: pointer;
+}
 /* Prices */
 .information__container {
   height: 400px;

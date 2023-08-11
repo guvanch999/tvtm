@@ -172,8 +172,9 @@ export default {
 
 <style scoped>
 .container {
+  height: 100vh;
   margin: 10px 0 0 15px;
-  border-top-left-radius: 10px;
+  border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
   font-weight: bolder;
   padding: 10px 30px;
@@ -313,9 +314,6 @@ tr:first-child {
       @media (width<=470px) {
         .container {
           padding: 10px 15px;
-        }
-        .filter__search form {
-          width: 260px;
         }
       }
     }

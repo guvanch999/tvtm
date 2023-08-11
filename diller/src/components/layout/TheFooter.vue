@@ -3,8 +3,8 @@
     <div class="logo">
       <img
         src="../../assets/tv-yzyndan.svg"
-        alt=""
-        style="width: 60%; height: 60%"
+        alt="Logo icon"
+        style="width: 150px; min-width: 100px"
       />
     </div>
 
@@ -16,7 +16,7 @@
       </ul> -->
 
     <div>
-      <div style="display: flex; align-items: center; gap: 20px">
+      <div class="contact">
         <p>{{ $t("footer.phone") }} +99365656565</p>
         <p>{{ $t("footer.email") }} pursattv@gmail.com</p>
       </div>
@@ -37,25 +37,19 @@ footer {
   align-items: center;
   font-family: "Mulish";
 }
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-@media (width<=1200px) {
-  footer nav {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
+@media (width<=800px) {
+  .contact {
+    display: block;
   }
-  @media (width<=950px) {
-    footer nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .logo {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
+  @media (width<=560px) {
+    footer {
+      display: block;
     }
   }
 }

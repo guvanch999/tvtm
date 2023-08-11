@@ -513,8 +513,9 @@ export default {
 
 <style scoped>
 .container {
+  height: 100vh;
   margin: 10px 0 0 15px;
-  border-top-left-radius: 10px;
+  border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
   font-weight: "500";
   padding: 10px 30px;
@@ -579,6 +580,12 @@ a.router-link-active .stroke {
 a:hover .fill,
 a.router-link-active .fill {
   fill: white;
+}
+
+@media (width<=1100px) {
+  .container {
+    height: auto;
+  }
 }
 @media (width<=1060px) {
   ul {

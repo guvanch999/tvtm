@@ -4,7 +4,6 @@ import router from "./router";
 import store from "./store";
 import { Vue3Mq } from "vue3-mq";
 
-import BaseDialog from "./components/UI/BaseDialog";
 import BaseSmall from "./components/UI/BaseSmall";
 import BaseButton from "./components/UI/BaseButton";
 import BaseCard from "./components/UI/BaseCard";
@@ -19,7 +18,6 @@ app.use(Vue3Mq, {
 });
 app.component("base-button", BaseButton);
 app.component("base-card", BaseCard);
-app.component("base-dialog", BaseDialog);
 app.component("base-small", BaseSmall);
 
 app.mount("#app");

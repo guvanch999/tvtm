@@ -57,14 +57,24 @@
           </div>
 
           <div class="controls">
-            <form>
+            <div class="term">
+              {{ $t("card-buy.label") }}
+              <select name="term" id="term" v-model="srok">
+                <optgroup>
+                  <option v-for="term in terms" :key="term" :value="term">
+                    {{ term }}
+                  </option>
+                </optgroup>
+              </select>
+            </div>
+            <!-- <form>
               <p v-if="false" class="box__two--error">
                 Üns beriň! Bukjany üýtgetmek, diňe öňki bukjaňyzyň möhleti dolan
                 bolsa rugsat berilýär!
               </p>
               <label>{{ $t("card-buy.label") }}</label>
               <input type="number" />
-            </form>
+            </form> -->
             <div>
               <base-button @click="buyOrExtendHandler" class="box__two--btn-2"
                 >{{ $t("card-buy.btn") }}
@@ -120,14 +130,24 @@
           </div>
 
           <div class="controls">
-            <form>
+            <div class="term">
+              {{ $t("card-buy.label") }}
+              <select name="term" id="term" v-model="srok">
+                <optgroup>
+                  <option v-for="term in terms" :key="term" :value="term">
+                    {{ term }}
+                  </option>
+                </optgroup>
+              </select>
+            </div>
+            <!-- <form>
               <p v-if="false" class="box__two--error">
                 Üns beriň! Bukjany üýtgetmek, diňe öňki bukjaňyzyň möhleti dolan
                 bolsa rugsat berilýär!
               </p>
               <label>{{ $t("card-buy.label") }}</label>
               <input type="number" v-model="srok" />
-            </form>
+            </form> -->
             <div>
               <base-button @click="buyOrExtendHandler" class="box__two--btn-2"
                 >{{ $t("card-buy.btn") }}
@@ -137,21 +157,44 @@
         </div>
       </div>
     </MqResponsive>
+    <the-confirm
+      v-if="active"
+      @close-confirm="close"
+      @confirm="confirmBuy"
+      :active="isLoading"
+    ></the-confirm>
+    <the-success
+      :show="success.show"
+      :valid="success.valid"
+      :invalid="success.invalid"
+      @close-success="closeSuccess"
+    ></the-success>
   </div>
 </template>
 <script>
 import { mapActions, mapGetters } from "vuex";
 import { MqResponsive } from "vue3-mq";
+import TheConfirm from "@/components/layout/TheConifrm.vue";
+import TheSuccess from "@/components/layout/TheSuccess.vue";
 
 export default {
   components: {
+    TheConfirm,
+    TheSuccess,
     MqResponsive,
   },
   data() {
     return {
+      active: false,
       isLoading: false,
+      success: {
+        show: false,
+        valid: false,
+        invalid: false,
+      },
+      terms: [...Array(12).keys()].map((i) => i + 1),
       selectedPacket: null,
-      srok: 0,
+      srok: 1,
     };
   },
   methods: {
@@ -159,7 +202,15 @@ export default {
       buyOrExtend: "cards/buyOrExtend",
       loadPackets: "packets/loadPackets",
     }),
-    async buyOrExtendHandler() {
+    close() {
+      this.active = false;
+    },
+    closeSuccess() {
+      this.success.show = false;
+    },
+
+    async confirmBuy() {
+      if (this.isLoading) return;
       this.isLoading = true;
       try {
         await this.buyOrExtend({
@@ -169,12 +220,22 @@ export default {
             srok: this.srok,
           },
         });
-        this.selectedPacket = null;
-        this.srok = 0;
+        this.success.show = true;
+        this.success.valid = true;
       } catch (e) {
         this.$store.commit("set_error", "Cannot handle request");
+        this.active = false;
+        this.success.show = true;
+        this.success.invalid = true;
       }
       this.isLoading = false;
+      this.selectedPacket = null;
+      this.srok = 0;
+      this.active = false;
+    },
+
+    buyOrExtendHandler() {
+      this.active = true;
     },
   },
   computed: {
@@ -194,7 +255,7 @@ export default {
   /* display: flex; */
   font-family: "Mulish";
   justify-content: space-between;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 35px;
   margin: 0;
@@ -315,6 +376,25 @@ input {
   align-items: flex-end;
 }
 
+.term {
+  font-family: "Mulish";
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #3d5cb7;
+}
+.term select {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.term option {
+  font-size: 16px;
+  background-color: rgba(61, 92, 183, 0.2);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
 .box__two--error {
   color: red;
   font-weight: 600;
@@ -337,6 +417,7 @@ input {
 }
 
 .card {
+  width: 450px;
   border: 1px solid transparent;
 }
 
@@ -346,7 +427,19 @@ input {
 
 @media (width<=1750px) {
   .box__cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 500px);
+  }
+
+  @media (width<=1100px) {
+    .container {
+      height: auto;
+    }
+    .box__cards {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   @media (width<=750px) {
@@ -357,9 +450,6 @@ input {
       width: 400px !important;
     }
 
-    .box__cards {
-      grid-template-columns: repeat(1, 1fr);
-    }
     .controls {
       gap: 20px;
     }
