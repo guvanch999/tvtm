@@ -172,7 +172,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 100vh;
+  min-height: 100vh;
   margin: 10px 0 0 15px;
   border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
@@ -284,39 +284,50 @@ tr:first-child {
     width: 400px;
   }
 
-  @media (width<=690px) {
-    .filter {
-      padding: 20px !important;
-    }
 
-    .filter__search {
-      display: block;
-    }
-    .filter_number {
-      margin-top: 10px;
-      width: 100%;
-    }
-    .filter__search form {
-      width: 100%;
-    }
-    table th,
-    table td {
-      font-size: 14px;
-    }
+}
+@media (width<=690px) {
+  .filter {
+    padding: 20px !important;
+  }
 
-    @media (width<=590px) {
-      .filter__filter {
-        overflow-y: scroll;
-      }
-      .filter {
-        padding: 15px !important;
-      }
-      @media (width<=470px) {
-        .container {
-          padding: 10px 15px;
-        }
-      }
-    }
+  .filter__search {
+    display: block;
+  }
+  .filter_number {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+  }
+  #filter{
+    flex: 1;
+    text-align: right;
+  }
+  .filter__search form {
+    width: 100%;
+  }
+  table th,
+  table td {
+    font-size: 14px;
+  }
+
+
+}
+@media (width<=590px) {
+  .filter__filter {
+    overflow-y: scroll;
+  }
+  .filter {
+    padding: 15px !important;
+  }
+
+  .container {
+    min-height: 100vh;
+    margin: 5px 0 0 0;
+    border-radius: 10px;
+    background-color: rgba(141, 143, 161, 0.1);
+    font-weight: bolder;
+    padding: 5px 10px;
   }
 }
 </style>

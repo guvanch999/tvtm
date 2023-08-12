@@ -2,14 +2,14 @@
   <mq-responsive target="sm-">
     <li>
       <div class="responsive_header">
-        <img src="../../../assets/tv-yzyndan-small.png" alt="Pursat Tv Icon" />
+        <img id="news-item-logo" src="../../../assets/tv-yzyndan.svg" alt="Pursat Tv Icon" />
         <div>
           <h1>{{ title }}</h1>
-          <p class="responsive_date">{{ date }}</p>
+          <div class="responsive_date">{{ date }}</div>
         </div>
       </div>
       <div>
-        <p v-html="text"></p>
+        <div v-html="text"></div>
       </div>
     </li>
   </mq-responsive>
@@ -78,5 +78,27 @@ p {
 }
 .responsive_date {
   color: #a8a8a8;
+}
+
+@media (width<=800px) {
+  #news-item-logo{
+    width: 150px;
+  }
+  h1{
+    font-size: 16px;
+  }
+}
+@media (width<=490px) {
+  #news-item-logo{
+    width: 100px;
+  }
+  h1{
+    font-size: 20px;
+    line-height: 15px;
+  }
+  .responsive_date{
+    font-size: 16px;
+
+  }
 }
 </style>

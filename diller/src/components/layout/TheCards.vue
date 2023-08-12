@@ -269,9 +269,8 @@ export default {
 .card__item {
   margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-self: center;
-  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
   width: 400px;
   background-color: white;
 }
@@ -282,7 +281,6 @@ export default {
   align-items: center;
   font-weight: 700;
   font-size: 47px;
-  line-height: 80px;
 }
 
 span {
@@ -292,87 +290,79 @@ span {
   color: #a8a8a8;
 }
 
-@media (width<=1600px) {
-  .cards {
-    gap: 20px;
+@media (width<=920px) {
+  .card__item {
+    padding: 20px !important;
   }
-  @media (width<=1020px) {
-    .card__image {
-      width: 70px;
-      height: 70px;
-    }
+  .card__info {
+    font-size: 42px;
+  }
+  span {
+    font-size: 20px;
+  }
+  @media (width<=860px) {
     .card__item {
-      padding: 25px !important;
+      padding: 15px !important;
     }
     .card__info {
-      font-size: 44px;
+      font-size: 40px;
     }
     span {
-      font-size: 22px;
+      font-size: 18px;
     }
-    @media (width<=920px) {
+    @media (width<=810px) {
       .card__item {
-        padding: 20px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
-      .card__info {
-        font-size: 42px;
-      }
-      span {
-        font-size: 20px;
-      }
-      @media (width<=860px) {
-        .card__item {
-          padding: 15px !important;
-        }
-        .card__info {
-          font-size: 40px;
-        }
-        span {
-          font-size: 18px;
-        }
-        @media (width<=810px) {
-          .card__item {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
 
-          @media (width<=720px) {
-            .header h1 {
-              font-size: 28px;
-            }
-            @media (width<=670px) {
-              .header h1 {
-                font-size: 24px;
-              }
-              .header button {
-                padding: 10px !important;
-              }
-              @media (width<=570px) {
-                span {
-                  font-size: 14px;
-                }
-                .header button {
-                  margin-bottom: 10px;
-                }
-              }
-            }
+      @media (width<=720px) {
+        .header h1 {
+          font-size: 28px;
+        }
+        @media (width<=670px) {
+          .header h1 {
+            font-size: 24px;
           }
-          @media (width<=510px) {
+          .header button {
+            padding: 10px !important;
+          }
+          @media (width<=570px) {
             span {
-              font-size: 11px;
+              font-size: 14px;
             }
-            button {
-              padding: 10px !important;
-            }
-            .cards {
-              gap: 5px;
+            .header button {
+              margin-bottom: 10px;
             }
           }
         }
       }
+
     }
+  }
+}
+@media (width<=510px) {
+  span {
+    font-size: 13px;
+  }
+  button {
+    padding: 5px !important;
+  }
+  .cards {
+    gap: 5px;
+  }
+
+  .cards svg{
+    width: 50px;
+    height: 50px;
+  }
+  .card__info{
+    font-size: 30px;
+  }
+  .header h1{
+    font-size: 20px;
   }
 }
 </style>

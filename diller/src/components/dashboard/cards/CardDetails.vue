@@ -513,13 +513,13 @@ export default {
 
 <style scoped>
 .container {
-  height: 100vh;
+  min-height: 100vh;
   margin: 10px 0 0 15px;
   border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
-  font-weight: "500";
+  font-weight: 500;
   padding: 10px 30px;
-  font-family: "Mulish";
+  font-family: "Mulish",sans-serif;
 }
 
 .card-number {
@@ -593,8 +593,11 @@ a.router-link-active .fill {
     font-size: 14px;
   }
   @media (width<=450px) {
-    .container {
-      padding: 10px 15px;
+    .container{
+      border-radius: 10px;
+      font-weight: 500;
+      padding: 10px 10px;
+      margin: 0;
     }
   }
 }
@@ -639,4 +642,5 @@ a.router-link-active {
 .fade-leave-active {
   transition: opacity 0.5s ease-out;
 }
+
 </style>

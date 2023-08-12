@@ -2,7 +2,7 @@
   <MqResponsive target="sm-">
     <header :class="{ register: lang }">
       <nav>
-        <router-link to="/" style="width: 200px; height: 10%; max-width: 200px">
+        <router-link to="/" id="header-image" style=" height: 10%; max-width: 200px">
           <img src="../../assets/tv-yzyndan.svg" alt="Pursat TV Icon" />
         </router-link>
 
@@ -293,11 +293,26 @@ ul a {
 @media (width<=800px) {
   header nav {
     width: 75%;
+
   }
-  @media (width<=490px) {
-    header nav {
-      width: 95%;
-    }
+  header{
+    height: 70px;
+  }
+  #header-image{
+    width: 150px;
+  }
+
+}
+@media (width<=490px) {
+  header nav {
+    width: 95%;
+
+  }
+  header{
+    height: 50px;
+  }
+  #header-image{
+    width: 100px;
   }
 }
 </style>

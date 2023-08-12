@@ -1,8 +1,8 @@
 <template>
   <div class="locale-changer">
     <select name="languages" id="languages" @change="setLocale()">
-      <option value="tk">Türkmen(TKM)</option>
-      <option value="ru">Rus(RU)</option>
+      <option value="tk">Türkmen</option>
+      <option value="ru">Rus</option>
     </select>
   </div>
 </template>

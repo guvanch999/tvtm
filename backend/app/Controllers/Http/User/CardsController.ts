@@ -201,9 +201,12 @@ export default class CardsController {
       .where('diller_id', auth.use("api_diller")?.user?.id ?? 0)
       .firstOrFail()
 
+    let packet = await Packet.findBy('packet', card.packet)
+
     return response.ok({
       success: true,
-      data: card
+      data: card,
+      packet
     })
   }
 

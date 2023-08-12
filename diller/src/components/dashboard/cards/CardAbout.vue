@@ -555,7 +555,7 @@ form input {
           .price_container {
             width: 300px;
           }
-
+          md_card-info
           .user__info {
             width: 300px;
           }

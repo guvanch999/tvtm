@@ -84,10 +84,10 @@ export default {
 <style scoped>
 div {
   margin: 10px 0 0 15px;
- border-radius: 10px;
+  border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
   padding: 10px 30px;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 h1 {
@@ -99,5 +99,30 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+@media (width<=800px) {
+  h1 {
+    font-size: 20px;
+    line-height: 25px;
+  }
+  div {
+    margin: 5px 0 0 10px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    min-height: 100vh;
+  }
+}
+@media (width<=590px) {
+  h1 {
+    font-size: 20px;
+    line-height: 15px;
+  }
+  div {
+    margin: 5px 0 0 5px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    min-height: 100vh;
+  }
+
 }
 </style>
