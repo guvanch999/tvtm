@@ -41,7 +41,7 @@
             </div>
           </div>
 
-          <form class="card__user-info">
+          <form class="card__user-info" style="margin: 0;padding: 0">
             <div class="card__div">
               <label>{{ $t("card-about.form.label-1") }}</label>
               <p class="validation" v-if="!tel">Nädogry telefon belgi</p>
@@ -396,7 +396,6 @@ export default {
 }
 
 .card__div {
-  margin-top: 15px;
 }
 
 .user__info {
@@ -555,7 +554,7 @@ form input {
           .price_container {
             width: 300px;
           }
-          md_card-info
+          .md_card-info
           .user__info {
             width: 100%;
           }
@@ -571,9 +570,9 @@ form input {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    border-radius: 12px;
+    border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 35px;
+    padding: 15px;
     margin: 0;
     background-color: white;
   }
@@ -593,6 +592,7 @@ form input {
 
   .md_date {
     margin-top: 10px;
+    padding: 5px;
   }
 
   .md_price__header {

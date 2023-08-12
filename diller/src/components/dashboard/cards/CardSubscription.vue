@@ -1,5 +1,6 @@
 <template>
   <div class="subscr">
+    <div style="width: 100%;overflow-x: auto;">
     <table>
       <tr>
         <th>{{ $t("card-sub.table.th-1") }}</th>
@@ -19,6 +20,7 @@
         <td>{{ history.action }}</td>
       </tr>
     </table>
+    </div>
     <the-pagination
       :page-count="page_count"
       :click-handler="pageChanged"
@@ -91,18 +93,19 @@ export default {
 </script>
 <style scoped>
 .subscr {
-  font-family: "Mulish";
+  font-family: "Mulish",sans-serif;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 35px;
+  padding: 15px;
   margin: 0;
   background-color: white;
-  overflow-y: scroll;
+
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
+
 }
 
 th,

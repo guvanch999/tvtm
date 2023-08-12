@@ -123,11 +123,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Mulish";
+  font-family: "Mulish",sans-serif;
 }
 
 .cards_container {
-  width: 70%;
+  width: 80%;
   display: flex;
 }
 
