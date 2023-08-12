@@ -544,7 +544,7 @@ form input {
         }
 
         .user__info {
-          width: 350px;
+          width: 100%;
         }
 
         button {
@@ -557,7 +557,7 @@ form input {
           }
           md_card-info
           .user__info {
-            width: 300px;
+            width: 100%;
           }
         }
       }

@@ -302,6 +302,13 @@ export default {
   justify-content: space-between;
 }
 
+.filter_number{
+  display: flex;
+}
+#filter{
+  flex: 1;
+  text-align: right;
+}
 .filter__search form {
   width: 500px;
   display: flex;
@@ -389,6 +396,10 @@ tr:first-child {
 
       .btn {
         padding: 10px;
+      }
+      .container{
+        margin: 0;
+        padding: 5px;
       }
       @media (width<=420px) {
         .header h1 {

@@ -1,11 +1,9 @@
 <template>
   <div>
     <router-view v-slot="slotProps">
-      <transition name="fade" mode="out-in">
-        <component :is="slotProps.Component"></component>
-      </transition>
+      <component :is="slotProps.Component"></component>
     </router-view>
-    <error-component />
+    <error-component/>
   </div>
 </template>
 
@@ -35,7 +33,7 @@ body {
 import ErrorComponent from "@/components/ErrorComponent";
 
 export default {
-  components: { ErrorComponent },
+  components: {ErrorComponent},
 };
 </script>
 <style>
@@ -43,6 +41,7 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease-out;

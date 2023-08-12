@@ -500,11 +500,11 @@ export default {
 </script>
 <style scoped>
 .container {
-  height: 100vh;
+  min-height: 100vh;
   margin: 10px 0 0 15px;
   border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
-  font-weight: "Plus Jakarta Sans";
+  font-family: "Plus Jakarta Sans",sans-serif;
   padding: 10px 30px;
 }
 
@@ -702,10 +702,20 @@ form input {
   @media (width<=500px) {
     .large_profile__cards-card-1,
     .large_profile__cards-card-2 {
-      width: 300px !important;
+      width: 300px!important;
     }
     .large_profile__cards--field {
-      width: 230px;
+      width: 100%;
+    }
+    .container{
+      margin: 0px 0 0 0px;
+      border-radius: 10px;
+      background-color: rgba(141, 143, 161, 0.1);
+      font-family: "Plus Jakarta Sans",sans-serif;
+      padding: 5px 5px
+    }
+    h1{
+      font-size: 20px;
     }
   }
 }

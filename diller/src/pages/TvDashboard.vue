@@ -526,10 +526,10 @@ a.router-link-active .svg {
 
 /* NOTE LARGRE */
 .large_main {
-  font-family: "DM Sans", "Mulish";
+  font-family: "DM Sans", "Mulish",sans-serif;
   height: 100%;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
 }
 
 .large_main__header {
