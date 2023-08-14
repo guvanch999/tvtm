@@ -31,15 +31,29 @@ export default class CardsController {
     let page: number = request.qs().page || 1
     let limit: number = request.qs().limit || 20
     let query: string = request.qs().query || ''
+    if (!diller) {
+      throw new HttpException('Not logged in.', 401, 'E_UNAUTHORIZED_ACCESS')
+    }
 
-    let cards = await Client.query()
-      .whereRaw(`diller_id = ${diller?.id || 0} and (cardnumber like '%${query}%' or name like '%${query}%' or surname like '%${query}%' or telnumber like '%${query}%' or note like '%${query}%')`)
-      .paginate(page, limit)
+    let cards = Client.query()
+    cards.where('diller_id', diller.id)
+
+    cards.where(function (qu) {
+      qu.orWhereILike('cardnumber', `%${query}%`)
+      qu.orWhereILike('name', `%${query}%`)
+      qu.orWhereILike('surname', `%${query}%`)
+      qu.orWhereILike('telnumber', `%${query}%`)
+      qu.orWhereILike('note', `%${query}%`)
+    })
+
+
+
+    let data = await cards.paginate(page, limit)
 
     return response.ok({
       success: true,
-      data: cards.all(),
-      total: cards.total
+      data: data.all(),
+      total: data.total
     })
   }
 

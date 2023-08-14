@@ -11,8 +11,8 @@ export default class LogsController {
     if (filter_data.diller_id) query.where('diller_id', filter_data.diller_id)
     if (filter_data.search) {
       query.where(function (){
-        query.orWhereLike('action', `%${filter_data.search}%`)
-        query.orWhereLike('cardnumber', `%${filter_data.search}%`)
+        query.orWhereILike('action', `%${filter_data.search}%`)
+        query.orWhereILike('cardnumber', `%${filter_data.search}%`)
       })
 
     }
