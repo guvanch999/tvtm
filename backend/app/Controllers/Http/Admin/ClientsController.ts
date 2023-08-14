@@ -29,14 +29,14 @@ export default class ClientsController {
     if (filter.diller_id) query.where('diller_id', filter.diller_id)
     if (filter.search) {
       query.where(function (qu) {
-        qu.orWhere("cardnumber", 'like', `%${filter.search}%`)
-        qu.orWhere("name", 'like', `%${filter.search}%`)
-        qu.orWhere("surname", 'like', `%${filter.search}%`)
-        qu.orWhere("telnumber", 'like', `%${filter.search}%`)
-        qu.orWhere("adress", 'like', `%${filter.search}%`)
-        qu.orWhere("packet", 'like', `%${filter.search}%`)
-        qu.orWhere("resiver", 'like', `%${filter.search}%`)
-        qu.orWhere("note", 'like', `%${filter.search}%`)
+        qu.orWhere("cardnumber", 'ilike', `%${filter.search}%`)
+        qu.orWhere("name", 'ilike', `%${filter.search}%`)
+        qu.orWhere("surname", 'ilike', `%${filter.search}%`)
+        qu.orWhere("telnumber", 'ilike', `%${filter.search}%`)
+        qu.orWhere("adress", 'ilike', `%${filter.search}%`)
+        qu.orWhere("packet", 'ilike', `%${filter.search}%`)
+        qu.orWhere("resiver", 'ilike', `%${filter.search}%`)
+        qu.orWhere("note", 'ilike', `%${filter.search}%`)
       })
     }
 
