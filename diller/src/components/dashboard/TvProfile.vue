@@ -500,6 +500,7 @@ export default {
 </script>
 <style scoped>
 .container {
+  height: 100vh;
   min-height: 100vh;
   margin: 10px 0 0 15px;
   border-radius: 10px;
@@ -702,7 +703,7 @@ form input {
   @media (width<=500px) {
     .large_profile__cards-card-1,
     .large_profile__cards-card-2 {
-      width: 300px!important;
+      width: 90vw!important;
     }
     .large_profile__cards--field {
       width: 100%;

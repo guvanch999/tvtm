@@ -202,11 +202,18 @@
     "btn-1": "Yza",
     "btn-2": "Hawa"
   },
-  "the-succes": {
+  "the-success": {
     "h1-valid": "Töleg amala aşyryldy!",
     "h1-invalid": "Töleg amala aşyrylmady!",
-    "h2-valid": "Siziň tölegiňiz kabul edilid",
+    "h2-valid": "Siziň tölegiňiz kabul edildi",
     "h2-invalid": "Siziň tölegiňiz kabul edilmedi. Täzeden synanşmagyňyzy haýyşt edýaris...",
+    "btn": "Dowam ed"
+  },
+  "the-request": {
+    "h1-valid": "Siziň düzedişiňiz nobata goýuldy!",
+    "h2-invalid": "Düzedişiňiz administrator tarapyndan barlagdan geçýança garaşmagyňyzy haýyşt edýäris",
+    "h2-valid": "Düzedişiňizi täzeden girizmegiňizi haýyşt edýäris",
+    "h2-invalid": " Siziň düzedişiňiz nobata goýulmady!",
     "btn": "Dowam ed"
   }
 }

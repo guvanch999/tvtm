@@ -84,6 +84,10 @@ export default {
 <style scoped>
 div {
   margin: 10px 0 0 15px;
+ border-radius: 10px;
+  background-color: rgba(141, 143, 161, 0.1);
+  padding: 10px 30px;
+  height: 100vh;
   border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
   padding: 10px 30px;

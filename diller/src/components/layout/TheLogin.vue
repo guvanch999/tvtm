@@ -4,7 +4,7 @@
     <section>
       <form @submit.prevent="submitForm">
         <h1>{{ $t("login.h1") }}</h1>
-        <p>
+        <p style="text-align: center;">
           <span>
             {{ $t("login.span-1") }}
             <router-link :to="`/${$i18n.locale}/register`"
@@ -17,12 +17,30 @@
 
           <span class="form__span" id="phoneNumber">
             <svg
+              width="29"
+              height="28"
+              viewBox="0 0 29 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.0276 8.28042C19.0276 10.8073 16.9791 12.8558 14.4523 12.8558C11.9254 12.8558 9.87695 10.8073 9.87695 8.28042C9.87695 5.75353 11.9254 3.70508 14.4523 3.70508C16.9791 3.70508 19.0276 5.75353 19.0276 8.28042ZM16.74 8.28042C16.74 9.54387 15.7158 10.5681 14.4523 10.5681C13.1888 10.5681 12.1646 9.54387 12.1646 8.28042C12.1646 7.01697 13.1888 5.99275 14.4523 5.99275C15.7158 5.99275 16.74 7.01697 16.74 8.28042Z"
+                fill="#8F92A1"
+                :class="{ fill: !phoneNumber.isValid }"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.0272 17.4315C19.0272 16.7998 18.5151 16.2877 17.8834 16.2877H11.0204C10.3887 16.2877 9.87654 16.7998 9.87654 17.4315V24.2945H7.58887V17.4315C7.58887 15.5363 9.12521 14 11.0204 14H17.8834C19.7786 14 21.3149 15.5363 21.3149 17.4315V24.2945H19.0272V17.4315Z"
+                fill="#8F92A1"
+                :class="{ fill: !phoneNumber.isValid }"
                 width="29"
                 height="28"
                 viewBox="0 0 29 28"
-                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-            >
+              />
               <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
@@ -42,11 +60,12 @@
               +993
             </div>
             <input
-                type="tel"
-                id="phoneNumber"
-                :placeholder="`${$t('login.phone')}`"
-                v-model="phoneNumber.val"
-                @blur="clearValidity('phoneNumber')"
+              type="tel"
+              id="phoneNumber"
+              :placeholder="`${$t('login.phone')}`"
+              v-model="phoneNumber.val"
+              @blur="clearValidity('phoneNumber')"
+                
             />
           </span>
         </div>
@@ -55,27 +74,31 @@
           <p v-if="!password.isValid">* {{ $t("login.pass-error") }}</p>
           <span class="form__span" id="password">
             <svg
+              width="28"
+              height="28"
+              viewBox="0 0 28 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M20.5892 12.5167C22.4844 12.5167 24.0207 14.053 24.0207 15.9482V22.8112C24.0207 24.7064 22.4844 26.2427 20.5892 26.2427H6.86315C4.96798 26.2427 3.43164 24.7064 3.43164 22.8112V15.9482C3.43164 14.053 4.96798 12.5167 6.86315 12.5167V9.08518C6.86315 5.29484 9.93582 2.22217 13.7262 2.22217C17.5165 2.22217 20.5892 5.29484 20.5892 9.08518V12.5167ZM13.726 4.50974C16.2529 4.50974 18.3014 6.55819 18.3014 9.08508V12.5166H9.15068V9.08508C9.15068 6.55819 11.1991 4.50974 13.726 4.50974ZM20.589 14.8043H6.86301C6.2313 14.8043 5.71918 15.3164 5.71918 15.9481V22.8111C5.71918 23.4428 6.2313 23.9549 6.86301 23.9549H20.589C21.2208 23.9549 21.7329 23.4428 21.7329 22.8111V15.9481C21.7329 15.3164 21.2208 14.8043 20.589 14.8043Z"
+                fill="#8F92A1"
+                :class="{ fill: !password.isValid }"
+              />
+            </svg>
+            <input
+              type="password"
+              id="password"
+              :placeholder="`${$t('login.password')}`"
+              v-model="password.val"
+              @blur="clearValidity('password')"
                 width="28"
                 height="28"
                 viewBox="0 0 28 28"
                 fill="none"
-                xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M20.5892 12.5167C22.4844 12.5167 24.0207 14.053 24.0207 15.9482V22.8112C24.0207 24.7064 22.4844 26.2427 20.5892 26.2427H6.86315C4.96798 26.2427 3.43164 24.7064 3.43164 22.8112V15.9482C3.43164 14.053 4.96798 12.5167 6.86315 12.5167V9.08518C6.86315 5.29484 9.93582 2.22217 13.7262 2.22217C17.5165 2.22217 20.5892 5.29484 20.5892 9.08518V12.5167ZM13.726 4.50974C16.2529 4.50974 18.3014 6.55819 18.3014 9.08508V12.5166H9.15068V9.08508C9.15068 6.55819 11.1991 4.50974 13.726 4.50974ZM20.589 14.8043H6.86301C6.2313 14.8043 5.71918 15.3164 5.71918 15.9481V22.8111C5.71918 23.4428 6.2313 23.9549 6.86301 23.9549H20.589C21.2208 23.9549 21.7329 23.4428 21.7329 22.8111V15.9481C21.7329 15.3164 21.2208 14.8043 20.589 14.8043Z"
-                  fill="#8F92A1"
-                  :class="{ fill: !password.isValid }"
-              />
-            </svg>
-            <input
-                type="password"
-                id="password"
-                :placeholder="`${$t('login.password')}`"
-                v-model="password.val"
-                @blur="clearValidity('password')"
-            />
           </span>
         </div>
 
@@ -203,7 +226,6 @@ input {
   font: inherit;
   padding-left: 5px;
 }
-
 input:focus {
   outline: 0;
 }
@@ -223,9 +245,6 @@ h1 {
 }
 
 p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: 700;
   line-height: 23px;
   color: #8f92a1;
@@ -308,12 +327,18 @@ button {
     form {
       width: 400px;
     }
+    .btn__login:after{
+      left: 38%;
+    }
 
     @media (width<=450px
 
     ) {
       form {
         width: 300px;
+      }
+      .btn__login:after{
+        left: 34%;
       }
 
       form p {

@@ -34,21 +34,16 @@
       />
     </svg>
 
-    <h1 class="valid" v-if="valid">Siziň düzedişiňiz nobata goýuldy!</h1>
+    <h1 class="valid" v-if="valid">{{ $t("the-request.h1-valid") }}</h1>
     <h1 class="invalid" v-else-if="!valid && invalid">
-      Siziň düzedişiňiz nobata goýulmady!
+      {{ $t("the-request.h1-invalid") }}
     </h1>
-    <h2 v-if="valid">
-      Düzedişiňiz administrator tarapyndan barlagdan geçýança garaşmagyňyzy
-      haýyşt edýäris
-    </h2>
-    <h2 v-else-if="!valid && invalid">
-      Düzedişiňizi täzeden girizmegiňizi haýyşt edýäris
-    </h2>
+    <h2 v-if="valid">{{ $t("the-request.h2-valid") }}</h2>
+    <h2 v-else-if="!valid && invalid">{{ $t("the-request.h2-invalid") }}</h2>
     <base-button
       @click="closeRequest"
       :class="{ valid__btn: valid, invalid__btn: !valid && invalid }"
-      >Dowam ed</base-button
+      >{{ $t("the-request.btn") }}</base-button
     >
   </base-card>
 </template>

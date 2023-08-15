@@ -4,7 +4,7 @@
     <section>
       <form @submit.prevent="submitForm">
         <h1>{{ $t("register.h1") }}</h1>
-        <p>
+        <p style="text-align: center;">
           <span
             >{{ $t("register.span-1") }}
             <router-link :to="`/${$i18n.locale}/login`">
@@ -365,9 +365,7 @@ h1 {
 }
 
 p {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ 
   font-weight: 700;
   line-height: 23px;
   color: #8f92a1;
@@ -402,7 +400,7 @@ a {
 
 .btn__register {
   position: relative;
-  margin-top: 15px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -458,10 +456,16 @@ a {
     form {
       width: 400px;
     }
+    .btn__register:after{
+      left: 38%;
+    }
 
     @media (width<=450px) {
       form {
         width: 300px;
+      }
+      .btn__register:after{
+        left: 34%;
       }
 
       form h1 {

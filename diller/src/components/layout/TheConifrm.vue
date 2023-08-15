@@ -17,17 +17,19 @@
       </svg>
 
       <div>
-        <h1>{{ $t("confirm.h1") }}</h1>
-        <h2>{{ $t("confirm.h2") }}</h2>
+        <h1>{{ $t("the-confirm.h1") }}</h1>
+        <h2>{{ $t("the-confirm.h2") }}</h2>
       </div>
     </div>
     <div class="confirm__controls">
-      <base-button @click="closeConfirm">{{ $t("confirm.btn-1") }}</base-button>
+      <base-button @click="closeConfirm">{{
+        $t("the-confirm.btn-1")
+      }}</base-button>
       <base-button
         class="load__btn"
         @click="confirm"
         :class="{ active: active }"
-        >{{ $t("confirm.btn-2") }}</base-button
+        >{{ $t("the-confirm.btn-2") }}</base-button
       >
     </div>
   </base-card>

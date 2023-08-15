@@ -529,6 +529,7 @@ a.router-link-active .svg {
   font-family: "DM Sans", "Mulish",sans-serif;
   height: 100%;
   width: 100%;
+  padding: 20px;
   padding: 10px;
 }
 

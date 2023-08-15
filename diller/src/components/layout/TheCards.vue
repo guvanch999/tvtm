@@ -257,6 +257,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 5px;
 }
 
 .btn {
@@ -335,6 +336,9 @@ span {
             }
             .header button {
               margin-bottom: 10px;
+            }
+            .cards {
+              gap: 5px;
             }
           }
         }

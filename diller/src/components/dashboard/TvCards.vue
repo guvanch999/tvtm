@@ -172,6 +172,7 @@ export default {
 
 <style scoped>
 .container {
+  height: 100vh;
   min-height: 100vh;
   margin: 10px 0 0 15px;
   border-radius: 10px;
@@ -291,6 +292,19 @@ tr:first-child {
     padding: 20px !important;
   }
 
+    @media (width<=590px) {
+      .filter__filter {
+        overflow-y: scroll;
+      }
+      .filter {
+        padding: 15px !important;
+      }
+      @media (width<=470px) {
+        .container {
+          padding: 10px 15px;
+        }
+      }
+    }
   .filter__search {
     display: block;
   }

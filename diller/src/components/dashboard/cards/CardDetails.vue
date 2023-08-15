@@ -513,6 +513,7 @@ export default {
 
 <style scoped>
 .container {
+  height: 100vh;
   min-height: 100vh;
   margin: 10px 0 0 15px;
   border-radius: 10px;

@@ -39,20 +39,14 @@
   font-size: 38px;
   line-height: 46px;
   color: #3d5cb7;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .container h2,
 p {
   font-family: "Nunito";
   font-weight: 400;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 }
 
 .container h2 {

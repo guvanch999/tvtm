@@ -396,6 +396,7 @@ export default {
 }
 
 .card__div {
+  margin-bottom: 10px;
 }
 
 .user__info {

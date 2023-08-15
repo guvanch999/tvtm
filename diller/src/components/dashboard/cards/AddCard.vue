@@ -5,7 +5,7 @@
         <base-card class="add__container">
           <div>
             <!-- Adding Card -->
-            <h2>{{ $t("add-card.h1") }}</h2>
+            <h2 class="modal__head">{{ $t("add-card.h1") }}</h2>
             <div class="add">
               <form class="card__user-info">
                 <div class="card__div">
@@ -170,12 +170,11 @@
             </div>
 
             <!-- Button -->
-            <div style="display: flex; width: 100%">
+            <div style="display: flex; justify-content: center">
               <base-button
                 @click="addCardHandler"
                 class="add_btn"
                 :class="{ active: isLoading }"
-                style="flex: 1"
               >
                 <div class="btn__info" v-if="!isLoading">
                   <svg
@@ -236,6 +235,7 @@
           </div>
 
           <img
+            class="cross"
             src="../../../assets/cross-svg.svg"
             alt="Cross icon"
             style="cursor: pointer"
@@ -402,7 +402,7 @@ export default {
 .container {
   margin: 0;
   padding: 35px;
-  max-height: 80vh;
+  max-height: 100vh;
 }
 
 .add__container {
@@ -417,10 +417,7 @@ export default {
   display: flex;
   align-items: flex-start;
   gap: 100px;
-}
-
-.card {
-  border: 1px solid transparent;
+  overflow-y: auto;
 }
 
 .active {
@@ -439,6 +436,7 @@ export default {
 }
 
 .box__one--header-2 {
+  margin: 0;
   font-size: 18px;
   font-weight: 600;
   line-height: 29px;
@@ -454,12 +452,11 @@ export default {
 
 /* Kart form */
 .card__user-info {
-  padding: 10px;
+  padding: 20px;
   height: 400px;
   width: 500px;
   font-weight: 500;
   font-size: 14px;
-  overflow-y: auto;
 }
 
 .card__div {
@@ -500,8 +497,7 @@ input,
 /* Prices */
 .information__container {
   height: 400px;
-  overflow-y: auto;
-  padding: 10px;
+  padding: 20px;
 }
 a {
   text-decoration: none;
@@ -519,6 +515,7 @@ a {
 }
 
 .price__paragraph {
+  margin: 0;
   width: 200px;
   font-weight: 400;
   font-size: 14px;
@@ -608,15 +605,15 @@ a {
   top: 0;
   right: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 .modal-card {
   position: absolute;
-  top: 10vh;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
 }
 
 .validation {
@@ -635,6 +632,8 @@ a {
 
 @media (width<=1200px) {
   .add {
+    height: 400px;
+    overflow-y: auto;
     gap: 10px;
   }
   @media (width<=1000px) {
@@ -649,26 +648,87 @@ a {
         width: 300px;
       }
       @media (width<=750px) {
-        .card__user-info {
-          padding: 20px;
-        }
-        .information__container {
-          padding: 20px;
-        }
-        .container {
-          overflow-y: auto;
+       .modal-card {
+          top: 50vh;
+          width: 100%;
         }
         .add {
           display: block;
-          overflow-y: auto;
+          height: 65vh;
         }
-        @media (width<=500px) {
-          .add__container {
-            padding: 15px !important;
-            gap: 0px;
+        .modal__head {
+          margin: 5px;
+        }
+        .cross{
+          margin: 5px;
+        }
+ 
+        .add__container {
+          padding: 25px !important;
+          gap: 0;
+        }
+
+        .information__container {
+          padding: 10px;
+          width: 500px;
+        }
+        .card__user-info {
+          margin-bottom: 250px;
+          padding: 10px;
+          width: 500px;
+        }
+        .chanels-price{
+          justify-content: space-between;
+        }
+        .price__paragraph{
+          width: auto;
+        }
+        .add_btn{
+          width: 90%;
+        }
+        @media(width<=600px){
+          .card__user-info{
+            width: 400px;
           }
+          .information__container{
+            width: 400px;
+          }
+        
+
+        @media (width<=500px) {
+           .modal-card{
+            transform:none;
+            left:5px;
+            right: 5px;
+            top:5px;
+            bottom: 5px;
+            width: auto;
+          }
+          .container{
+            padding: 0;
+          }  
+          .box__one--header-2 {
+            padding: 0;
+          }
+          .box__one-card p {
+            margin: 0;
+          }
+          .add_btn {
+            width: 90%;
+            margin: 20px 0;
+          }
+          @media(width<=450px){
+            .card__user-info{
+              width: 300px;
+            }
+            .information__container{
+              width: 300px;
+            }
+          }
+          
         }
       }
+    }
     }
   }
 }
