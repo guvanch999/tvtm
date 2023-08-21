@@ -3,9 +3,9 @@
     "home-1": {
       "h1": "Saýlanan sanly",
       "span-1": "telewideniýe",
-      "h2": "«LOGOTV» Abonentlerine 135-den gowurak",
+      "h2": "«PURSAT.TV» Abonentlerine 135-den gowurak",
       "span-2": "halkara iň gowy telekanallar hödürleýär",
-      "p": "«LOGOTV» tomaşaçylary nämelere tomaşa edip bilerler?",
+      "p": "«PURSAT.TV» tomaşaçylary nämelere tomaşa edip bilerler?",
       "span-3": "Ilkinji nobatda, kinolaryň, çagalar üçin, sport we meşhur kanallaryň dürli görnüşlerine."
     },
     "home-2": {
@@ -29,7 +29,7 @@
     "btn": "Birikdir"
   },
   "register": {
-    "h1": "LogoTv Registrasiýa",
+    "h1": "Registrasiýa",
     "span-1": "Hasabyňyz barmy? Onda",
     "span-2": "içeri giriň",
     "username": "Doly adyňyz",
@@ -46,7 +46,7 @@
     "btn": "Hasap döret"
   },
   "login": {
-    "h1": "LogoTv Içeri gir",
+    "h1": "Içeri gir",
     "span-1": "Hasabyňyz yokmy? Onda",
     "span-2": "registrasiýa boluň",
     "phone": "Telefon belgiňiz",

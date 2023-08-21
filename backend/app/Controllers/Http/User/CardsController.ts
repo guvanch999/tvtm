@@ -18,6 +18,7 @@ import {inject} from "@adonisjs/fold";
 import LogsService from "App/Services/LogsService";
 import ChangeCardValidator from "App/Validators/ChangeCardValidator";
 import ChangeNotification from "App/Models/ChangeNotification";
+import Database from "@ioc:Adonis/Lucid/Database";
 
 @inject()
 export default class CardsController {
@@ -45,7 +46,6 @@ export default class CardsController {
       qu.orWhereILike('telnumber', `%${query}%`)
       qu.orWhereILike('note', `%${query}%`)
     })
-
 
 
     let data = await cards.paginate(page, limit)
@@ -250,5 +250,21 @@ export default class CardsController {
     return response.ok({
       success: true,
     })
+  }
+
+  public async cardStatuses({response, auth}: HttpContextContract) {
+    const diller = auth.use('api_diller').user
+    if (!diller) {
+      throw new HttpException('Auth exception', 401, "E_UNAUTHORIZED_ACCESS")
+    }
+    let date = Date.now()
+    const data = await Database.rawQuery(`
+      SELECT COUNT(1) AS total,
+      COUNT(1) FILTER (
+      WHERE '${date}' between date_start and date_end) AS active,
+      COUNT(1) FILTER (
+      WHERE  not ('${date}' between date_start and date_end)) AS inactive
+      FROM clients where diller_id = ${diller.id}`)
+    return response.ok(data.rows[0])
   }
 }

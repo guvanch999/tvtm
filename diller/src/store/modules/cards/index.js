@@ -11,6 +11,7 @@ export default {
       card_information: null,
       history: [],
       change: null,
+      status: [],
     };
   },
   mutations,

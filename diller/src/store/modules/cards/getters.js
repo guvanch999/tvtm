@@ -11,4 +11,7 @@ export default {
   get_history(state) {
     return state.history;
   },
+  get_status(state) {
+    return state.status;
+  },
 };

@@ -168,15 +168,11 @@
             <tr>
               <th>{{ $t("balance.table.th-1") }}</th>
               <th>{{ $t("balance.table.th-2") }}</th>
-              <th>{{ $t("balance.table.th-3") }}</th>
               <th>{{ $t("balance.table.th-4") }}</th>
             </tr>
             <tr v-for="history in history_list" :key="history.id">
               <td>{{ history.created_at }}</td>
               <td>{{ history.action }}</td>
-              <td>
-                <a>{{ history.type }}</a>
-              </td>
               <td>{{ history.sum }} TMT</td>
             </tr>
           </table>
@@ -302,10 +298,10 @@ export default {
   justify-content: space-between;
 }
 
-.filter_number{
+.filter_number {
   display: flex;
 }
-#filter{
+#filter {
   flex: 1;
   text-align: right;
 }
@@ -397,7 +393,7 @@ tr:first-child {
       .btn {
         padding: 10px;
       }
-      .container{
+      .container {
         margin: 0;
         padding: 5px;
       }

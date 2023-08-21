@@ -20,4 +20,7 @@ export default {
   SET_CHANGE_INFORMATION(state, data) {
     state.change = data;
   },
+  SET_CARD_STATUS(state, data) {
+    state.status = data;
+  },
 };

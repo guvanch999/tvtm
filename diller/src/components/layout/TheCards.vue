@@ -144,7 +144,7 @@
       </svg>
       <div class="card__info">
         <span>{{ $t("the-cards.cards.c1") }}</span>
-        20
+        {{ this.status.total }}
       </div>
     </base-card>
 
@@ -171,7 +171,7 @@
       </svg>
       <div class="card__info">
         <span>{{ $t("the-cards.cards.c2") }}</span>
-        20
+        {{ this.status.active }}
       </div>
     </base-card>
 
@@ -198,7 +198,7 @@
       </svg>
       <div class="card__info">
         <span>{{ $t("the-cards.cards.c3") }}</span>
-        20
+        {{ this.status.inactive }}
       </div>
     </base-card>
     <add-card v-if="createDialog" @close-dialog="closeDialog" />
@@ -207,7 +207,7 @@
 
 <script>
 import { MqResponsive } from "vue3-mq";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import AddCard from "@/components/dashboard/cards/AddCard";
 
 export default {
@@ -227,6 +227,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions({
+      setStatus: "cards/setStatus",
+    }),
     getCards() {
       console.log(this.cards);
     },
@@ -240,7 +243,11 @@ export default {
   computed: {
     ...mapGetters({
       cards: "cards/get_cards",
+      status: "cards/get_status",
     }),
+  },
+  async mounted() {
+    await this.setStatus();
   },
 };
 </script>
@@ -343,7 +350,6 @@ span {
           }
         }
       }
-
     }
   }
 }
@@ -358,14 +364,14 @@ span {
     gap: 5px;
   }
 
-  .cards svg{
+  .cards svg {
     width: 50px;
     height: 50px;
   }
-  .card__info{
+  .card__info {
     font-size: 30px;
   }
-  .header h1{
+  .header h1 {
     font-size: 20px;
   }
 }

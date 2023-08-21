@@ -25,6 +25,9 @@ Route.group(() => {
     Route.post('/create', 'User/CardsController.create')
     Route.get('/card-information/:card_number', 'User/CardsController.get_card_information')
     Route.get('/packets', "User/CardsController.getPackets")
+
+    Route.get('/card-statuses','User/CardsController.cardStatuses')
+
     Route.group(() => {
 
 
@@ -57,6 +60,8 @@ Route.group(() => {
     Route.get('/history', 'User/BalancesController.balance_history')
   }).prefix('/balance')
     .middleware('auth_diller')
+
+
 
 
 }).prefix('api/v1/diller')
