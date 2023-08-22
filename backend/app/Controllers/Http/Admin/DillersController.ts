@@ -97,7 +97,7 @@ export default class DillersController {
   }
 
   public async fillUpBalance({request, response, diller}: HttpContextContract & DillerInterface) {
-    let summ: number = parseInt(request.body().summ)
+    let summ: number = parseFloat(request.body().summ)
 
     if (!summ) {
       throw new HttpException("Sum is invalid", 400, "E_VALIDATION_FAILURE")
