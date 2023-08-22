@@ -1,8 +1,8 @@
 {
   "home": {
     "home-1": {
-      "h1": "Saýlanan sanly",
-      "span-1": "telewideniýe",
+      "h1": "AlemTv Official",
+      "span-1": "Resseler",
       "h2": "«PURSAT.TV» Abonentlerine 135-den gowurak",
       "span-2": "halkara iň gowy telekanallar hödürleýär",
       "p": "«PURSAT.TV» tomaşaçylary nämelere tomaşa edip bilerler?",
@@ -15,7 +15,7 @@
   },
   "footer": {
     "phone": "Telefon belgi:",
-    "email": "Elektron poçta sahypa:"
+    "email": "Email:"
   },
   "header": {
     "nav": {
@@ -33,26 +33,26 @@
     "span-1": "Hasabyňyz barmy? Onda",
     "span-2": "içeri giriň",
     "username": "Doly adyňyz",
-    "user-error": "Doly adyňyzy tassyklan",
-    "email": "Elektron poçta sahypasy",
-    "email-error": "Email nadogry",
+    "user-error": "Doly adyňyzy tassyklaň",
+    "email": "Email",
+    "email-error": "Email nädogry",
     "password": "Açar söz",
-    "pass-error": "Acar sozi nadogry",
+    "pass-error": "Açar sözi nädogry",
     "pass-byte": "Açar sözi 8 simwoldan az bolmaly däl",
     "confirm": "Açar sözi tassyklaň",
-    "conf-error": "Acar sozi gabat gelenok",
+    "conf-error": "Açar sözi gabat gelenok",
     "phone": "Telefon belgiňiz",
     "phone-error": "Telefon belgiňiz gabat gelenok",
     "btn": "Hasap döret"
   },
   "login": {
     "h1": "Içeri gir",
-    "span-1": "Hasabyňyz yokmy? Onda",
+    "span-1": "Hasabyňyz ýokmy? Onda",
     "span-2": "registrasiýa boluň",
     "phone": "Telefon belgiňiz",
     "phone-error": "Telefon belgiňizi tassyklaň",
     "password": "Açar söz",
-    "pass-error": "Acar sozi nadogry",
+    "pass-error": "Açar sözi nädogry",
     "btn": "içeri gir"
   },
   "dialog": {
@@ -83,7 +83,7 @@
       "th-1": "Yagdayy",
       "th-2": "Kart ID",
       "th-3": "Bukja mohleti",
-      "th-4": "Eyesi",
+      "th-4": "Eýesi",
       "th-5": "Kontaktlar",
       "th-6": "Bellik"
     },
@@ -94,10 +94,10 @@
     "form": {
       "label-1": "Familiýasy",
       "label-2": "Telefon belgisi",
-      "label-3": "Elektron poçta sahypasy",
+      "label-3": "Email",
       "label-4": "Açar sözi",
-      "label-5": "Täze açar sozini ýaz",
-      "label-6": "Açar sözüni tassykla",
+      "label-5": "Täze açar sözini ýaz",
+      "label-6": "Açar sözi tassykla",
       "btn": "Ýatda sakla"
     },
     "btn": "Hasaby doldur"
@@ -128,7 +128,7 @@
       "nav-2": "Abuna taryhy",
       "nav-3": "Aktiwlyk taryhy",
       "nav-4": "Satyn almak/uzaltmak",
-      "nav-5": "Karty uytgetmek"
+      "nav-5": "Karty üytgetmek"
     }
   },
   "card-about": {
@@ -137,18 +137,18 @@
       "label-2": "Familiya",
       "label-3": "Ady",
       "label-4": "Şäher",
-      "label-5": "Tyunerin modeli"
+      "label-5": "Týuneriň modeli"
     },
     "btn-1": "Gaytadan isjenlesdirmek",
-    "btn-2": "Yatda sakla"
+    "btn-2": "Ýatda sakla"
   },
   "card-sub": {
     "table": {
       "th-1": "Wagty",
       "th-2": "Bukja",
-      "th-3": "Mohlet",
+      "th-3": "Möhlet",
       "th-4": "Bahasy",
-      "th-5": "Baslayan wagty",
+      "th-5": "Başlayan wagty",
       "th-6": "Tamamlanyan wagty",
       "th-7": "Hereket"
     }
@@ -157,7 +157,7 @@
     "table": {
       "th-1": "Wagty",
       "th-2": "Hereket",
-      "th-3": "Ady/Familyasy"
+      "th-3": "Ady/Familiýasy"
     }
   },
   "card-buy": {
@@ -168,7 +168,7 @@
     "p-4": "Jemi töleg:",
     "h2": "Bukjalar",
     "label": "Möhleti giriziň(aý):",
-    "btn": "Tolegi gecirmek"
+    "btn": "Tölegi geçirmek"
   },
   "card-change": {
     "form": {
@@ -181,7 +181,7 @@
     "btn-2": "Üýtgetmek"
   },
   "add-card": {
-    "h1": "Kart goshmak",
+    "h1": "Kart goşmak",
     "form": {
       "label-1": "Kartyň belgisi",
       "label-2": "Telefon belgisi",
@@ -199,7 +199,7 @@
   },
   "the-confirm": {
     "h1": "Töleg tassyklama",
-    "h2": "Siz dogrydanam töleg geçirmek isleýärsiňizmi?",
+    "h2": "Siz töleg geçirmek isleýärsiňizmi?",
     "btn-1": "Yza",
     "btn-2": "Hawa"
   },
@@ -208,13 +208,13 @@
     "h1-invalid": "Töleg amala aşyrylmady!",
     "h2-valid": "Siziň tölegiňiz kabul edildi",
     "h2-invalid": "Siziň tölegiňiz kabul edilmedi. Täzeden synanşmagyňyzy haýyşt edýaris...",
-    "btn": "Dowam ed"
+    "btn": "Dowam et"
   },
   "the-request": {
     "h1-valid": "Siziň düzedişiňiz nobata goýuldy!",
     "h2-invalid": "Düzedişiňiz administrator tarapyndan barlagdan geçýança garaşmagyňyzy haýyşt edýäris",
     "h2-valid": "Düzedişiňizi täzeden girizmegiňizi haýyşt edýäris",
     "h2-invalid": " Siziň düzedişiňiz nobata goýulmady!",
-    "btn": "Dowam ed"
+    "btn": "Dowam et"
   }
 }
