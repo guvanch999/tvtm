@@ -10,18 +10,6 @@
               <form class="card__user-info">
                 <div class="card__div">
                   <label>{{ $t("add-card.form.label-1") }}</label>
-                  <p class="validation" v-if="!card">Nädogry kart nomer</p>
-                  <input
-                    v-model="cardModel.cardnumber"
-                    class="user__info"
-                    type="text"
-                    id="number"
-                    :class="{ invalid: !card }"
-                    @blur="clearValidity('card')"
-                  />
-                </div>
-                <div class="card__div">
-                  <label>{{ $t("add-card.form.label-2") }}</label>
                   <p class="validation" v-if="!tel">Nädogry telefon nomer</p>
                   <input
                     v-model="cardModel.telnumber"
@@ -648,7 +636,7 @@ a {
         width: 300px;
       }
       @media (width<=750px) {
-       .modal-card {
+        .modal-card {
           top: 50vh;
           width: 100%;
         }
@@ -659,10 +647,10 @@ a {
         .modal__head {
           margin: 5px;
         }
-        .cross{
+        .cross {
           margin: 5px;
         }
- 
+
         .add__container {
           padding: 25px !important;
           gap: 0;
@@ -677,58 +665,56 @@ a {
           padding: 10px;
           width: 500px;
         }
-        .chanels-price{
+        .chanels-price {
           justify-content: space-between;
         }
-        .price__paragraph{
+        .price__paragraph {
           width: auto;
         }
-        .add_btn{
+        .add_btn {
           width: 90%;
         }
-        @media(width<=600px){
-          .card__user-info{
+        @media (width<=600px) {
+          .card__user-info {
             width: 400px;
           }
-          .information__container{
+          .information__container {
             width: 400px;
           }
-        
 
-        @media (width<=500px) {
-           .modal-card{
-            transform:none;
-            left:5px;
-            right: 5px;
-            top:5px;
-            bottom: 5px;
-            width: auto;
-          }
-          .container{
-            padding: 0;
-          }  
-          .box__one--header-2 {
-            padding: 0;
-          }
-          .box__one-card p {
-            margin: 0;
-          }
-          .add_btn {
-            width: 90%;
-            margin: 20px 0;
-          }
-          @media(width<=450px){
-            .card__user-info{
-              width: 300px;
+          @media (width<=500px) {
+            .modal-card {
+              transform: none;
+              left: 5px;
+              right: 5px;
+              top: 5px;
+              bottom: 5px;
+              width: auto;
             }
-            .information__container{
-              width: 300px;
+            .container {
+              padding: 0;
+            }
+            .box__one--header-2 {
+              padding: 0;
+            }
+            .box__one-card p {
+              margin: 0;
+            }
+            .add_btn {
+              width: 90%;
+              margin: 20px 0;
+            }
+            @media (width<=450px) {
+              .card__user-info {
+                width: 300px;
+              }
+              .information__container {
+                width: 300px;
+              }
             }
           }
-          
         }
       }
-    }
     }
   }
 }
