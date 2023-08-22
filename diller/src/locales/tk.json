@@ -185,11 +185,12 @@
     "form": {
       "label-1": "Kartyň belgisi",
       "label-2": "Telefon belgisi",
-      "label-3": "Ady",
-      "label-4": "Şäher",
-      "label-5": "Týuneriň modeli",
-      "label-6": "Möhleti giriziň(aý):",
-      "label-7": "Bellik:"
+      "label-3": "Familiýasy",
+      "label-4": "Ady",
+      "label-5": "Şäher",
+      "label-6": "Týuneriň modeli",
+      "label-7": "Möhleti giriziň(aý):",
+      "label-8": "Bellik:"
     },
     "btn": "Kart goşmak",
     "balance": "Siziň balansyňyz:",
