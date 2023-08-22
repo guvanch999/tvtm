@@ -10,12 +10,13 @@ export default class LogsController {
     const query = Logs.query()
     if (filter_data.diller_id) query.where('diller_id', filter_data.diller_id)
     if (filter_data.search) {
-      query.where(function (){
+      query.where(function () {
         query.orWhereILike('action', `%${filter_data.search}%`)
         query.orWhereILike('cardnumber', `%${filter_data.search}%`)
       })
 
     }
+    query.orderBy('created_at', 'desc')
     let data = await query.paginate(filter_data.page ?? 1, filter_data.limit ?? 20)
 
     return response.ok({
