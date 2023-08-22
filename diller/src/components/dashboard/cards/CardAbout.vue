@@ -9,7 +9,7 @@
               <h1 class="price__header-1">Aktiw bukja</h1>
               <div class="price__about">
                 <div class="md_price__header">
-                  <h2>Standart VIP</h2>
+                  <h2>{{ current_packet?.packet }}</h2>
                   <img
                     src="../../../assets/tv-yzyndan.svg"
                     alt="Pursat TV Icon"
@@ -18,14 +18,12 @@
                 </div>
                 <div class="md_chanels__price">
                   <p>
-                    145 kanal we olaryň 120 sanysy HD hilli. Çagalar üçin -5
-                    kanal, Kinofilm üçin-12, sport-7 sany, gündelik kanallar-12,
-                    we başgada düli daşary ýurt kanallary
+                    {{ current_packet?.description }}
                   </p>
                   <div class="card-plan">
                     BIR AÝ
                     <span class="card-price">
-                      <span class="span-1">40</span>
+                      <span class="span-1">{{ current_packet?.price }}</span>
                       <span class="span-2">TMT</span>
                     </span>
                   </div>
@@ -36,12 +34,13 @@
             <div class="md_date">
               Mohleti
               <div class="user__info">
-                {{ card.date_start }} - {{ card.date_end }}
+                {{ `${new Date(card.date_start * 100).toLocaleDateString()}` }}
+                - {{ `${new Date(card.date_end * 100).toLocaleDateString()}` }}
               </div>
             </div>
           </div>
 
-          <form class="card__user-info" style="margin: 0;padding: 0">
+          <form class="card__user-info" style="margin: 0; padding: 0">
             <div class="card__div">
               <label>{{ $t("card-about.form.label-1") }}</label>
               <p class="validation" v-if="!tel">Nädogry telefon belgi</p>
@@ -231,9 +230,7 @@
             <div>
               Mohleti
               <div class="user__info">
-                {{
-                  `${new Date(card.date_start * 1000).toLocaleDateString()}`
-                }}
+                {{ `${new Date(card.date_start * 1000).toLocaleDateString()}` }}
                 - {{ `${new Date(card.date_end * 1000).toLocaleDateString()}` }}
               </div>
             </div>
@@ -555,8 +552,7 @@ form input {
           .price_container {
             width: 300px;
           }
-          .md_card-info
-          .user__info {
+          .md_card-info .user__info {
             width: 100%;
           }
         }

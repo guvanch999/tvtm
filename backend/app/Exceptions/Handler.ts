@@ -34,7 +34,7 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       case 'E_VALIDATION_FAILURE': {
         return ctx.response.badRequest({
           success: false,
-          data: error.messages??error.message
+          data: error.messages ?? error.message
         })
       }
       case 'E_LOW_BALANCE_EXCEPTION': {
@@ -53,6 +53,12 @@ export default class ExceptionHandler extends HttpExceptionHandler {
         return ctx.response.badRequest({
           success: true,
           message: "Cannot login with this credentials"
+        })
+      }
+      case 'E_REGISTERED_EXCEPTION': {
+        return ctx.response.badRequest({
+          success: true,
+          message: "Kard regstrassiýa edilen"
         })
       }
       default: {

@@ -4,7 +4,7 @@ import {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
 import Client from "App/Models/Client";
 import ClientValidator from "App/Validators/ClientValidator";
 import {ClientInterface} from "App/Helpers/interfaces";
-import {create_card, re_new_card, reactivate_card} from "App/Helpers/RemoteHelper";
+
 import BuyOrExtendValidator from "App/Validators/BuyOrExtendValidator";
 import {Exception} from "@poppinss/utils";
 import {checkMyBalance} from "App/Helpers/BalanceHelper";
@@ -19,6 +19,11 @@ import LogsService from "App/Services/LogsService";
 import ChangeCardValidator from "App/Validators/ChangeCardValidator";
 import ChangeNotification from "App/Models/ChangeNotification";
 import Database from "@ioc:Adonis/Lucid/Database";
+import {
+  card_replacement, create_card,
+  re_new_card,
+  reactivate_card,
+} from "App/Helpers/RemoteHelper";
 
 @inject()
 export default class CardsController {
@@ -239,6 +244,10 @@ export default class CardsController {
     if (!diller) {
       throw new HttpException('Auth exception', 401, "E_UNAUTHORIZED_ACCESS")
     }
+    const client = await Client.findByOrFail('cardnumber', data.cardnumber)
+
+    console.log('card find')
+    await card_replacement(client, data)
 
     await ChangeNotification.create({
       cardnumber: data.cardnumber,
@@ -246,6 +255,7 @@ export default class CardsController {
       reason: data.reason,
       diller_id: diller.id
     })
+
 
     return response.ok({
       success: true,
