@@ -70,7 +70,7 @@ export default class CardsController {
       throw new Exception("No diller found", 400)
     }
     data.diller_id = diller.id
-    let pac = await checkMyBalance(diller, data.packet)
+    let pac = await checkMyBalance(diller, data.packet, data.srok)
     let client = new Client()
     client.merge(data)
     let created_client = await create_card(client)
@@ -165,7 +165,7 @@ export default class CardsController {
     let data = await request.validate(BuyOrExtendValidator)
 
 
-    let pac = await checkMyBalance(diller, data.packet)
+    let pac = await checkMyBalance(diller, data.packet, data.srok)
 
 
     client.srok = data.srok
@@ -188,7 +188,7 @@ export default class CardsController {
     })
     let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
 
-    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * updated_data.srok*100)/100
+    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * updated_data.srok * 100) / 100
 
     balans.summ -= card_summ
     await balans.save()
@@ -290,7 +290,7 @@ export default class CardsController {
     let data = await request.validate(ExtendAnotherCardValidator)
 
 
-    let pac = await checkMyBalance(diller, data.packet)
+    let pac = await checkMyBalance(diller, data.packet, data.srok)
 
 
     await extend_card(data)
