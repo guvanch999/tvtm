@@ -37,6 +37,9 @@
         <template v-slot:item.client="{item}">
           {{ (item?.client?.name || '') + " " + (item?.client?.surname || '') || 'No client' }}
         </template>
+        <template v-slot:item.created_at="{item}">
+          {{ format_date_time(item.created_at) }}
+        </template>
       </v-data-table>
       <v-pagination
         v-model="page"
@@ -58,9 +61,10 @@ export default {
       headers: [
         {text: 'id', value: 'id'},
         {text: 'Card number', value: "cardnumber"},
-        {text: 'action', value: 'action'},
-        {text: 'diller', value: 'diller'},
-        {text: 'client', value: 'client'},
+        {text: 'Action', value: 'action'},
+        {text: 'Diller', value: 'diller'},
+        {text: 'Client', value: 'client'},
+        {text: 'Date', value: 'created_at'},
       ],
       pageLimits: [10, 20, 30, 50, 100, 150],
       search: null,
@@ -100,6 +104,15 @@ export default {
         this.$store.commit('set_error', 'Cannot load data. Please try again')
       }
       this.isLoading = false
+    },
+    format_date_time(dateString) {
+      let date = new Date(dateString)
+      if (date) {
+        return `${date?.getFullYear()}-${date?.getMonth() < 10 ? `0${date?.getMonth()}` : date?.getMonth()}-${date?.getDay() < 10 ?
+          `0${date?.getDay()}` : date.getDay()} ${date?.getHours() < 10 ? `0${date.getHours()}` : date.getHours()}:${date?.getMinutes() < 10 ?
+          `0${date.getMinutes()}` : date.getMinutes()}:${date?.getSeconds() < 10 ? `0${date.getSeconds()}` : date.getSeconds()}`
+      } else return null
+
     }
   },
   computed: {
