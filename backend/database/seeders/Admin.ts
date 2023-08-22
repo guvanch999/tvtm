@@ -4,9 +4,9 @@ import Admin from "App/Models/Admin";
 export default class extends BaseSeeder {
   public async run() {
     await Admin.create({
-      phone_number: '99364155314',
-      password: '123',
-      full_name: 'DG'
+      phone_number: '99365559120',
+      password: 'Familyforever2012',
+      full_name: 'Hojayyn'
     })
   }
 }
