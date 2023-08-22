@@ -37,8 +37,8 @@ export async function create_card(client: Client) {
           },
       },
     )
-    if(!data.status){
-      throw new HttpException(data.message,400,'E_REGISTERED_EXCEPTION')
+    if (!data.status) {
+      throw new HttpException(data.message, 400, 'E_REGISTERED_EXCEPTION')
     }
     let client_data = await get_client_by_cardnumber(client.cardnumber)
     client.date_start = client_data.date_start
@@ -91,6 +91,21 @@ export async function re_new_card(client: Client) {
   }
 }
 
+export async function extend_card(params) {
+  let token = get_token()
+  try {
+    await axios.post('https://tmalem.tv/api/diller/renevald_Card', {}, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      params
+    })
+  } catch (err) {
+    throw err
+  }
+}
+
+
 export async function reactivate_card(cardnumber: string) {
   let token = get_token()
   try {
@@ -131,15 +146,15 @@ export async function card_replacement(client: Client, new_card_data) {
     console.log('sending request')
     console.log(new_card_data)
     await axios.post('https://alemtv.tm/api/diller/card_replacement', {
-        oldCard: client.cardnumber,
-        newCard: new_card_data.new_cardnumber,
-        reason: new_card_data.reason
+        "oldCard": new_card_data.cardnumber,
+        "newCard": new_card_data.new_cardnumber,
+        "reason": new_card_data.reason
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
-        timeout: 300
+        timeout: 5000
       })
     console.log('request is finished')
     let client_data = await get_client_by_cardnumber(client.cardnumber)
@@ -150,6 +165,28 @@ export async function card_replacement(client: Client, new_card_data) {
     client.date_start = client_data.date_start
     client.date_end = client_data.date_end
     await client.save()
+  } catch (err) {
+    console.error(err)
+    throw new HttpException("This is timeout exception. It occurs due to incorrect data", 400, 'E_AXIOS_TIMEOUT')
+  }
+
+}
+
+export async function search_card(cardnumber: string) {
+  let token = get_token()
+  try {
+    let {data} = await axios.get('https://tmalem.tv/api/diller/getclient', {
+      params: {
+        cardnumber
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+    if (data.error) {
+      throw new HttpException("Kard tapylmady", 400, 'E_VALIDATION_FAILURE')
+    }
+    return data
   } catch (err) {
     throw err
   }

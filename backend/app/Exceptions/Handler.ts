@@ -34,37 +34,43 @@ export default class ExceptionHandler extends HttpExceptionHandler {
       case 'E_VALIDATION_FAILURE': {
         return ctx.response.badRequest({
           success: false,
-          data: error.messages ?? error.message
+          message: error.messages ?? error.message
         })
       }
       case 'E_LOW_BALANCE_EXCEPTION': {
         return ctx.response.badRequest({
-          success: true,
+          success: false,
           message: "Balance is too low"
         })
       }
       case 'E_ROUTE_NOT_FOUND': {
         return ctx.response.notFound({
-          success: true,
+          success: false,
           message: "Route not found"
         })
       }
       case 'E_CANNOT_LOGIN': {
         return ctx.response.badRequest({
-          success: true,
+          success: false,
           message: "Cannot login with this credentials"
         })
       }
       case 'E_REGISTERED_EXCEPTION': {
         return ctx.response.badRequest({
-          success: true,
+          success: false,
           message: "Kard regstrassiýa edilen"
+        })
+      }
+      case 'E_AXIOS_TIMEOUT': {
+        return ctx.response.badRequest({
+          success: false,
+          message: "Girizilen maglumatlar nadogry"
         })
       }
       default: {
         return ctx.response.status(500).send({
           success: false,
-          message: 'Some error'
+          message: 'Yalnyshlyk yuze chykdy'
         });
       }
     }

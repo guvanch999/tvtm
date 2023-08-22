@@ -26,7 +26,7 @@ Route.group(() => {
     Route.get('/card-information/:card_number', 'User/CardsController.get_card_information')
     Route.get('/packets', "User/CardsController.getPackets")
 
-    Route.get('/card-statuses','User/CardsController.cardStatuses')
+    Route.get('/card-statuses', 'User/CardsController.cardStatuses')
 
     Route.group(() => {
 
@@ -38,7 +38,8 @@ Route.group(() => {
     }).middleware('find_client')
 
     Route.post('/change-card', "User/CardsController.changeCard")
-
+    Route.post('/buy-packet', 'User/CardsController.extend_another_card')
+    Route.get('/search/:cardnumber', "User/CardsController.searchCard")
   }).prefix('/cards')
     .middleware('auth_diller')
 
@@ -60,8 +61,6 @@ Route.group(() => {
     Route.get('/history', 'User/BalancesController.balance_history')
   }).prefix('/balance')
     .middleware('auth_diller')
-
-
 
 
 }).prefix('api/v1/diller')

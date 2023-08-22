@@ -20,10 +20,11 @@ import ChangeCardValidator from "App/Validators/ChangeCardValidator";
 import ChangeNotification from "App/Models/ChangeNotification";
 import Database from "@ioc:Adonis/Lucid/Database";
 import {
-  card_replacement, create_card,
+  card_replacement, create_card, extend_card,
   re_new_card,
-  reactivate_card,
+  reactivate_card, search_card,
 } from "App/Helpers/RemoteHelper";
+import ExtendAnotherCardValidator from "App/Validators/ExtendAnotherCardValidator";
 
 @inject()
 export default class CardsController {
@@ -87,7 +88,7 @@ export default class CardsController {
     })
     let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
 
-    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * created_client.srok)
+    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * created_client.srok * 100) / 100
 
     balans.summ -= card_summ
     await balans.save()
@@ -187,7 +188,7 @@ export default class CardsController {
     })
     let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
 
-    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * updated_data.srok)
+    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * updated_data.srok*100)/100
 
     balans.summ -= card_summ
     await balans.save()
@@ -240,6 +241,7 @@ export default class CardsController {
   public async changeCard({request, response, auth}: HttpContextContract) {
     const data = await request.validate(ChangeCardValidator)
 
+    console.log('geldi')
     const diller = auth.use('api_diller').user
     if (!diller) {
       throw new HttpException('Auth exception', 401, "E_UNAUTHORIZED_ACCESS")
@@ -255,7 +257,6 @@ export default class CardsController {
       reason: data.reason,
       diller_id: diller.id
     })
-
 
     return response.ok({
       success: true,
@@ -276,5 +277,52 @@ export default class CardsController {
       WHERE  not ('${date}' between date_start and date_end)) AS inactive
       FROM clients where diller_id = ${diller.id}`)
     return response.ok(data.rows[0])
+  }
+
+
+  public async extend_another_card({request, response, auth}: HttpContextContract) {
+    const diller = auth.use('api_diller').user
+
+    if (!diller) {
+      throw new HttpException("No diller found")
+    }
+
+    let data = await request.validate(ExtendAnotherCardValidator)
+
+
+    let pac = await checkMyBalance(diller, data.packet)
+
+
+    await extend_card(data)
+
+    let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
+
+    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * data.srok)
+
+    balans.summ -= card_summ
+    await balans.save()
+    await BalansHistory.create({
+      type: 'outcome',
+      sum: card_summ,
+      action: `Покупка пакета ${data.packet} на карту:${data.cardnumber} на срок ${data.srok} месяца`,
+      balans_id: balans.id
+    })
+
+    this.logService.create({
+      action: `Покупка подписки: ${data.packet} на сумму: ${card_summ}`,
+      diller: JSON.stringify(diller),
+      diller_id: diller.id,
+      cardnumber: data.cardnumber,
+    })
+
+    return response.ok({
+      success: true,
+    })
+  }
+
+  public async searchCard({request, response}: HttpContextContract) {
+    const cardnumber = request.param('cardnumber')
+    const data = await search_card(cardnumber)
+    return response.ok(data)
   }
 }
