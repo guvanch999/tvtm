@@ -25,7 +25,9 @@ export default class ClientForAdminValidator {
    *    ```
    */
   public schema = schema.create({
-    cardnumber: schema.string(),
+    cardnumber: schema.string([
+      rules.regex(/^21[0-9]{8}/)
+    ]),
     name: schema.string(),
     surname: schema.string(),
     telnumber: schema.string({}, [

@@ -1,4 +1,4 @@
-import {schema, CustomMessages} from '@ioc:Adonis/Core/Validator'
+import {schema, CustomMessages, rules} from '@ioc:Adonis/Core/Validator'
 import type {HttpContextContract} from '@ioc:Adonis/Core/HttpContext'
 
 export default class ExtendAnotherCardValidator {
@@ -25,7 +25,9 @@ export default class ExtendAnotherCardValidator {
    *    ```
    */
   public schema = schema.create({
-    cardnumber: schema.string(),
+    cardnumber: schema.string([
+      rules.regex(/^21[0-9]{8}/)
+    ]),
     packet: schema.string(),
     srok: schema.number()
   })
