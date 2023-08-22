@@ -35,20 +35,20 @@ export async function get_news() {
 export async function create_card(client: Client) {
   let token = get_token()
   try {
-    await axios.post('https://tmalem.tv/api/diller/client', {}, {
-        params: {
-          cardnumber: client.cardnumber,
-          name: client.name,
-          surname: client.surname,
-          adress: client.adress,
-          telnumber: client.telnumber,
-          packet: client.packet,
-          srok: client.srok,
-        },
+    await axios.post('https://alemtv.tm/api/diller/client', {
+        cardnumber: client.cardnumber,
+        name: client.name,
+        surname: client.surname,
+        adress: client.adress,
+        telnumber: client.telnumber,
+        packet: client.packet,
+        srok: client.srok,
+
+      }, {
         headers:
           {
             Authorization: `Bearer ${token}`
-          }
+          },
       },
     )
     let client_data = await get_client_by_cardnumber(client.cardnumber)
@@ -61,8 +61,6 @@ export async function create_card(client: Client) {
     throw e
   }
 }
-
-
 
 
 export async function load_packets() {
