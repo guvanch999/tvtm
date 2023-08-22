@@ -45,4 +45,5 @@ Server.middleware.registerNamed({
   auth_diller: () => import('App/Middleware/DillerAuth'),
   find_diller: () => import('App/Middleware/FindDiller'),
   find_client: () => import('App/Middleware/FindClient'),
+  log_request: () => import('App/Middleware/LogRequest')
 })

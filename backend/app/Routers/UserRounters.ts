@@ -65,3 +65,4 @@ Route.group(() => {
 
 
 }).prefix('api/v1/diller')
+  .middleware('log_request')

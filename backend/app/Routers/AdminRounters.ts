@@ -103,3 +103,4 @@ Route.group(() => {
     .namespace('App/Controllers/Http/Admin')
 
 }).prefix('api/v1/admin')
+  .middleware('log_request')
