@@ -10,6 +10,19 @@
               <form class="card__user-info">
                 <div class="card__div">
                   <label>{{ $t("add-card.form.label-1") }}</label>
+                  <p class="validation" v-if="!card">Nädogry cart nomer</p>
+                  <input
+                    v-model="cardModel.cardnumber"
+                    class="user__info"
+                    type="text"
+                    id="number"
+                    :class="{ invalid: !card }"
+                    @blur="clearValidity('tel')"
+                  />
+                </div>
+
+                <div class="card__div">
+                  <label>{{ $t("add-card.form.label-2") }}</label>
                   <p class="validation" v-if="!tel">Nädogry telefon nomer</p>
                   <input
                     v-model="cardModel.telnumber"
@@ -21,7 +34,7 @@
                   />
                 </div>
                 <div class="card__div">
-                  <label>{{ $t("add-card.form.label-2") }}</label>
+                  <label>{{ $t("add-card.form.label-3") }}</label>
                   <p class="validation" v-if="!sur">Doly familiýanyňyz ýazyň</p>
                   <input
                     v-model="cardModel.surname"
@@ -33,7 +46,7 @@
                   />
                 </div>
                 <div class="card__div">
-                  <label>{{ $t("add-card.form.label-3") }}</label>
+                  <label>{{ $t("add-card.form.label-4") }}</label>
                   <p class="validation" v-if="!ady">Doly adyňyzy ýazyň</p>
                   <input
                     v-model="cardModel.name"
@@ -45,7 +58,7 @@
                   />
                 </div>
                 <div class="card__div">
-                  <label>{{ $t("add-card.form.label-4") }}</label>
+                  <label>{{ $t("add-card.form.label-5") }}</label>
                   <p class="validation" v-if="!city">
                     Doly addresiňizi görkezin
                   </p>
@@ -59,7 +72,7 @@
                   />
                 </div>
                 <div class="card__div">
-                  <label>{{ $t("add-card.form.label-5") }}</label>
+                  <label>{{ $t("add-card.form.label-6") }}</label>
                   <p class="validation" v-if="!res">
                     Doly týuneriň modelini görkeziň
                   </p>
@@ -75,7 +88,7 @@
                 <div class="card__div">
                   <p class="validation" v-if="!end">Doly möhletini belläň</p>
                   <div class="term">
-                    {{ $t("add-card.form.label-6") }}
+                    {{ $t("add-card.form.label-7") }}
                     <select name="term" id="term" v-model="cardModel.srok">
                       <optgroup>
                         <option v-for="term in terms" :key="term" :value="term">
@@ -95,7 +108,7 @@
                 </div>
 
                 <div class="card__div">
-                  <label>{{ $t("add-card.form.label-7") }}</label>
+                  <label>{{ $t("add-card.form.label-8") }}</label>
                   <p class="validation" v-if="!not">Bellik ýazyň</p>
                   <input
                     v-model="cardModel.note"
