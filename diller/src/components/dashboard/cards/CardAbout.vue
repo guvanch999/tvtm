@@ -34,8 +34,8 @@
             <div class="md_date">
               Mohleti
               <div class="user__info">
-                {{ `${new Date(card.date_start * 100).toLocaleDateString()}` }}
-                - {{ `${new Date(card.date_end * 100).toLocaleDateString()}` }}
+                {{ `${new Date(card.date_start * 1000)?.toLocaleDateString()}` }}
+                - {{ `${new Date(card.date_end * 1000)?.toLocaleDateString()}` }}
               </div>
             </div>
           </div>

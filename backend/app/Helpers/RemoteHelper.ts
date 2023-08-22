@@ -18,21 +18,6 @@ async function get_client_by_cardnumber(cardnumber: string) {
   return data
 }
 
-export async function get_news() {
-  let token = get_token()
-  try {
-    let {data} = await axios.get('https://tmalem.tv/api/diller/news', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-    return data.newsList
-  } catch (err) {
-    throw err
-  }
-}
-
-
 export async function create_card(client: Client) {
   let token = get_token()
   try {

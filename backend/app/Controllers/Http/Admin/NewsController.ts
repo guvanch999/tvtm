@@ -3,7 +3,6 @@
 import type {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
 import News from "App/Models/News";
 import NewsValidator from "App/Validators/NewsValidator";
-import {get_news} from "App/Helpers/RemoteHelper";
 
 export default class NewsController {
   public async getAll({request, response}: HttpContextContract) {
@@ -44,11 +43,5 @@ export default class NewsController {
     })
   }
 
-  public async getRemoteNews({response}: HttpContextContract) {
-    let news = await get_news()
-    return response.ok({
-      success: true,
-      data: news
-    })
-  }
+
 }
