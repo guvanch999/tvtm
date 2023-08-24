@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import TvNews from "./components/dashboard/TvNews";
 import TvProfile from "./components/dashboard/TvProfile";
 import TvBalance from "../src/components/dashboard/TvBalance";
+import TvSearch from "../src/components/dashboard/TvSearch";
 
 //CARDS
 import TvCards from "./components/dashboard/TvCards";
@@ -90,6 +91,7 @@ const router = createRouter({
             },
             { path: "profile", component: TvProfile },
             { path: "balance", component: TvBalance },
+            { path: "search", component: TvSearch },
           ],
         },
 

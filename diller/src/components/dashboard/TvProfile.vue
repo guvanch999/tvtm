@@ -504,7 +504,7 @@ export default {
   margin: 10px 0 0 15px;
   border-radius: 10px;
   background-color: rgba(141, 143, 161, 0.1);
-  font-family: "Plus Jakarta Sans",sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   padding: 10px 30px;
 }
 
@@ -702,19 +702,19 @@ form input {
   @media (width<=500px) {
     .large_profile__cards-card-1,
     .large_profile__cards-card-2 {
-      width: 90vw!important;
+      width: 90vw !important;
     }
     .large_profile__cards--field {
       width: 100%;
     }
-    .container{
+    .container {
       margin: 0px 0 0 0px;
       border-radius: 10px;
       background-color: rgba(141, 143, 161, 0.1);
-      font-family: "Plus Jakarta Sans",sans-serif;
-      padding: 5px 5px
+      font-family: "Plus Jakarta Sans", sans-serif;
+      padding: 5px 5px;
     }
-    h1{
+    h1 {
       font-size: 20px;
     }
   }

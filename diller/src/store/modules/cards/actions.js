@@ -118,7 +118,7 @@ export default {
   },
   async setStatus({ commit, rootGetters }) {
     let token = rootGetters["auth/get_auth_token"];
-    let data = await axios.get("v1/diller/cards/card-statuses/", {
+    let { data } = await axios.get("v1/diller/cards/card-statuses/", {
       headers: { Authorization: `Bearer ${token}` },
     });
     commit("SET_CARD_STATUS", data.data);

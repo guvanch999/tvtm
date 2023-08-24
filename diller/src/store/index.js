@@ -4,6 +4,7 @@ import cardsModule from "./modules/cards/index.js";
 import authModule from "./modules/auth/index.js";
 import balanceModule from "./modules/balance/index";
 import packetsModule from "./modules/packets/index.js";
+import searchModule from "./modules/search/index.js";
 
 const store = createStore({
   state() {
@@ -31,6 +32,7 @@ const store = createStore({
     auth: authModule,
     balance: balanceModule,
     packets: packetsModule,
+    search: searchModule,
   },
 });
 store.commit("auth/TOKEN_RESET");

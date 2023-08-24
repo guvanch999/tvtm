@@ -71,7 +71,8 @@
       "nav-1": "Esasy sahypa",
       "nav-2": "Kartlar",
       "nav-3": " Profil",
-      "nav-4": "Balans taryhy"
+      "nav-4": "Balans taryhy",
+      "nav-5": "Kart gözleg"
     }
   },
   "news": {
@@ -112,6 +113,21 @@
       "th-3": "Tip",
       "th-4": "Bahasy"
     }
+  },
+
+  "search": {
+    "h1": "Kart gözlemek",
+    "search-placeholder": "Search",
+    "btn-1": "Gözle",
+    "form": {
+      "label-1": "Kart nomer",
+      "label-2": " Telefon nomer",
+      "label-3": "Familiyasy",
+      "label-4": " Ady",
+      "label-5": " Şäher"
+    },
+    "term": "Möhleti",
+    "btn-2": "Satyn al / Uzat"
   },
   "the-cards": {
     "btn": "Kart goşmak",
