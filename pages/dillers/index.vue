@@ -132,6 +132,11 @@ export default {
       fillUpBalance: false
     }
   },
+  watch: {
+    page() {
+      this.loadData()
+    }
+  },
   methods: {
     ...mapActions({
       loadAllDillers: 'dillers/loadAllDillers',
@@ -178,10 +183,14 @@ export default {
         this.errorMessage = "Cannot delete diller data. Please try again!"
       }
     },
-    async resetData() {
+    async loadData() {
       this.isLoading = true
       await this.loadAllDillers({page: this.page})
       this.isLoading = false
+    },
+    resetData() {
+      this.page = 1;
+      this.loadData()
     },
     cancelEditSkidka() {
       this.skidka = null
