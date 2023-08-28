@@ -144,7 +144,7 @@
       </svg>
       <div class="card__info">
         <span>{{ $t("the-cards.cards.c1") }}</span>
-        {{ this.status.total }}
+        {{ this.status?.total }}
       </div>
     </base-card>
 
@@ -171,7 +171,7 @@
       </svg>
       <div class="card__info">
         <span>{{ $t("the-cards.cards.c2") }}</span>
-        {{ this.status.active }}
+        {{ this.status?.active }}
       </div>
     </base-card>
 
@@ -198,7 +198,7 @@
       </svg>
       <div class="card__info">
         <span>{{ $t("the-cards.cards.c3") }}</span>
-        {{ this.status.inactive }}
+        {{ this.status?.inactive }}
       </div>
     </base-card>
     <add-card v-if="createDialog" @close-dialog="closeDialog" />

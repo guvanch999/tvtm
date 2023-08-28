@@ -121,6 +121,6 @@ export default {
     let { data } = await axios.get("v1/diller/cards/card-statuses/", {
       headers: { Authorization: `Bearer ${token}` },
     });
-    commit("SET_CARD_STATUS", data.data);
+    commit("SET_CARD_STATUS", data);
   },
 };
