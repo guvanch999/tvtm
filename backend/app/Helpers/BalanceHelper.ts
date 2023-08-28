@@ -8,7 +8,7 @@ export async function checkMyBalance(diller: Diller, packet: string, srok: numbe
   if (!pac) {
     throw new MissingArgumentException('No packet found')
   }
-  let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * srok * 100) / 100
+  let card_summ = calculateBalance(+pac.price, diller.skidka, srok)
   await diller.load("balans")
   if (diller.balans.summ < card_summ) {
     throw new HttpException("Balance is too low", 400, "E_LOW_BALANCE_EXCEPTION")
@@ -16,4 +16,10 @@ export async function checkMyBalance(diller: Diller, packet: string, srok: numbe
 
   return pac
 
+}
+
+export function calculateBalance(price: number, skidka: number, srok: number): number {
+  let short_skidka: number = parseFloat((skidka / 100).toFixed(2))
+  let disc: number = parseFloat((price * short_skidka).toFixed(2))
+  return (price - disc) * srok
 }

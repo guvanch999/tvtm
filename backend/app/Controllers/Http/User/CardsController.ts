@@ -7,7 +7,7 @@ import {ClientInterface} from "App/Helpers/interfaces";
 
 import BuyOrExtendValidator from "App/Validators/BuyOrExtendValidator";
 import {Exception} from "@poppinss/utils";
-import {checkMyBalance} from "App/Helpers/BalanceHelper";
+import {calculateBalance, checkMyBalance} from "App/Helpers/BalanceHelper";
 import Packet from "App/Models/Packet";
 import CardActivityHistory from "App/Models/CardActivityHistory";
 import SubscribtionHistory from "App/Models/SubscribtionHistory";
@@ -88,13 +88,13 @@ export default class CardsController {
     })
     let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
 
-    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * created_client.srok * 100) / 100
+    let card_summ = calculateBalance(+pac.price, diller.skidka, created_client.srok)
 
     balans.summ -= card_summ
     await balans.save()
     await BalansHistory.create({
       type: 'outcome',
-      sum: +pac.price,
+      sum: card_summ,
       action: 'Покупка подписки',
       balans_id: balans.id
     })
@@ -188,7 +188,7 @@ export default class CardsController {
     })
     let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
 
-    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * updated_data.srok * 100) / 100
+    let card_summ = calculateBalance(+pac.price, diller.skidka, updated_data.srok)
 
     balans.summ -= card_summ
     await balans.save()
@@ -241,7 +241,6 @@ export default class CardsController {
   public async changeCard({request, response, auth}: HttpContextContract) {
     const data = await request.validate(ChangeCardValidator)
 
-    console.log('geldi')
     const diller = auth.use('api_diller').user
     if (!diller) {
       throw new HttpException('Auth exception', 401, "E_UNAUTHORIZED_ACCESS")
@@ -297,7 +296,7 @@ export default class CardsController {
 
     let balans = await Balan.findBy('diller_id', diller.id) ?? await Balan.create({diller_id: diller.id})
 
-    let card_summ = Math.floor((+pac.price - (+pac.price * (diller.skidka / 100))) * data.srok)
+    let card_summ = calculateBalance(+pac.price, diller.skidka, data.srok)
 
     balans.summ -= card_summ
     await balans.save()
