@@ -160,7 +160,6 @@ export default {
       ],
     }
   },
-
   methods: {
     ...mapActions({
       updateClient: 'clients/updateClientDetail',

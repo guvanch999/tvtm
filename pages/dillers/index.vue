@@ -8,6 +8,9 @@
     </v-card-title>
     <v-divider>
     </v-divider>
+    <div style="margin:10px 0">
+      <v-text-field v-model="search" dense hide-details outlined clearable/>
+    </div>
     <v-data-table
       :headers="headers"
       :items="dillers"
@@ -129,12 +132,16 @@ export default {
       clientsListDialog: false,
       balanceDialog: false,
       balanceHistoryDialog: false,
-      fillUpBalance: false
+      fillUpBalance: false,
+      search: null
     }
   },
   watch: {
     page() {
       this.loadData()
+    },
+    search() {
+      this.resetData()
     }
   },
   methods: {
@@ -185,7 +192,7 @@ export default {
     },
     async loadData() {
       this.isLoading = true
-      await this.loadAllDillers({page: this.page})
+      await this.loadAllDillers({page: this.page, search: this.search})
       this.isLoading = false
     },
     resetData() {

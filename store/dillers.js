@@ -25,14 +25,15 @@ export const mutations = {
 }
 
 export const actions = {
-  async loadAllDillers({commit, rootGetters}, {page}) {
+  async loadAllDillers({commit, rootGetters}, {page, search}) {
     let token = rootGetters.get_auth_token
     await this.$axios.$get('v1/admin/dillers/all', {
       headers: {
         Authorization: `Bearer ${token}`
       },
       params: {
-        page
+        page,
+        search
       }
     }).then(res => {
       console.log(res)
