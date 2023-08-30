@@ -19,10 +19,20 @@ export default class DillersController {
 
   public async get_dillers_list({response, request}: HttpContextContract) {
     let {page} = request.qs()
+    let search: string | undefined | null = request.qs().search
     page = page || 1
-    let data = await Diller.query().preload('balans', (query) => {
-      query.select('summ').as('balans')
-    }).orderBy('id', 'desc').paginate(page)
+    let data = await Diller.query()
+      .preload('balans', (query) => {
+        query.select('summ').as('balans')
+      })
+      .where(function (qb) {
+        if (search) {
+          qb.orWhereILike('phone_number', `%${search}%`)
+          qb.orWhereILike('full_name', `%${search}%`)
+          qb.orWhereILike('email', `%${search}%`)
+        }
+      })
+      .orderBy('id', 'desc').paginate(page)
     return response.ok({
       success: true,
       data: data.all(),
