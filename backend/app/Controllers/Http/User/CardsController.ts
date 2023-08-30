@@ -247,7 +247,6 @@ export default class CardsController {
     }
     const client = await Client.findByOrFail('cardnumber', data.cardnumber)
 
-    console.log('card find')
     await card_replacement(client, data)
 
     await ChangeNotification.create({

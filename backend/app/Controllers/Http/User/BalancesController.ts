@@ -57,7 +57,8 @@ export default class BalancesController {
     let query: string = request.qs().query || ''
     let balance: Balan = await Balan.findBy('diller_id', diller.id) || await Balan.create({diller_id: diller.id})
     let list = await BalansHistory.query()
-      .whereRaw(`balans_id=${balance.id} and created_at::varchar like '%${query}%'`)
+      .whereRaw(`balans_id=${balance.id} and created_at::varchar ilike '%${query}%'`)
+      .orderBy('created_at', 'desc')
       .paginate(page, limit)
 
     return response.ok({
