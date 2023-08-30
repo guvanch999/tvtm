@@ -214,7 +214,6 @@ export default {
         rules.forEach(func => {
           let check = func(this.clientModel[prop])
           if (check !== true) {
-            console.log(prop)
             errorMess = check
             hasError = true
           }

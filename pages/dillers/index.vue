@@ -9,7 +9,7 @@
     <v-divider>
     </v-divider>
     <div style="margin:10px 0">
-      <v-text-field v-model="search" dense hide-details outlined clearable/>
+      <v-text-field v-model="search" placeholder="Search" dense hide-details clearable/>
     </div>
     <v-data-table
       :headers="headers"

@@ -87,7 +87,6 @@ export default {
       this.chooseDillerDialog = false
     },
     closeDialog() {
-      console.log('news form')
       this.$emit("closeDialog")
     },
     async saveHandler() {

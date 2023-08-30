@@ -58,7 +58,6 @@ export default {
     }
   },
   mounted() {
-    console.log("mounted")
     this.loadData()
   }
 }

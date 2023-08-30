@@ -45,7 +45,6 @@ export const actions = {
         Authorization: `Bearer ${token}`
       }
     })
-    console.log(data)
     commit('UPDATE_NOTIFICATION', data)
   },
   async makeIsShown({commit, rootGetters}, {not_id}) {
