@@ -105,7 +105,7 @@ export default {
 
 .container div {
   width: 70%;
-  font-family: "Plus Jakarta Sans";
+  font-family: "Plus Jakarta Sans",sans-serif;
   font-weight: 500;
   line-height: 23px;
 }
