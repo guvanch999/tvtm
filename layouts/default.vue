@@ -1,6 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer
+      v-model="drawer"
       :mini-variant="miniVariant"
       clipped
       fixed
@@ -29,6 +30,13 @@
       app
     >
       <v-btn
+        icon
+        @click.stop="drawer = !drawer"
+      >
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+      <v-btn
+        v-if="$device.isDesktop"
         icon
         @click.stop="miniVariant = !miniVariant"
       >
@@ -96,7 +104,8 @@ export default {
         },
       ],
       miniVariant: false,
-      title: 'AlemTVTM admin'
+      title: 'AlemTVTM admin',
+      drawer: this.$device.isDesktop
     }
   }
 }

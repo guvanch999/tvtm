@@ -30,10 +30,10 @@ export default {
       isSyncing: false,
       isLoading: true,
       headers: [
-        {text: 'id', value: 'id'},
-        {text: "Packet", value: "packet"},
-        {text: "Description", value: "description"},
-        {text: "Price", value: "price"}
+        {text: 'id', value: 'id', sortable: false},
+        {text: "Packet", value: "packet", sortable: false},
+        {text: "Description", value: "description", sortable: false},
+        {text: "Price", value: "price", sortable: false}
       ]
     }
   },

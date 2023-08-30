@@ -21,9 +21,10 @@
         hide-details
         style="flex: 3"
       ></v-text-field>
-      <div style="flex: 3">
+      <div style="flex: 3" v-if="$device.isDesktop">
 
       </div>
+      <div v-else style="width: 10px"></div>
       <div style="flex:1">
         <v-select
           v-model="limit"
@@ -44,6 +45,7 @@
         <span @click="selectForDelete(item)" class="mdi mdi-delete mdi-18px icon-button-class"></span>
       </template>
     </v-data-table>
+    <v-divider/>
     <client-form v-if="clientFormDialog" :client="selectedClient" @closeDialog="closeClientFormDialog"
                  @resetList="resetList"/>
     <loading-component v-if="isLoading"/>
@@ -73,13 +75,13 @@ export default {
       isLoading: false,
       page: 1,
       headers: [
-        {text: "Id", value: "id"},
-        {text: "Card number", value: "cardnumber"},
-        {text: "Name - Surname", value: "name"},
-        {text: "Phone number", value: "telnumber"},
-        {text: "Paket", value: "packet"},
-        {text: "Srok", value: "srok"},
-        {text: "Actions", value: "actions", width: "10%", align: 'right'},
+        {text: "Id", value: "id", sortable: false,},
+        {text: "Card number", value: "cardnumber", sortable: false,},
+        {text: "Name - Surname", value: "name", sortable: false,},
+        {text: "Phone number", value: "telnumber", sortable: false,},
+        {text: "Paket", value: "packet", sortable: false,},
+        {text: "Srok", value: "srok", sortable: false,},
+        {text: "Actions", value: "actions", width: "10%", align: 'right', sortable: false,},
       ],
       selectedClient: null,
       clientFormDialog: false,

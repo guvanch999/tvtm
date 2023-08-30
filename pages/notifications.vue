@@ -12,9 +12,10 @@
           hide-details
           style="flex: 3"
         ></v-text-field>
-        <div style="flex: 3">
+        <div style="flex: 3" v-if="$device.isDesktop">
 
         </div>
+        <div style="width: 10px"></div>
         <div style="flex:1">
           <v-select
             v-model="limit"
@@ -23,7 +24,6 @@
           </v-select>
         </div>
       </div>
-
       <v-data-table
         :headers="headers"
         :items="notifications"
@@ -43,6 +43,7 @@
           </div>
         </template>
       </v-data-table>
+      <v-divider/>
       <v-pagination v-model="page" v-if="page_count>1" :length="page_count" circle
       >
       </v-pagination>
@@ -69,36 +70,13 @@ export default {
       limit: 20,
       search: null,
       headers: [
-        {
-          text: 'ID',
-          value: 'id'
-        },
-        {
-          text: "Card number",
-          value: "cardnumber"
-        },
-        {
-          text: "New card number",
-          value: "new_cardnumber"
-        },
-        {
-          text: "Reason",
-          value: "reason"
-        },
-        {
-          text: 'Diller',
-          value: "diller"
-        },
-        {
-          text: "Status",
-          value: 'status',
-          width: '200px'
-        },
-
-        {
-          text: 'Date',
-          value: "created_at"
-        }
+        {text: 'ID', value: 'id', sortable: false},
+        {text: "Card number", value: "cardnumber", sortable: false},
+        {text: "New card number", value: "new_cardnumber", sortable: false},
+        {text: "Reason", value: "reason", sortable: false},
+        {text: 'Diller', value: "diller", sortable: false},
+        {text: "Status", value: 'status', width: '200px', sortable: false},
+        {text: 'Date', value: "created_at", sortable: false}
       ],
       pageLimits: [
         10, 20, 30, 40, 50, 100

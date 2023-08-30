@@ -29,9 +29,9 @@ export default {
       page: 1,
       isLoading: false,
       headers: [
-        {text: 'Id', value: 'id'},
-        {text: 'Action', value: 'action'},
-        {text: 'Date-time', value: 'created_at'},
+        {text: 'Id', value: 'id',sortable: false},
+        {text: 'Action', value: 'action',sortable: false},
+        {text: 'Date-time', value: 'created_at',sortable: false},
       ]
     }
   },

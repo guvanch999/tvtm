@@ -12,9 +12,10 @@
           hide-details
           style="flex: 3"
         ></v-text-field>
-        <div style="flex: 3">
+        <div style="flex: 3" v-if="$device.isDesktop">
 
         </div>
+        <div v-else style="width: 10px"></div>
         <div style="flex:1">
           <v-select
             v-model="limit"
@@ -59,12 +60,12 @@ export default {
     return {
       isLoading: false,
       headers: [
-        {text: 'id', value: 'id'},
-        {text: 'Card number', value: "cardnumber"},
-        {text: 'Action', value: 'action'},
-        {text: 'Diller', value: 'diller'},
-        {text: 'Client', value: 'client'},
-        {text: 'Date', value: 'created_at'},
+        {text: 'id', value: 'id', sortable: false},
+        {text: 'Card number', value: "cardnumber", sortable: false},
+        {text: 'Action', value: 'action', sortable: false},
+        {text: 'Diller', value: 'diller', sortable: false},
+        {text: 'Client', value: 'client', sortable: false},
+        {text: 'Date', value: 'created_at', sortable: false},
       ],
       pageLimits: [10, 20, 30, 50, 100, 150],
       search: null,

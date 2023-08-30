@@ -60,7 +60,8 @@ export default {
     defaultChoosed: {
       type: Object,
       default: null
-    }
+    },
+
   },
   components: {LoadingComponent, ErrorComponent},
   data() {
@@ -79,20 +80,31 @@ export default {
       errorMessage: null
     }
   },
+  watch: {
+    page() {
+      this.loadMore()
+    }
+  },
   methods: {
     ...mapActions({
       loadAllDillers: 'dillers/loadAllDillers',
     }),
-    async resetData() {
-      this.isLoading = true
-      await this.loadAllDillers({page: this.page})
-      this.isLoading = false
+    initData() {
       if (this.defaultChoosed) {
         this.selected.push(this.defaultChoosed)
       }
     },
+    async resetData() {
+      this.page = 1
+      await this.loadMore()
+      this.initData()
+    },
+    async loadMore() {
+      this.isLoading = true
+      await this.loadAllDillers({page: this.page})
+      this.isLoading = false
+    },
     closeDialog() {
-      console.log('Choose diller')
       this.$emit("closeDialog")
     },
     selectHandler() {
@@ -110,6 +122,7 @@ export default {
   },
   mounted() {
     this.resetData()
+
   }
 }
 </script>

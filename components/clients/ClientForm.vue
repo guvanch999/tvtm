@@ -8,7 +8,7 @@
           <span @click="closeDialog" class="mdi mdi-close mdi-18px icon-button-class"></span>
         </v-card-title>
         <v-divider/>
-        <v-card-text>
+        <v-card-text style="max-height: 60vh;overflow-y: auto">
           <v-row>
             <v-col>
               <label>Card number:</label>
@@ -124,7 +124,6 @@ import ErrorComponent from "../ErrorComponent";
 import ChooseDiller from "../diller/ChooseDiller";
 import {mapActions, mapGetters} from "vuex";
 
-// const isPhoneNumber = (param) => this.$store.getters.get_phone_regex.test(param)
 export default {
   props: {
     client: {
@@ -158,7 +157,7 @@ export default {
       ],
       phoneNumberRules: [
         v => this.phone_regex.test(v) || 'Phone number is not match!!!'
-      ]
+      ],
     }
   },
 
@@ -167,6 +166,23 @@ export default {
       updateClient: 'clients/updateClientDetail',
       createClient: 'clients/creteClient'
     }),
+    resetChanges() {
+      this.clientModel = {
+        cardnumber: null,
+        name: null,
+        surname: null,
+        telnumber: null,
+        adress: null,
+        packet: null,
+        srok: null,
+        resiver: null
+      }
+      if (this.client) {
+        for (let prop in this.clientModel) {
+          this.clientModel[prop] = this.client[prop]
+        }
+      }
+    },
     closeDialog() {
       this.$emit("closeDialog")
     },
@@ -244,6 +260,9 @@ export default {
 
       return ['Field is required']
     }
+  },
+  mounted() {
+    this.resetChanges()
   }
 }
 </script>

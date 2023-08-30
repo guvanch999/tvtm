@@ -108,13 +108,13 @@ export default {
   data() {
     return {
       headers: [
-        {text: 'ID', value: 'id'},
-        {text: "Doly ady", value: "full_name"},
-        {text: 'Telefon belgisi', value: 'phone_number'},
-        {text: 'Skidka:', value: "skidka", width: '200px'},
-        {text: 'Kardlar:', value: "client_count"},
-        {text: "Balans", value: "balans", width: '20%'},
-        {text: "Hereketler", value: "actions", align: "right", width: '10%'}
+        {text: 'ID', value: 'id', sortable: false},
+        {text: "Doly ady", value: "full_name", sortable: false},
+        {text: 'Telefon belgisi', value: 'phone_number', sortable: false},
+        {text: 'Skidka:', value: "skidka", width: '200px', sortable: false},
+        {text: 'Kardlar:', value: "client_count", sortable: false},
+        {text: "Balans", value: "balans", width: '20%', sortable: false},
+        {text: "Hereketler", value: "actions", align: "right", width: '10%', sortable: false}
       ],
       isLoading: false,
       page: 1,
@@ -255,7 +255,6 @@ export default {
   },
   mounted() {
     this.resetData()
-
   }
 }
 </script>
