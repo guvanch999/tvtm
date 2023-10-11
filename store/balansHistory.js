@@ -27,6 +27,9 @@ export const actions = {
     await this.$axios.$get('v1/admin/dillers/balance-history/' + diller_id, {
       headers: {
         Authorization: `Bearer ${token}`
+      },
+      params: {
+        page
       }
     }).then(res => {
       commit("SET_HISTORY_LIST", res.data)

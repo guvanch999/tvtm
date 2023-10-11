@@ -46,7 +46,9 @@
         v-model="page"
         v-if="page_count>1"
         :length="page_count"
-        circle>
+        circle
+        :total-visible="10"
+      >
       </v-pagination>
     </v-card>
   </div>

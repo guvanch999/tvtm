@@ -1,14 +1,14 @@
 <template>
   <div class="popUpBg">
-    <div class="popUpCardClass" style="width: 60%">
-      <v-card style="position: relative" tile>
+    <div class="popUpCardClass" style="width: 60%;height: 85vh">
+      <v-card style="position: relative;height: 100%" tile>
         <v-card-title>
           Balance history: (Current balance:{{ diller?.balans?.summ }} TMT)
           <v-spacer/>
           <span @click="closeDialog" class="mdi mdi-close mdi-18px icon-button-class"/>
         </v-card-title>
         <v-divider/>
-        <v-card-text>
+        <v-card-text style="max-height: 80%;overflow-y: auto">
           <v-data-table
             :headers="headers"
             :items="history_list"
@@ -16,8 +16,16 @@
             hide-default-footer
             disable-pagination
           ></v-data-table>
-          <v-pagination v-if="page_length>0" v-model="page" :length="page_length"/>
         </v-card-text>
+        <v-divider style="background-color: black"/>
+        <div style="display: flex;height: max-content;justify-content: center;align-items: center">
+          <v-pagination
+            v-if="page_length>0"
+            v-model="page"
+            :length="page_length"
+            :total-visible="10"/>
+        </div>
+
       </v-card>
     </div>
   </div>
@@ -43,6 +51,11 @@ export default {
         {text: 'Action', value: 'action'},
         {text: 'Summa', value: 'summ'},
       ]
+    }
+  },
+  watch: {
+    page() {
+      this.loadData()
     }
   },
   methods: {

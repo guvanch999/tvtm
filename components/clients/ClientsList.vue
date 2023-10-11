@@ -49,7 +49,13 @@
     <client-form v-if="clientFormDialog" :client="selectedClient" @closeDialog="closeClientFormDialog"
                  @resetList="resetList"/>
     <loading-component v-if="isLoading"/>
-    <v-pagination v-model="page" v-if="page_count>1" :length="page_count" circle/>
+    <v-pagination
+      v-model="page"
+      v-if="page_count>1"
+      :length="page_count"
+      circle
+      :total-visible="10"
+    />
   </div>
 </template>
 

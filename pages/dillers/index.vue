@@ -58,7 +58,13 @@
         </div>
       </template>
     </v-data-table>
-    <v-pagination v-if="pageLength>1" v-model="page" :length="pageLength" circle></v-pagination>
+    <v-pagination
+      v-if="pageLength>1"
+      v-model="page"
+      :length="pageLength"
+      circle
+      :total-visible="10"
+    ></v-pagination>
     <diller-form v-if="dillerFormDialog" :diller="selectedDiller" @closeDialog="closeDillerFormDialog"
                  @initData="initData"/>
     <change-password-form v-if="changePasswordForm" :diller="selectedDiller" @closeDialog="closeChangePasswordDialog"/>

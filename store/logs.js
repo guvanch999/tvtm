@@ -8,7 +8,7 @@ export const getters = {
     return state.logs
   },
   get_total(state) {
-    return state.logs
+    return state.total
   }
 }
 

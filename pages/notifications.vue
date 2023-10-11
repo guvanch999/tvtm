@@ -44,7 +44,12 @@
         </template>
       </v-data-table>
       <v-divider/>
-      <v-pagination v-model="page" v-if="page_count>1" :length="page_count" circle
+      <v-pagination
+        v-model="page"
+        v-if="page_count>1"
+        :length="page_count"
+        circle
+        :total-visible="10"
       >
       </v-pagination>
     </v-card>

@@ -23,7 +23,13 @@
       </template>
     </v-data-table>
     <news-form v-if="newsFormDialog" :news="selectedNews" @closeDialog="closeNewsFormDialog" @resetList="resetList"/>
-    <v-pagination v-model="page" v-if="pageCount>1" :length="pageCount" circle/>
+    <v-pagination
+      v-model="page"
+      v-if="pageCount>1"
+      :length="pageCount"
+      circle
+      :total-visible="10"
+    />
     <loading-component v-if="isLoading"/>
     <delete-confirm-dialog
       v-if="deleteConfirmDialog"

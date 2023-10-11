@@ -34,11 +34,11 @@
     </div>
     <div class="detail-class">
       <label>Date start:</label>
-      <strong>{{ client.date_start }}</strong>
+      <strong>{{ start_date }}</strong>
     </div>
     <div class="detail-class">
       <label>Date end:</label>
-      <strong>{{ client.date_end }}</strong>
+      <strong>{{ end_date }}</strong>
     </div>
   </div>
 </template>
@@ -49,6 +49,31 @@ export default {
     client: {
       type: Object,
       default: null
+    }
+  },
+  methods: {
+    dateToYMD(date) {
+      let d = date.getDate();
+      let m = date.getMonth() + 1;
+      let y = date.getFullYear();
+      return '' + (d <= 9 ? '0' + d : d) + '-' + (m <= 9 ? '0' + m : m) + '-' + y;
+    }
+  },
+  computed: {
+    start_date() {
+      let date = new Date(this.client?.date_start * 1000)
+      if (!date) {
+        return 'Undefined'
+      }
+
+      return this.dateToYMD(date)
+    },
+    end_date() {
+      let date = new Date(this.client?.date_end * 1000)
+      if (!date) {
+        return 'Undefined'
+      }
+      return this.dateToYMD(date)
     }
   }
 }
