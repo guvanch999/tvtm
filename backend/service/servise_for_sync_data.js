@@ -114,8 +114,9 @@ function start() {
   }, 1000 * 60 * 60)
 }
 
-start()
 
+start()
+console.log('Sync server is started')
 
 function formatDate() {
   let date = new Date()
