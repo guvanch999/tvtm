@@ -16,7 +16,7 @@ let token = null
 let update_query_string = ``
 
 async function login() {
-  const {data} = await axios.post('https://tmalem.tv/api/auth', {
+  const {data} = await axios.post('https://billing.alemtv.tm/api/auth', {
     "telnumber": "99365965102",
     "password": "begaforever"
   })

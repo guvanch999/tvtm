@@ -7,7 +7,7 @@ import {HttpException} from "@adonisjs/http-server/build/src/Exceptions/HttpExce
 
 async function get_client_by_cardnumber(cardnumber: string) {
   let token = get_token()
-  let {data} = await axios.get('https://tmalem.tv/api/diller/getclient', {
+  let {data} = await axios.get('https://billing.alemtv.tm/api/diller/getclient', {
     headers: {
       Authorization: `Bearer ${token}`
     },
@@ -21,7 +21,7 @@ async function get_client_by_cardnumber(cardnumber: string) {
 export async function create_card(client: Client) {
   let token = get_token()
   try {
-    const {data} = await axios.post('https://alemtv.tm/api/diller/client', {
+    const {data} = await axios.post('https://billing.alemtv.tm/api/diller/client', {
         cardnumber: client.cardnumber,
         name: client.name,
         surname: client.surname,
@@ -55,7 +55,7 @@ export async function create_card(client: Client) {
 export async function load_packets() {
   let token = get_token()
   try {
-    let {data} = await axios.get('https://tmalem.tv/api/diller/packets', {
+    let {data} = await axios.get('https://billing.alemtv.tm/api/diller/packets', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -70,7 +70,7 @@ export async function load_packets() {
 export async function re_new_card(client: Client) {
   let token = get_token()
   try {
-    await axios.post('https://tmalem.tv/api/diller/renevald_Card', {}, {
+    await axios.post('https://billing.alemtv.tm/api/diller/renevald_Card', {}, {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -94,7 +94,7 @@ export async function re_new_card(client: Client) {
 export async function extend_card(params) {
   let token = get_token()
   try {
-    await axios.post('https://tmalem.tv/api/diller/renevald_Card', {}, {
+    await axios.post('https://billing.alemtv.tm/api/diller/renevald_Card', {}, {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -109,7 +109,7 @@ export async function extend_card(params) {
 export async function reactivate_card(cardnumber: string) {
   let token = get_token()
   try {
-    await axios.get('https://tmalem.tv/api/diller/reactivation', {
+    await axios.get('https://billing.alemtv.tm/api/diller/reactivation', {
       headers: {
         Authorization: `Bearer ${token}`
       },
@@ -127,7 +127,7 @@ export async function sync_packets() {
   let token = get_token()
 
   try {
-    let {data} = await axios.get('https://tmalem.tv/api/diller/packets', {
+    let {data} = await axios.get('https://billing.alemtv.tm/api/diller/packets', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -145,7 +145,7 @@ export async function card_replacement(client: Client, new_card_data) {
   try {
     console.log('sending request')
     console.log(new_card_data)
-    await axios.post('https://alemtv.tm/api/diller/card_replacement', {
+    await axios.post('https://billing.alemtv.tm/api/diller/card_replacement', {
         "oldCard": new_card_data.cardnumber,
         "newCard": new_card_data.new_cardnumber,
         "reason": new_card_data.reason
@@ -175,7 +175,7 @@ export async function card_replacement(client: Client, new_card_data) {
 export async function search_card(cardnumber: string) {
   let token = get_token()
   try {
-    let {data} = await axios.get('https://tmalem.tv/api/diller/getclient', {
+    let {data} = await axios.get('https://billing.alemtv.tm/api/diller/getclient', {
       params: {
         cardnumber
       },

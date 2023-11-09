@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const login = async function () {
-  return await axios.post('https://tmalem.tv/api/auth',
+  return await axios.post('https://billing.alemtv.tm/api/auth',
     {
       "telnumber": "99365965102",
       "password": "begaforever"

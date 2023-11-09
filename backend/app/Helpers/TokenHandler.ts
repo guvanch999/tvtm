@@ -18,7 +18,7 @@ async function get_user_and_login() {
   if (!loginData) {
     throw new Error("No login data found")
   }
-  return await axios.post('https://tmalem.tv/api/auth',
+  return await axios.post('https://billing.alemtv.tm/api/auth',
     {
       telnumber: loginData.telnumber,
       password: loginData.password
@@ -49,7 +49,7 @@ export async function start_token_refresh_timer() {
 
 export async function try_login(telnumber: string, password: string) {
   try {
-    const {data} = await axios.post('https://tmalem.tv/api/auth',
+    const {data} = await axios.post('https://billing.alemtv.tm/api/auth',
       {
         telnumber,
         password
