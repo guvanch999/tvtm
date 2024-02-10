@@ -36,7 +36,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: `/${i18n.global.locale}/home`,
+      redirect: `/${i18n.global.locale}/login`,
     },
     {
       path: "/:lang",
@@ -46,7 +46,7 @@ const router = createRouter({
         },
       },
       children: [
-        { path: "/", redirect: "/home" },
+        { path: "/", redirect: "/login" },
         {
           path: "home",
           component: TvHome,
