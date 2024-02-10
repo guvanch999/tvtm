@@ -14,6 +14,7 @@ import LogsService from "App/Services/LogsService";
 import ClientForAdminValidator from "App/Validators/ClientForAdminValidator";
 import Diller from "App/Models/Diller";
 import FilterValidator from "App/Validators/FilterValidator";
+import * as console from "console";
 
 @inject()
 export default class ClientsController {
@@ -22,6 +23,7 @@ export default class ClientsController {
 
   public async getAllClient({request, response}: HttpContextContract) {
     let filter = await request.validate(FilterValidator)
+    console.log(filter)
     filter.page = filter.page || 1
     filter.limit = filter.limit || 20
     let data: ModelPaginatorContract<Client>
@@ -40,7 +42,7 @@ export default class ClientsController {
       })
     }
 
-    data = await query.paginate(filter.page, 10)
+    data = await query.paginate(filter.page, filter.limit)
     return response.ok({
       success: true,
       data: data.all(),
